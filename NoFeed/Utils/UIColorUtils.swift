@@ -11,8 +11,8 @@ import UIKit
 extension UIColor {
     
     struct AppColors {
-        static let lightPink = UIColor(red: 255, green: 52, blue: 130)
-        static let lightGray = UIColor(red: 216, green: 216, blue: 216)
+        static let lightPink = UIColor(netHex: 0xFF3482)
+        static let lightGray = UIColor(netHex: 0xE6E6E6)
     }
     
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
