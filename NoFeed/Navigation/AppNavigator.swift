@@ -33,7 +33,7 @@ class AppNavigator: Navigator {
         // TODO: insert factory here
         switch desination {
             case .safariSetup:
-                return ViewController()
+                return SafariSetupViewController()
             default:
                 return ViewController()
         }
