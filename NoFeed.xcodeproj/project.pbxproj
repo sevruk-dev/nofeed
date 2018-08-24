@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC82212D43AB004B40D1 /* Navigator.swift */; };
 		8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC84212D440B004B40D1 /* AppNavigator.swift */; };
 		8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC86212D467E004B40D1 /* AppCoordinator.swift */; };
 		8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */; };
+		806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */; };
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
@@ -22,10 +24,12 @@
 
 /* Begin PBXFileReference section */
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
+		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
 		8059EC82212D43AB004B40D1 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		8059EC84212D440B004B40D1 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		8059EC86212D467E004B40D1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariSetupViewController.swift; sourceTree = "<group>"; };
+		806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		807FA6E1212C72640040AAFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80969614211629B5001FA40A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
@@ -61,6 +65,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		80153FFF212FF43000694C83 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				80153FFD212FF3BA00694C83 /* UIColorUtils.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		8059EC80212D4307004B40D1 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +91,16 @@
 				80FE0976211624A8008D07D7 /* Info.plist */,
 			);
 			path = Support;
+			sourceTree = "<group>";
+		};
+		806749F7212FDCB90084B303 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
+				80FE096C211624A7008D07D7 /* ViewController.swift */,
+				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		80969613211629B5001FA40A /* Frameworks */ = {
@@ -112,8 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				8059EC80212D4307004B40D1 /* Navigation */,
-				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
-				80FE096C211624A7008D07D7 /* ViewController.swift */,
+				806749F7212FDCB90084B303 /* View Controllers */,
+				80153FFF212FF43000694C83 /* Utils */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
 				8059EC81212D4324004B40D1 /* Support */,
@@ -275,8 +297,10 @@
 				80FE096D211624A7008D07D7 /* ViewController.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
+				80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */,
 				8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */,
 				80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */,
+				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
