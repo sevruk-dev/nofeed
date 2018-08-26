@@ -18,7 +18,20 @@ class ViewController: UIViewController {
         label.textAlignment = .center
         return label
     }()
-
+    
+    convenience init() {
+        self.init(with: nil)
+    }
+    
+    init(with title: String?) {
+        super.init(nibName: nil, bundle: nil)
+        label.text = title
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

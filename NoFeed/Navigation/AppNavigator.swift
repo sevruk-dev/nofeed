@@ -35,7 +35,7 @@ class AppNavigator: Navigator {
             case .safariSetup:
                 return SafariSetupViewController()
             case .onBoarding:
-                return OnboardingPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+                return OnboardingPageViewController()
             case .main:
                 return ViewController()
         }
