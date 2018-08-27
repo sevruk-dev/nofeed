@@ -10,6 +10,10 @@
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
+		8056A54D2134658400973940 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* BlockerCell.swift */; };
+		8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54E213468C000973940 /* BlockerDataSource.swift */; };
+		8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55021346E1F00973940 /* BlockerCellModel.swift */; };
+		8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55321348BEB00973940 /* BlockerReusableView.swift */; };
 		8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC82212D43AB004B40D1 /* Navigator.swift */; };
 		8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC84212D440B004B40D1 /* AppNavigator.swift */; };
 		8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC86212D467E004B40D1 /* AppCoordinator.swift */; };
@@ -29,6 +33,10 @@
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
+		8056A54C2134658400973940 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
+		8056A54E213468C000973940 /* BlockerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerDataSource.swift; sourceTree = "<group>"; };
+		8056A55021346E1F00973940 /* BlockerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCellModel.swift; sourceTree = "<group>"; };
+		8056A55321348BEB00973940 /* BlockerReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerReusableView.swift; sourceTree = "<group>"; };
 		8059EC82212D43AB004B40D1 /* Navigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigator.swift; sourceTree = "<group>"; };
 		8059EC84212D440B004B40D1 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		8059EC86212D467E004B40D1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -78,6 +86,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		8056A55221346E3D00973940 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8056A54E213468C000973940 /* BlockerDataSource.swift */,
+				8056A55021346E1F00973940 /* BlockerCellModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		8059EC80212D4307004B40D1 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +119,9 @@
 			isa = PBXGroup;
 			children = (
 				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
+				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
 				8056A54A21345C1700973940 /* BlockerViewController.swift */,
 				80FE096C211624A7008D07D7 /* ViewController.swift */,
-				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -141,8 +158,11 @@
 			children = (
 				8059EC80212D4307004B40D1 /* Navigation */,
 				806749F7212FDCB90084B303 /* View Controllers */,
+				8056A55221346E3D00973940 /* Models */,
 				80153FFF212FF43000694C83 /* Utils */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
+				8056A54C2134658400973940 /* BlockerCell.swift */,
+				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
 				8059EC81212D4324004B40D1 /* Support */,
 				80FE0971211624A8008D07D7 /* Assets.xcassets */,
@@ -304,8 +324,12 @@
 				8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
+				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,
 				80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */,
+				8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */,
+				8056A54D2134658400973940 /* BlockerCell.swift in Sources */,
 				8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */,
+				8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */,
 				80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */,
 				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,

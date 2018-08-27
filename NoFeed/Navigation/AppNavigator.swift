@@ -37,7 +37,7 @@ class AppNavigator: Navigator {
             case .onBoarding:
                 return OnboardingPageViewController()
             case .main:
-                return BlockerViewController()
+                return BlockerViewController(with: BlockerDataSource())
         }
     }
     

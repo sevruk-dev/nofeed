@@ -13,6 +13,11 @@ extension UIColor {
     struct AppColors {
         static let lightPink = UIColor(netHex: 0xFF3482)
         static let lightGray = UIColor(netHex: 0xE6E6E6)
+        
+        static let facebook = UIColor(netHex: 0x3B5998)
+        static let instagram = UIColor(netHex: 0x262626)
+        static let twitter = UIColor(netHex: 0x1DA1F2)
+        static let vk = UIColor(netHex: 0x266A8D)
     }
     
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {
