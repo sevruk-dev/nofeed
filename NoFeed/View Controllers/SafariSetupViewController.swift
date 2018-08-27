@@ -8,6 +8,7 @@
 
 import UIKit
 
+//TODO: Video + title page
 class SafariSetupViewController: UIViewController {
 
     override func viewDidLoad() {

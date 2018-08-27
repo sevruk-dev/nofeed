@@ -37,7 +37,7 @@ class AppNavigator: Navigator {
             case .onBoarding:
                 return OnboardingPageViewController()
             case .main:
-                return ViewController()
+                return BlockerViewController()
         }
     }
     
@@ -51,5 +51,6 @@ class AppNavigator: Navigator {
             }
         }()
         navigationController.isNavigationBarHidden = navigationBarHidden
+        navigationController.navigationBar.backgroundColor = .white
     }
 }

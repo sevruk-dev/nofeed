@@ -15,7 +15,7 @@ class AppCoordinator {
     }
     
     func coordinate() {
-        appNavigator.navigate(to: .onBoarding)
+        appNavigator.navigate(to: .main)
     }
     
 }
