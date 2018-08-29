@@ -86,6 +86,15 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		802421F5213707060028F10F /* Views for CollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				8056A54C2134658400973940 /* BlockerCell.swift */,
+				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
+			);
+			path = "Views for CollectionView";
+			sourceTree = "<group>";
+		};
 		8056A55221346E3D00973940 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,8 +170,7 @@
 				8056A55221346E3D00973940 /* Models */,
 				80153FFF212FF43000694C83 /* Utils */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
-				8056A54C2134658400973940 /* BlockerCell.swift */,
-				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
+				802421F5213707060028F10F /* Views for CollectionView */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
 				8059EC81212D4324004B40D1 /* Support */,
 				80FE0971211624A8008D07D7 /* Assets.xcassets */,

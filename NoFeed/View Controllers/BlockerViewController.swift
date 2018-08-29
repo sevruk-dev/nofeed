@@ -15,13 +15,20 @@ class BlockerViewController: UIViewController {
     
     fileprivate let dataSource: BlockerDataProvider
     
+    fileprivate struct Constants {
+        static let sideInset: CGFloat = 20.0
+        static let padding: CGFloat = 18.0
+        static let cellRatio: CGFloat = 1.125
+    }
+    
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
+        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: Constants.sideInset, bottom: 0.0, right: Constants.sideInset)
         collectionView.register(BlockerCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
-        collectionView.register(BlockerReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: cellReuseIdentifier)
+        collectionView.register(BlockerReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
@@ -73,11 +80,38 @@ extension BlockerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: headerReuseIdentifier, withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath)
         guard let blockerHeader = headerView as? BlockerReusableView else { return headerView }
         
         blockerHeader.title = dataSource.titleForSupplementaryView(at: indexPath)
         return blockerHeader
+    }
+}
+
+extension BlockerViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size: CGSize
+        
+        if indexPath.section == 0 {
+            let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
+            let height = width * Constants.cellRatio
+            size = CGSize(width: width, height: height)
+        } else {
+            let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
+            let height = width / 1.5
+            size = CGSize(width: width, height: height)
+        }
+        
+        return size
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constants.padding
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width - (2 * Constants.sideInset), height: 50.0)
     }
 }
 

@@ -14,7 +14,7 @@ class BlockerReusableView: UICollectionReusableView {
         didSet { label.text = title }
     }
     
-    private let sideOffset: CGFloat = 25.0
+    private let sideOffset: CGFloat = 5.0
     private let height: CGFloat = 25.0
     
     private lazy var label: UILabel = {
