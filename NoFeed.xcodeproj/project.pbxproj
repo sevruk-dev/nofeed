@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
+		802421FA21370A720028F10F /* AvenirNext-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */; };
+		802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F821370A720028F10F /* AvenirNext-Medium.ttf */; };
+		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
 		8056A54D2134658400973940 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* BlockerCell.swift */; };
 		8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54E213468C000973940 /* BlockerDataSource.swift */; };
@@ -32,6 +35,9 @@
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
+		802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-DemiBold.ttf"; sourceTree = "<group>"; };
+		802421F821370A720028F10F /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.ttf"; sourceTree = "<group>"; };
+		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
 		8056A54C2134658400973940 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
 		8056A54E213468C000973940 /* BlockerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerDataSource.swift; sourceTree = "<group>"; };
@@ -93,6 +99,16 @@
 				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
 			);
 			path = "Views for CollectionView";
+			sourceTree = "<group>";
+		};
+		802421F621370A600028F10F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */,
+				802421F821370A720028F10F /* AvenirNext-Medium.ttf */,
+				802421F921370A720028F10F /* AvenirNext-Regular.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		8056A55221346E3D00973940 /* Models */ = {
@@ -170,8 +186,9 @@
 				8056A55221346E3D00973940 /* Models */,
 				80153FFF212FF43000694C83 /* Utils */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
-				802421F5213707060028F10F /* Views for CollectionView */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
+				802421F5213707060028F10F /* Views for CollectionView */,
+				802421F621370A600028F10F /* Resources */,
 				8059EC81212D4324004B40D1 /* Support */,
 				80FE0971211624A8008D07D7 /* Assets.xcassets */,
 			);
@@ -245,9 +262,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */,
+				802421FA21370A720028F10F /* AvenirNext-DemiBold.ttf in Resources */,
 				80FE0975211624A8008D07D7 /* LaunchScreen.storyboard in Resources */,
 				807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */,
 				80FE0972211624A8008D07D7 /* Assets.xcassets in Resources */,
+				802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
