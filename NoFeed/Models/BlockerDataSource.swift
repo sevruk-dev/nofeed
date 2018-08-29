@@ -22,14 +22,14 @@ class BlockerDataSource: BlockerDataProvider {
     
     private lazy var models: [[BlockerCellDataProvider]] = {
         var models: [[BlockerCellDataProvider]] = []
-        let facebookModel = BlockerCellModel(with: "facebook", brandingColor: UIColor.AppColors.facebook)
-        let instagramModel = BlockerCellModel(with: "instagram", brandingColor: UIColor.AppColors.instagram)
-        let twitterModel = BlockerCellModel(with: "twitter", brandingColor: UIColor.AppColors.twitter)
-        let vkModel = BlockerCellModel(with: "vk", brandingColor: UIColor.AppColors.vk)
+        let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook", brandingColor: UIColor.AppColors.facebook)
+        let instagramModel = BlockerCellModel(with: "instagram", imageName: "instagram", brandingColor: UIColor.AppColors.instagram)
+        let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter", brandingColor: UIColor.AppColors.twitter)
+        let vkModel = BlockerCellModel(with: "vk", imageName: "vk", brandingColor: UIColor.AppColors.vk)
         let feeds = [facebookModel, instagramModel, twitterModel, vkModel]
         
-        let reviewModel = BlockerCellModel(with: "review")
-        let purchaseModel = BlockerCellModel(with: "purchase")
+        let reviewModel = BlockerCellModel(with: "review", imageName: "review")
+        let purchaseModel = BlockerCellModel(with: "purchase", imageName: "purchase")
         let actions = [reviewModel, purchaseModel]
         
         models.append(feeds)

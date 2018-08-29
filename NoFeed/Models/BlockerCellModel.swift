@@ -11,7 +11,7 @@ import UIKit
 protocol BlockerCellDataProvider {
     
     var title: String { get }
-    var image: UIImage { get }
+    var imageName: String { get }
     var brandingColor: UIColor { get }
     
 }
@@ -19,12 +19,12 @@ protocol BlockerCellDataProvider {
 class BlockerCellModel: BlockerCellDataProvider {
     
     let title: String
-    let image: UIImage
+    let imageName: String
     let brandingColor: UIColor
     
-    init(with title: String, brandingColor: UIColor = .white) {
+    init(with title: String, imageName: String, brandingColor: UIColor = .white) {
         self.title = title
-        self.image = UIImage()
+        self.imageName = imageName
         self.brandingColor = brandingColor
     }
 }

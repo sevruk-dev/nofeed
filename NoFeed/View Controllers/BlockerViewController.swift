@@ -72,7 +72,10 @@ extension BlockerViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
-        return cell
+        guard let blockerCell = cell as? BlockerCell else { return cell }
+        
+        blockerCell.dataSource = dataSource.model(at: indexPath)
+        return blockerCell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
