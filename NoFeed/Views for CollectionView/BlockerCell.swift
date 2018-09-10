@@ -16,9 +16,7 @@ class BlockerCell: UICollectionViewCell {
     var dataSource: BlockerCellDataProvider? {
         didSet {
             guard let dataSource = dataSource else { return }
-            blockerView.backgroundColor = dataSource.brandingColor
-            label.text = dataSource.title
-            imageView.image = UIImage(named: dataSource.title)
+            updateContent(with: dataSource)
         }
     }
     
@@ -58,6 +56,12 @@ class BlockerCell: UICollectionViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func updateContent(with dataSource: BlockerCellDataProvider) {
+        blockerView.backgroundColor = dataSource.brandingColor
+        label.text = dataSource.title
+        imageView.image = UIImage(named: dataSource.title)
     }
     
     private func setupConstraints() {
