@@ -18,7 +18,7 @@ class BlockerViewController: UIViewController {
     fileprivate struct Constants {
         static let sideInset: CGFloat = 20.0
         static let padding: CGFloat = 18.0
-        static let cellRatio: CGFloat = 1.125
+        static let feedCellRatio: CGFloat = 1.125
     }
     
     private lazy var collectionView: UICollectionView = {
@@ -98,7 +98,7 @@ extension BlockerViewController: UICollectionViewDelegateFlowLayout {
         
         if indexPath.section == 0 {
             let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
-            let height = width * Constants.cellRatio
+            let height = width * Constants.feedCellRatio
             size = CGSize(width: width, height: height)
         } else {
             let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
