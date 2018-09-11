@@ -11,7 +11,7 @@ import UIKit
 class BlockerCell: UICollectionViewCell {
     
     private let cornerRadius: CGFloat = 5.0
-    private let textSize: CGFloat = 17.0
+    private let textSize: CGFloat = 16.5
     
     var dataSource: BlockerCellDataProvider? {
         didSet {
@@ -51,7 +51,6 @@ class BlockerCell: UICollectionViewCell {
         blockerView.addSubview(imageView)
         
         setupConstraints()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,24 +60,25 @@ class BlockerCell: UICollectionViewCell {
     private func updateContent(with dataSource: BlockerCellDataProvider) {
         blockerView.backgroundColor = dataSource.brandingColor
         label.text = dataSource.title
-        imageView.image = UIImage(named: dataSource.title)
+        imageView.image = UIImage(named: dataSource.imageName)
     }
     
     private func setupConstraints() {
+        //TODO: replace constraints with relative values depending on size of the cell
         let blockerViewConstraints = blockerView.constraintsWithAnchorsEqual(to: contentView)
         
         let imageViewConstraints = [
             imageView.centerXAnchor.constraint(equalTo: blockerView.centerXAnchor),
-            imageView.topAnchor.constraint(equalTo: blockerView.topAnchor, constant: 30.0),
-            imageView.heightAnchor.constraint(equalToConstant: 45.0),
+            imageView.topAnchor.constraint(equalTo: blockerView.topAnchor, constant: 23.0),
+            imageView.heightAnchor.constraint(equalToConstant: 58.0),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor, multiplier: 1.0),
         ]
         
         let labelConstraints = [
             label.centerXAnchor.constraint(equalTo: blockerView.centerXAnchor),
-            label.centerYAnchor.constraint(equalTo: blockerView.centerYAnchor, constant: 10.0),
-            label.widthAnchor.constraint(equalTo: blockerView.widthAnchor, multiplier: 0.5),
-            label.heightAnchor.constraint(equalToConstant: 24.0)
+            label.topAnchor.constraint(equalTo: blockerView.topAnchor, constant: 86.0),
+            label.widthAnchor.constraint(equalTo: blockerView.widthAnchor, multiplier: 0.8),
+            label.heightAnchor.constraint(equalToConstant: 23.0)
         ]
         
         NSLayoutConstraint.activate(blockerViewConstraints + labelConstraints + imageViewConstraints)
