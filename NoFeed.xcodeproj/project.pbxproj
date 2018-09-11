@@ -210,7 +210,6 @@
 				80FE0964211624A7008D07D7 /* Frameworks */,
 				80FE0965211624A7008D07D7 /* Resources */,
 				3D47A3635CCE0954D89DBF8F /* [CP] Embed Pods Frameworks */,
-				B833B33C068AB30F4C68275E /* [CP] Copy Pods Resources */,
 				8082B7D3212C757A00E19DDB /* Run Script */,
 			);
 			buildRules = (
@@ -310,21 +309,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
-		};
-		B833B33C068AB30F4C68275E /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed-resources.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 		D271196D66AB73EC00FB2561 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
