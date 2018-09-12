@@ -43,12 +43,20 @@ class BlockerCell: UICollectionViewCell {
         return imageView
     }()
     
+    private lazy var switchView: CustomSwitch = {
+        let switchView = CustomSwitch(frame: .zero)
+        switchView.thumbSize = CGSize(width: 10, height: 10)
+        switchView.translatesAutoresizingMaskIntoConstraints = false
+        return switchView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .white
         contentView.addSubview(blockerView)
         blockerView.addSubview(label)
         blockerView.addSubview(imageView)
+        blockerView.addSubview(switchView)
         
         setupConstraints()
     }
@@ -81,7 +89,14 @@ class BlockerCell: UICollectionViewCell {
             label.heightAnchor.constraint(equalToConstant: 23.0)
         ]
         
-        NSLayoutConstraint.activate(blockerViewConstraints + labelConstraints + imageViewConstraints)
+        let switchConstraints = [
+            switchView.bottomAnchor.constraint(equalTo: blockerView.bottomAnchor, constant: -13.0),
+            switchView.rightAnchor.constraint(equalTo: blockerView.rightAnchor, constant: -18.0),
+            switchView.widthAnchor.constraint(equalToConstant: 44.0),
+            switchView.heightAnchor.constraint(equalToConstant: 22.0)
+        ]
+        
+        NSLayoutConstraint.activate(blockerViewConstraints + labelConstraints + imageViewConstraints + switchConstraints)
     }
     
 }
