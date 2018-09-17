@@ -54,12 +54,7 @@ class BlockerViewController: UIViewController {
     }
     
     func setupLayout() {
-        NSLayoutConstraint.activate([
-            collectionView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.rightAnchor.constraint(equalTo: view.rightAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            ])
+        NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
     }
 
 }
