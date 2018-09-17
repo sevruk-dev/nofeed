@@ -34,19 +34,19 @@ class CustomSwitch: UIControl {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupUI()
+        makeInitialSetup()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setupUI()
+        makeInitialSetup()
     }
     
-    func setupUI() {
+    private func makeInitialSetup() {
         clear()
-        clipsToBounds = false
-        
         addSubview(thumbView)
+        
+        addTarget(self, action: #selector(onThumbSelected), for: .touchUpInside)
     }
     
     private func clear() {
@@ -55,24 +55,18 @@ class CustomSwitch: UIControl {
         }
     }
     
-    override func beginTracking(_ touch: UITouch, with event: UIEvent?) -> Bool {
-        super.beginTracking(touch, with: event)
-        animate()
-        
-        return true
-    }
-    
-    private func animate() {
+    @objc func onThumbSelected() {
         isOn = !isOn
         isAnimating = true
-        UIView.animate(withDuration: animationDuration, delay: 0, usingSpringWithDamping: 0.7,
-                       initialSpringVelocity: 0.5, options: [.curveEaseOut, .beginFromCurrentState],
+        
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7,
+                       initialSpringVelocity: 0.1, options: [.curveEaseOut, .beginFromCurrentState],
                        animations: {
                         self.thumbView.frame.origin.x = self.isOn ? self.onPoint.x : self.offPoint.x
                         self.backgroundColor = self.isOn ? self.onTintColor : self.offTintColor
         }, completion: { _ in
             self.isAnimating = false
-            self.sendActions(for: UIControlEvents.valueChanged)
+            self.sendActions(for: .valueChanged)
         })
     }
     

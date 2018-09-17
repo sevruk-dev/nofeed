@@ -10,15 +10,19 @@ import UIKit
 
 class BlockerCell: UICollectionViewCell {
     
-    private let cornerRadius: CGFloat = 5.0
-    private let textSize: CGFloat = 16.5
-    
     var dataSource: BlockerCellDataProvider? {
         didSet {
             guard let dataSource = dataSource else { return }
             updateContent(with: dataSource)
         }
     }
+    
+    func cellSelected() {
+        switchView.onThumbSelected()
+    }
+    
+    private let cornerRadius: CGFloat = 5.0
+    private let textSize: CGFloat = 16.5
     
     private lazy var blockerView: UIView = {
         let view = UIView()
@@ -93,7 +97,7 @@ class BlockerCell: UICollectionViewCell {
             switchView.bottomAnchor.constraint(equalTo: blockerView.bottomAnchor, constant: -13.0),
             switchView.rightAnchor.constraint(equalTo: blockerView.rightAnchor, constant: -18.0),
             switchView.widthAnchor.constraint(equalToConstant: 44.0),
-            switchView.heightAnchor.constraint(equalToConstant: 22.0)
+            switchView.heightAnchor.constraint(equalTo: switchView.widthAnchor, multiplier: 0.5)
         ]
         
         NSLayoutConstraint.activate(blockerViewConstraints + labelConstraints + imageViewConstraints + switchConstraints)

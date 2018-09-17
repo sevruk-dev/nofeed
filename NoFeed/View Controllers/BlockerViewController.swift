@@ -121,7 +121,11 @@ extension BlockerViewController: UICollectionViewDelegateFlowLayout {
 extension BlockerViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // some stuff
+        guard let blockerCell = collectionView.cellForItem(at: indexPath) as? BlockerCell else {
+            return
+        }
+        
+        blockerCell.cellSelected()
     }
     
 }
