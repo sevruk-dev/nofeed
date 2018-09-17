@@ -43,7 +43,6 @@ class BlockerCell: UICollectionViewCell {
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "twitter")
         return imageView
     }()
     
