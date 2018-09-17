@@ -6,4 +6,8 @@
 //  Copyright © 2018 Vova Seuruk. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ActionCell: UICollectionViewCell {
+    
+}
