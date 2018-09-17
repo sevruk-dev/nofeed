@@ -14,7 +14,7 @@
 		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
 		802421FE21370B190028F10F /* UIFontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802421FD21370B190028F10F /* UIFontUtils.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
-		8056A54D2134658400973940 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* BlockerCell.swift */; };
+		8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* FeedBlockerCell.swift */; };
 		8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54E213468C000973940 /* BlockerDataSource.swift */; };
 		8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55021346E1F00973940 /* BlockerCellModel.swift */; };
 		8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55321348BEB00973940 /* BlockerReusableView.swift */; };
@@ -26,6 +26,7 @@
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9A214F91B100D0D4D2 /* ActionCell.swift */; };
+		80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */; };
 		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
 		80FE096D211624A7008D07D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096C211624A7008D07D7 /* ViewController.swift */; };
@@ -43,7 +44,7 @@
 		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
 		802421FD21370B190028F10F /* UIFontUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontUtils.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
-		8056A54C2134658400973940 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
+		8056A54C2134658400973940 /* FeedBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBlockerCell.swift; sourceTree = "<group>"; };
 		8056A54E213468C000973940 /* BlockerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerDataSource.swift; sourceTree = "<group>"; };
 		8056A55021346E1F00973940 /* BlockerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCellModel.swift; sourceTree = "<group>"; };
 		8056A55321348BEB00973940 /* BlockerReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerReusableView.swift; sourceTree = "<group>"; };
@@ -56,6 +57,7 @@
 		80969614211629B5001FA40A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
 		80A95A9A214F91B100D0D4D2 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
+		80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE096A211624A7008D07D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,7 +104,8 @@
 		802421F5213707060028F10F /* Views for CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				8056A54C2134658400973940 /* BlockerCell.swift */,
+				80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */,
+				8056A54C2134658400973940 /* FeedBlockerCell.swift */,
 				80A95A9A214F91B100D0D4D2 /* ActionCell.swift */,
 				80D235FE2149A64300789ED0 /* CustomSwitch.swift */,
 				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
@@ -348,7 +351,7 @@
 				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,
 				80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */,
 				8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */,
-				8056A54D2134658400973940 /* BlockerCell.swift in Sources */,
+				8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */,
 				802421FE21370B190028F10F /* UIFontUtils.swift in Sources */,
 				8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */,
 				80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */,
@@ -357,6 +360,7 @@
 				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
 				80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
+				80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */,
 				8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,8 @@ import UIKit
 
 class BlockerViewController: UIViewController {
     
-    fileprivate let cellReuseIdentifier = "blockerCell"
+    fileprivate let blockerCellReuseIdentifier = "blockerCell"
+    fileprivate let actionCellReuseIdentifier = "actionCell"
     fileprivate let headerReuseIdentifier = "blockerHeader"
     
     fileprivate let dataSource: BlockerDataProvider
@@ -27,7 +28,8 @@ class BlockerViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
         collectionView.contentInset = UIEdgeInsets(top: 0.0, left: Constants.sideInset, bottom: 0.0, right: Constants.sideInset)
-        collectionView.register(BlockerCell.self, forCellWithReuseIdentifier: cellReuseIdentifier)
+        collectionView.register(FeedBlockerCell.self, forCellWithReuseIdentifier: blockerCellReuseIdentifier)
+        collectionView.register(ActionCell.self, forCellWithReuseIdentifier: actionCellReuseIdentifier)
         collectionView.register(BlockerReusableView.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
@@ -66,11 +68,12 @@ extension BlockerViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellReuseIdentifier, for: indexPath)
+        let reuseIdentifier = indexPath.section == 0 ? blockerCellReuseIdentifier : actionCellReuseIdentifier
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
         guard let blockerCell = cell as? BlockerCell else { return cell }
         
         blockerCell.dataSource = dataSource.model(at: indexPath)
-        return blockerCell
+        return cell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -116,7 +119,7 @@ extension BlockerViewController: UICollectionViewDelegateFlowLayout {
 extension BlockerViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let blockerCell = collectionView.cellForItem(at: indexPath) as? BlockerCell else {
+        guard let blockerCell = collectionView.cellForItem(at: indexPath) as? FeedBlockerCell else {
             return
         }
         
