@@ -28,8 +28,8 @@ class BlockerDataSource: BlockerDataProvider {
         let vkModel = BlockerCellModel(with: "vk", imageName: "vk", brandingColor: UIColor.AppColors.vk)
         let feeds = [facebookModel, instagramModel, twitterModel, vkModel]
         
-        let reviewModel = BlockerCellModel(with: "Leave us a review", imageName: "review")
-        let purchaseModel = BlockerCellModel(with: "Buy Premium or Restore Purchase", imageName: "purchase")
+        let reviewModel = BlockerCellModel(with: "Leave us a\n review", imageName: "review")
+        let purchaseModel = BlockerCellModel(with: "Buy Premium or\n Restore Purchase", imageName: "purchase")
         let actions = [reviewModel, purchaseModel]
         
         models.append(feeds)
