@@ -39,6 +39,7 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     
     private lazy var imageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.contentMode = .center
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
