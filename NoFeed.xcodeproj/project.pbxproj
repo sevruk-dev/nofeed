@@ -13,6 +13,7 @@
 		802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F821370A720028F10F /* AvenirNext-Medium.ttf */; };
 		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
 		802421FE21370B190028F10F /* UIFontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802421FD21370B190028F10F /* UIFontUtils.swift */; };
+		805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805338FB2150EEE700C30E31 /* ShadowView.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
 		8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* FeedBlockerCell.swift */; };
 		8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54E213468C000973940 /* BlockerDataSource.swift */; };
@@ -43,6 +44,7 @@
 		802421F821370A720028F10F /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.ttf"; sourceTree = "<group>"; };
 		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
 		802421FD21370B190028F10F /* UIFontUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontUtils.swift; sourceTree = "<group>"; };
+		805338FB2150EEE700C30E31 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
 		8056A54C2134658400973940 /* FeedBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBlockerCell.swift; sourceTree = "<group>"; };
 		8056A54E213468C000973940 /* BlockerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerDataSource.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */,
 				8056A54C2134658400973940 /* FeedBlockerCell.swift */,
 				80A95A9A214F91B100D0D4D2 /* ActionCell.swift */,
+				805338FB2150EEE700C30E31 /* ShadowView.swift */,
 				80D235FE2149A64300789ED0 /* CustomSwitch.swift */,
 				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
 			);
@@ -361,6 +364,7 @@
 				80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
 				80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */,
+				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
 				8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

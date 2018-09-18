@@ -22,7 +22,15 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     
     private lazy var backdropView: UIView = {
         let view = UIView()
+        view.backgroundColor = .white
         view.layer.cornerRadius = self.cornerRadius
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var shadowView: UIView = {
+        let view = ShadowView(frame: .zero)
+        view.cornerRadius = cornerRadius
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -47,6 +55,7 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .white
+        contentView.addSubview(shadowView)
         contentView.addSubview(backdropView)
         backdropView.addSubview(label)
         backdropView.addSubview(imageView)
@@ -59,13 +68,13 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     }
     
     private func updateContent(with dataSource: BlockerCellDataProvider) {
-        backdropView.backgroundColor = dataSource.brandingColor
         label.text = dataSource.title
         imageView.image = UIImage(named: dataSource.imageName)
     }
     
     private func setupConstraints() {
         //TODO: replace constraints with relative values depending on size of the cell
+        let shadowViewConstraints = shadowView.constraintsWithAnchorsEqual(to: contentView)
         let backdropViewConstraints = backdropView.constraintsWithAnchorsEqual(to: contentView)
         
         let imageViewConstraints = [
@@ -82,6 +91,6 @@ class ActionCell: UICollectionViewCell, BlockerCell {
             label.heightAnchor.constraint(equalToConstant: 39.0)
         ]
         
-        NSLayoutConstraint.activate(backdropViewConstraints + labelConstraints + imageViewConstraints)
+        NSLayoutConstraint.activate(shadowViewConstraints + backdropViewConstraints + labelConstraints + imageViewConstraints)
     }
 }
