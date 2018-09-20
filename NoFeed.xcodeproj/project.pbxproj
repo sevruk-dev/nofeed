@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
+		80224A07215374D10086D2B0 /* blockerList.json in Resources */ = {isa = PBXBuildFile; fileRef = 80224A06215374D10086D2B0 /* blockerList.json */; };
+		80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */; };
+		80224A0E215374D10086D2B0 /* contentBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 80224A04215374D00086D2B0 /* contentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		802421FA21370A720028F10F /* AvenirNext-DemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */; };
 		802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F821370A720028F10F /* AvenirNext-Medium.ttf */; };
 		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
@@ -36,10 +39,38 @@
 		C69C3DF70AE43C20917DDB84 /* Pods_NoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91662B9F9FB55D3F468AE320 /* Pods_NoFeed.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		80224A0B215374D10086D2B0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80FE095F211624A7008D07D7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80224A03215374D00086D2B0;
+			remoteInfo = contentBlocker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		80224A0D215374D10086D2B0 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				80224A0E215374D10086D2B0 /* contentBlocker.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
+		80224A04215374D00086D2B0 /* contentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = contentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		80224A06215374D10086D2B0 /* blockerList.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blockerList.json; sourceTree = "<group>"; };
+		80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
+		80224A0A215374D10086D2B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-DemiBold.ttf"; sourceTree = "<group>"; };
 		802421F821370A720028F10F /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.ttf"; sourceTree = "<group>"; };
 		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
@@ -72,6 +103,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		80224A01215374D00086D2B0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80FE0964211624A7008D07D7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -101,6 +139,16 @@
 				8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		80224A05215374D10086D2B0 /* contentBlocker */ = {
+			isa = PBXGroup;
+			children = (
+				80224A06215374D10086D2B0 /* blockerList.json */,
+				80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */,
+				80224A0A215374D10086D2B0 /* Info.plist */,
+			);
+			path = contentBlocker;
 			sourceTree = "<group>";
 		};
 		802421F5213707060028F10F /* Views for CollectionView */ = {
@@ -179,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				80FE0969211624A7008D07D7 /* NoFeed */,
+				80224A05215374D10086D2B0 /* contentBlocker */,
 				80FE0968211624A7008D07D7 /* Products */,
 				80969613211629B5001FA40A /* Frameworks */,
 				5439165E88498847DD89F232 /* Pods */,
@@ -189,6 +238,7 @@
 			isa = PBXGroup;
 			children = (
 				80FE0967211624A7008D07D7 /* NoFeed.app */,
+				80224A04215374D00086D2B0 /* contentBlocker.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -213,6 +263,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		80224A03215374D00086D2B0 /* contentBlocker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 80224A0F215374D10086D2B0 /* Build configuration list for PBXNativeTarget "contentBlocker" */;
+			buildPhases = (
+				80224A00215374D00086D2B0 /* Sources */,
+				80224A01215374D00086D2B0 /* Frameworks */,
+				80224A02215374D00086D2B0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = contentBlocker;
+			productName = contentBlocker;
+			productReference = 80224A04215374D00086D2B0 /* contentBlocker.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		80FE0966211624A7008D07D7 /* NoFeed */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 80FE0979211624A8008D07D7 /* Build configuration list for PBXNativeTarget "NoFeed" */;
@@ -223,10 +290,12 @@
 				80FE0965211624A7008D07D7 /* Resources */,
 				3D47A3635CCE0954D89DBF8F /* [CP] Embed Pods Frameworks */,
 				8082B7D3212C757A00E19DDB /* Run Script */,
+				80224A0D215374D10086D2B0 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				80224A0C215374D10086D2B0 /* PBXTargetDependency */,
 			);
 			name = NoFeed;
 			productName = NoFeed;
@@ -243,6 +312,9 @@
 				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Vova Seuruk";
 				TargetAttributes = {
+					80224A03215374D00086D2B0 = {
+						CreatedOnToolsVersion = 9.3;
+					};
 					80FE0966211624A7008D07D7 = {
 						CreatedOnToolsVersion = 9.3;
 						SystemCapabilities = {
@@ -267,11 +339,20 @@
 			projectRoot = "";
 			targets = (
 				80FE0966211624A7008D07D7 /* NoFeed */,
+				80224A03215374D00086D2B0 /* contentBlocker */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		80224A02215374D00086D2B0 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80224A07215374D10086D2B0 /* blockerList.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80FE0965211624A7008D07D7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -343,6 +424,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		80224A00215374D00086D2B0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		80FE0963211624A7008D07D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -371,6 +460,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		80224A0C215374D10086D2B0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80224A03215374D00086D2B0 /* contentBlocker */;
+			targetProxy = 80224A0B215374D10086D2B0 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -383,6 +480,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		80224A10215374D10086D2B0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				INFOPLIST_FILE = contentBlocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed.contentBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		80224A11215374D10086D2B0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				INFOPLIST_FILE = contentBlocker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed.contentBlocker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		80FE0977211624A8008D07D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -501,6 +638,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -522,6 +660,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1E31232F26E3B7233913104 /* Pods-NoFeed.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -542,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		80224A0F215374D10086D2B0 /* Build configuration list for PBXNativeTarget "contentBlocker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				80224A10215374D10086D2B0 /* Debug */,
+				80224A11215374D10086D2B0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		80FE0962211624A7008D07D7 /* Build configuration list for PBXProject "NoFeed" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
