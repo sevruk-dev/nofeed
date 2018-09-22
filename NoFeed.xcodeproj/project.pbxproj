@@ -31,6 +31,7 @@
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9A214F91B100D0D4D2 /* ActionCell.swift */; };
 		80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */; };
+		80B863612156E147000AC175 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
 		80FE096D211624A7008D07D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096C211624A7008D07D7 /* ViewController.swift */; };
@@ -91,6 +92,7 @@
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
 		80A95A9A214F91B100D0D4D2 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
+		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE096A211624A7008D07D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				802421F5213707060028F10F /* Views for CollectionView */,
 				80153FFF212FF43000694C83 /* Utils */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
+				80B863602156E147000AC175 /* ContainerManager.swift */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
 				802421F621370A600028F10F /* Resources */,
 				8059EC81212D4324004B40D1 /* Support */,
@@ -454,6 +457,7 @@
 				80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */,
 				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
 				80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */,
+				80B863612156E147000AC175 /* ContainerManager.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
 				80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */,
 				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
