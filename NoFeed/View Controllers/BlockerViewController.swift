@@ -55,10 +55,13 @@ class BlockerViewController: UIViewController {
         setupLayout()
     }
     
-    func setupLayout() {
+    private func setupLayout() {
         NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
     }
 
+    fileprivate func selectBlocker(with cell: FeedBlockerCell) {
+        cell.selected()
+    }
 }
 
 extension BlockerViewController: UICollectionViewDataSource {
@@ -123,7 +126,7 @@ extension BlockerViewController: UICollectionViewDelegate {
             return
         }
         
-        blockerCell.cellSelected()
+        selectBlocker(with: blockerCell)
     }
     
 }
