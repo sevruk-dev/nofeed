@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ContainerManager {
+class ContainerManager: ContainerManagerProtocol {
     
     private let feedsKey = "feeds"
     

@@ -16,6 +16,8 @@
 		802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F821370A720028F10F /* AvenirNext-Medium.ttf */; };
 		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
 		802421FE21370B190028F10F /* UIFontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802421FD21370B190028F10F /* UIFontUtils.swift */; };
+		804EAF1B2157AFAE00ECA055 /* ContainerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */; };
+		804EAF1C2157B0E300ECA055 /* ContainerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */; };
 		805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805338FB2150EEE700C30E31 /* ShadowView.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
 		8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* FeedBlockerCell.swift */; };
@@ -76,6 +78,7 @@
 		802421F821370A720028F10F /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.ttf"; sourceTree = "<group>"; };
 		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
 		802421FD21370B190028F10F /* UIFontUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontUtils.swift; sourceTree = "<group>"; };
+		804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerManagerProtocol.swift; sourceTree = "<group>"; };
 		805338FB2150EEE700C30E31 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
 		8056A54C2134658400973940 /* FeedBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBlockerCell.swift; sourceTree = "<group>"; };
@@ -92,7 +95,7 @@
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
 		80A95A9A214F91B100D0D4D2 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
 		80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
-		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
+		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/Shared/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE096A211624A7008D07D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +179,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		804EAF192157ADAC00ECA055 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */,
+				80B863602156E147000AC175 /* ContainerManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		8056A55221346E3D00973940 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -253,8 +265,8 @@
 				8056A55221346E3D00973940 /* Models */,
 				802421F5213707060028F10F /* Views for CollectionView */,
 				80153FFF212FF43000694C83 /* Utils */,
+				804EAF192157ADAC00ECA055 /* Shared */,
 				80FE096A211624A7008D07D7 /* AppDelegate.swift */,
-				80B863602156E147000AC175 /* ContainerManager.swift */,
 				80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */,
 				802421F621370A600028F10F /* Resources */,
 				8059EC81212D4324004B40D1 /* Support */,
@@ -435,6 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */,
+				804EAF1C2157B0E300ECA055 /* ContainerManagerProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -444,6 +457,7 @@
 			files = (
 				80FE096D211624A7008D07D7 /* ViewController.swift in Sources */,
 				8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */,
+				804EAF1B2157AFAE00ECA055 /* ContainerManagerProtocol.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
 				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,
