@@ -8,7 +8,12 @@
 
 protocol ContainerManagerProtocol: class {
     
-    func addModel(with identifier: String)
-    func removeModel(with identifier: String)
+    func blockerIndetifier(for value: String) -> BlockerIdentifier?
+    func addModel(with identifier: BlockerIdentifier)
+    func removeModel(with identifier: BlockerIdentifier)
     
+}
+
+enum BlockerIdentifier: String {
+    case facebook, instagram, twitter, vk
 }

@@ -29,14 +29,29 @@ class ContainerManager: ContainerManagerProtocol {
     
     //MARK: public interface
     
-    func addModel(with identifier: String) {
+    func blockerIndetifier(for value: String) -> BlockerIdentifier? {
+        switch value {
+        case BlockerIdentifier.facebook.rawValue:
+            return .facebook
+        case BlockerIdentifier.instagram.rawValue:
+            return .instagram
+        case BlockerIdentifier.twitter.rawValue:
+            return .twitter
+        case BlockerIdentifier.vk.rawValue:
+            return .vk
+        default:
+            return nil
+        }
+    }
+    
+    func addModel(with identifier: BlockerIdentifier) {
         var updatedFeeds = feedsArray
-        updatedFeeds.append(identifier)
+        updatedFeeds.append(identifier.rawValue)
         setFeedsArray(with: updatedFeeds)
     }
 
-    func removeModel(with identifier: String) {
-        guard let identifierIndex = feedsArray.index(where: { $0 == identifier }) else {
+    func removeModel(with identifier: BlockerIdentifier) {
+        guard let identifierIndex = feedsArray.index(where: { $0 == identifier.rawValue }) else {
             return
         }
         var updatedFeeds = feedsArray

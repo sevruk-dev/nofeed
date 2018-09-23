@@ -63,12 +63,12 @@ class BlockerViewController: UIViewController {
     fileprivate func selectBlocker(with cell: FeedBlockerCell) {
         cell.selected()
         
-        guard let identifier = cell.dataSource?.title else { return }
+        guard let id = cell.dataSource?.title, let blockerIdenrifier = containerManager.blockerIndetifier(for: id) else { return }
         
         if cell.isBlockerOn {
-            containerManager.addModel(with: identifier)
+            containerManager.addModel(with: blockerIdenrifier)
         } else {
-            containerManager.removeModel(with: identifier)
+            containerManager.removeModel(with: blockerIdenrifier)
         }
     }
 }
