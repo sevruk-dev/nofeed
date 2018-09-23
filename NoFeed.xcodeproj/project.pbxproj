@@ -16,8 +16,8 @@
 		802421FB21370A720028F10F /* AvenirNext-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F821370A720028F10F /* AvenirNext-Medium.ttf */; };
 		802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 802421F921370A720028F10F /* AvenirNext-Regular.ttf */; };
 		802421FE21370B190028F10F /* UIFontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802421FD21370B190028F10F /* UIFontUtils.swift */; };
-		804EAF1B2157AFAE00ECA055 /* ContainerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */; };
-		804EAF1C2157B0E300ECA055 /* ContainerManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */; };
+		804EAF1B2157AFAE00ECA055 /* SharedProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */; };
+		804EAF1C2157B0E300ECA055 /* SharedProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */; };
 		805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805338FB2150EEE700C30E31 /* ShadowView.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
 		8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* FeedBlockerCell.swift */; };
@@ -78,7 +78,7 @@
 		802421F821370A720028F10F /* AvenirNext-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Medium.ttf"; sourceTree = "<group>"; };
 		802421F921370A720028F10F /* AvenirNext-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "AvenirNext-Regular.ttf"; sourceTree = "<group>"; };
 		802421FD21370B190028F10F /* UIFontUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFontUtils.swift; sourceTree = "<group>"; };
-		804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerManagerProtocol.swift; sourceTree = "<group>"; };
+		804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProtocols.swift; sourceTree = "<group>"; };
 		805338FB2150EEE700C30E31 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
 		8056A54C2134658400973940 /* FeedBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBlockerCell.swift; sourceTree = "<group>"; };
@@ -182,7 +182,7 @@
 		804EAF192157ADAC00ECA055 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				804EAF1A2157AFAE00ECA055 /* ContainerManagerProtocol.swift */,
+				804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */,
 				80B863602156E147000AC175 /* ContainerManager.swift */,
 			);
 			path = Shared;
@@ -447,7 +447,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */,
-				804EAF1C2157B0E300ECA055 /* ContainerManagerProtocol.swift in Sources */,
+				804EAF1C2157B0E300ECA055 /* SharedProtocols.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -457,7 +457,7 @@
 			files = (
 				80FE096D211624A7008D07D7 /* ViewController.swift in Sources */,
 				8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */,
-				804EAF1B2157AFAE00ECA055 /* ContainerManagerProtocol.swift in Sources */,
+				804EAF1B2157AFAE00ECA055 /* SharedProtocols.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
 				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,

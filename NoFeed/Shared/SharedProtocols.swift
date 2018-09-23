@@ -1,5 +1,5 @@
 //
-//  ContainerManagerProtocol.swift
+//  SharedProtocols.swift
 //  NoFeed
 //
 //  Created by Vova Seuruk on 9/23/18.
@@ -11,6 +11,12 @@ protocol ContainerManagerProtocol: class {
     func blockerIndetifier(for value: String) -> BlockerIdentifier?
     func addModel(with identifier: BlockerIdentifier)
     func removeModel(with identifier: BlockerIdentifier)
+    
+}
+
+protocol BlockerIdentifierable: class {
+    
+    var blockerIdentifier: String { get }
     
 }
 

@@ -8,7 +8,9 @@
 
 import UIKit
 
-protocol BlockerCellDataProvider {
+protocol BlockerCellDataProvider: BlockerCellDataDescriptor, BlockerIdentifierable { }
+
+protocol BlockerCellDataDescriptor {
     
     var title: String { get }
     var imageName: String { get }
@@ -27,4 +29,12 @@ class BlockerCellModel: BlockerCellDataProvider {
         self.imageName = imageName
         self.brandingColor = brandingColor
     }
+}
+
+extension BlockerCellModel: BlockerIdentifierable {
+    
+    var blockerIdentifier: String {
+        return title
+    }
+    
 }
