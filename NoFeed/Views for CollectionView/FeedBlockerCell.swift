@@ -17,6 +17,10 @@ class FeedBlockerCell: UICollectionViewCell, BlockerCell {
         }
     }
     
+    func setBlockerIsOn(_ isOn: Bool) {
+        switchView.isOn = isOn
+    }
+    
     var isBlockerOn: Bool {
         return switchView.isOn
     }

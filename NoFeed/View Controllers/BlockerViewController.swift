@@ -59,6 +59,18 @@ class BlockerViewController: UIViewController {
     private func setupLayout() {
         NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
     }
+    
+    fileprivate func setBlockerStateIfNeeded(for cell: BlockerCell) {
+        
+        guard let blockerCell = cell as? FeedBlockerCell,
+            let identifier = blockerCell.dataSource?.blockerIdentifier,
+            let blockerIdenrifier = containerManager.blockerIndetifier(for: identifier) else {
+                return
+        }
+        let modelExists = containerManager.modelExists(with: blockerIdenrifier)
+        
+        blockerCell.setBlockerIsOn(modelExists)
+    }
 
     fileprivate func selectBlocker(with cell: FeedBlockerCell) {
         cell.selected()
@@ -85,6 +97,7 @@ extension BlockerViewController: UICollectionViewDataSource {
         guard let blockerCell = cell as? BlockerCell else { return cell }
         
         blockerCell.dataSource = dataSource.model(at: indexPath)
+        setBlockerStateIfNeeded(for: blockerCell)
         return cell
     }
     

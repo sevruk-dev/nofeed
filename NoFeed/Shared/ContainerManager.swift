@@ -27,7 +27,12 @@ class ContainerManager: ContainerManagerProtocol {
         sharedUserDefaults.set(value, forKey: feedsKey)
     }
     
-    //MARK: public interface
+    //MARK: ContainerManagerProtocol
+    
+    func modelExists(with identifier: BlockerIdentifier) -> Bool {
+        let modelIndex = feedsArray.index(where: { $0 == identifier.rawValue })
+        return modelIndex != nil
+    }
     
     func blockerIndetifier(for value: String) -> BlockerIdentifier? {
         switch value {

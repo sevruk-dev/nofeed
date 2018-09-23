@@ -8,6 +8,7 @@
 
 protocol ContainerManagerProtocol: class {
     
+    func modelExists(with identifier: BlockerIdentifier) -> Bool
     func blockerIndetifier(for value: String) -> BlockerIdentifier?
     func addModel(with identifier: BlockerIdentifier)
     func removeModel(with identifier: BlockerIdentifier)
