@@ -22,7 +22,6 @@ class CustomSwitch: UIControl {
     private let thumbTintColor: UIColor = .white
     private let animationDuration: Double = 0.5
     
-    private var isOn = false
     private var isAnimating = false
     private var onPoint = CGPoint.zero
     private var offPoint = CGPoint.zero
@@ -71,6 +70,8 @@ class CustomSwitch: UIControl {
     private func setupConstraints() {
         NSLayoutConstraint.activate(backgroundView.constraintsWithAnchorsEqual(to: self))
     }
+    
+    var isOn = false
     
     @objc func onThumbSelected() {
         isOn = !isOn
