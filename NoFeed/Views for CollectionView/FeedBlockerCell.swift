@@ -17,6 +17,10 @@ class FeedBlockerCell: UICollectionViewCell, BlockerCell {
         }
     }
     
+    var isBlockerOn: Bool {
+        return switchView.isOn
+    }
+    
     func selected() {
         switchView.onThumbSelected()
     }

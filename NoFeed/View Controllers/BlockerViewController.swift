@@ -15,6 +15,7 @@ class BlockerViewController: UIViewController {
     fileprivate let headerReuseIdentifier = "blockerHeader"
     
     fileprivate let dataSource: BlockerDataProvider
+    private let containerManager: ContainerManagerProtocol = ContainerManager()
     
     fileprivate struct Constants {
         static let sideInset: CGFloat = 20.0
@@ -61,6 +62,14 @@ class BlockerViewController: UIViewController {
 
     fileprivate func selectBlocker(with cell: FeedBlockerCell) {
         cell.selected()
+        
+        guard let identifier = cell.dataSource?.title else { return }
+        
+        if cell.isBlockerOn {
+            containerManager.addModel(with: identifier)
+        } else {
+            containerManager.removeModel(with: identifier)
+        }
     }
 }
 
