@@ -10,47 +10,38 @@ import Foundation
 
 class ContainerManager {
     
-    init() {
-        createModelIfNeeded()
-    }
-    
-    func addModel(with identifier: String) {
-
-    }
-
-    func removeModel(with identifier: String) {
-
-    }
-    
-    private let arrayKey = "feeds"
+    private let feedsKey = "feeds"
     
     private let sharedUserDefaults: UserDefaults = {
-        let groupName = "group.nofeed"
-        guard let userDefaults = UserDefaults(suiteName: groupName) else {
-            fatalError("No shared container with groupName == \(groupName) detected.")
+        guard let userDefaults = UserDefaults(suiteName: "group.nofeed") else {
+            fatalError("No shared container detected.")
         }
         return userDefaults
     }()
     
-    
-    private var feedsArray: [String]? {
-        return sharedUserDefaults.array(forKey: arrayKey) as? [String]
-    }
-    
-    private var isFeedsArrayExists: Bool {
-        return feedsArray != nil
+    private var feedsArray: [String] {
+        return sharedUserDefaults.array(forKey: feedsKey) as? [String] ?? []
     }
     
     private func setFeedsArray(with value: [String]) {
-        sharedUserDefaults.set(value, forKey: arrayKey)
+        sharedUserDefaults.set(value, forKey: feedsKey)
     }
     
-    private func createModelIfNeeded() {
-        guard isFeedsArrayExists else {
+    //MARK: public interface
+    
+    func addModel(with identifier: String) {
+        var updatedFeeds = feedsArray
+        updatedFeeds.append(identifier)
+        setFeedsArray(with: updatedFeeds)
+    }
+
+    func removeModel(with identifier: String) {
+        guard let identifierIndex = feedsArray.index(where: { $0 == identifier }) else {
             return
         }
-        setFeedsArray(with: [])
+        var updatedFeeds = feedsArray
+        updatedFeeds.remove(at: identifierIndex)
+        setFeedsArray(with: updatedFeeds)
     }
-    
     
 }
