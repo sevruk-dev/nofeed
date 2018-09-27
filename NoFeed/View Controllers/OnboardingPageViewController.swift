@@ -49,7 +49,7 @@ class OnboardingPageViewController: UIViewController {
         view.backgroundColor = .white
         view.addSubview(scrollView)
         view.addSubview(pageControl)
-        view.bringSubview(toFront: pageControl)
+        view.bringSubviewToFront(pageControl)
         
         setupConstraints()
     }
@@ -132,8 +132,8 @@ class OnboardingPageViewController: UIViewController {
         viewController.view.translatesAutoresizingMaskIntoConstraints = false
         
         scrollView.addSubview(viewController.view)
-        addChildViewController(viewController)
-        viewController.didMove(toParentViewController: self)
+        addChild(viewController)
+        viewController.didMove(toParent: self)
     }
     
 }
