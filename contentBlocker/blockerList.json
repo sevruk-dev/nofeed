@@ -2,6 +2,15 @@
     {
         "action": {
             "type": "css-display-none",
+            "selector": "article[class^=_8Rm4L], .Id0Rhs"
+        },
+        "trigger": {
+            "url-filter": "instagram.com"
+        }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
             "selector": "#MFirstBatch, #m_newsfeed_stream"
         },
         "trigger": {
