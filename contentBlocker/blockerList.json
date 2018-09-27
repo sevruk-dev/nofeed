@@ -25,5 +25,15 @@
         "trigger": {
             "url-filter": "vk.com/feed"
         }
+    },
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "div[class*=rn-2llsf]"
+        },
+        "trigger": {
+            "url-filter": "twitter.com",
+            "if-domain": "*twitter.com/home"
+        }
     }
 ]
