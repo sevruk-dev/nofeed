@@ -11,6 +11,7 @@
 		6E67578A215FB1F300A574F7 /* instagram.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675786215FB1F300A574F7 /* instagram.json */; };
 		6E67578B215FB1F300A574F7 /* twitter.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675787215FB1F300A574F7 /* twitter.json */; };
 		6E67578C215FB1F300A574F7 /* facebook.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675788215FB1F300A574F7 /* facebook.json */; };
+		6E67578D215FB39900A574F7 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */; };
@@ -462,6 +463,7 @@
 			files = (
 				80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */,
 				804EAF1C2157B0E300ECA055 /* SharedProtocols.swift in Sources */,
+				6E67578D215FB39900A574F7 /* ContainerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
