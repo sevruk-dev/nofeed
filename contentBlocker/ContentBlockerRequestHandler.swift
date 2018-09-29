@@ -10,17 +10,30 @@ import UIKit
 import MobileCoreServices
 
 class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
+    
+    private let constrainerManager = ContainerManager()
 
     func beginRequest(with context: NSExtensionContext) {
-        guard let fileUrl = Bundle.main.url(forResource: "blockerList", withExtension: "json"),
-            let attachment = NSItemProvider(contentsOf: fileUrl) else {
-                return
+        var attachments: [NSItemProvider] = []
+        
+        constrainerManager.models.forEach { identifier in
+            if let item = attachment(with: identifier) {
+                attachments.append(item)
+            }
         }
         
         let item = NSExtensionItem()
-        item.attachments = [attachment]
+        item.attachments = attachments
         
         context.completeRequest(returningItems: [item], completionHandler: nil)
+    }
+    
+    private func attachment(with identifier: BlockerIdentifier) -> NSItemProvider? {
+        guard let fileUrl = Bundle.main.url(forResource: identifier.rawValue, withExtension: "json") else {
+            return nil
+        }
+        
+        return NSItemProvider(contentsOf: fileUrl)
     }
     
 }
