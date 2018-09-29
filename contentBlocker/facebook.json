@@ -1,0 +1,11 @@
+[
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "#MFirstBatch, #m_newsfeed_stream"
+        },
+        "trigger": {
+            "url-filter": "m.facebook.*"
+        }
+    }
+]

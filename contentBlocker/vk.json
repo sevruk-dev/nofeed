@@ -1,0 +1,11 @@
+[    
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": ".wall_item, .show_more_wrap"
+        },
+        "trigger": {
+            "url-filter": "vk.com/feed"
+        }
+    }
+]

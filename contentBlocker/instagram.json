@@ -1,0 +1,11 @@
+[
+    {
+        "action": {
+            "type": "css-display-none",
+            "selector": "article[class^=_8Rm4L], .Id0Rhs"
+        },
+        "trigger": {
+            "url-filter": "instagram.com"
+        }
+    }
+]
