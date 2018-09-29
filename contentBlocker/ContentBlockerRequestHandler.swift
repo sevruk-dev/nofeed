@@ -11,12 +11,12 @@ import MobileCoreServices
 
 class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
     
-    private let constrainerManager = ContainerManager()
+    private let containerManager = ContainerManager()
 
     func beginRequest(with context: NSExtensionContext) {
         var attachments: [NSItemProvider] = []
         
-        constrainerManager.models.forEach { identifier in
+        containerManager.models.forEach { identifier in
             if let item = attachment(with: identifier) {
                 attachments.append(item)
             }
