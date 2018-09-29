@@ -8,12 +8,14 @@
 
 import UIKit
 import Firebase
+import SafariServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var appCoordinator: AppCoordinator?
+    private var appCoordinator: AppCoordinator?
+    private let extensionId = "com.svg.NoFeed.contentBlocker"
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -29,6 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         return true
     }
-
+    
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        SFContentBlockerManager.reloadContentBlocker(withIdentifier: extensionId) { error in
+            print(error)
+        }
+    }
 }
 
