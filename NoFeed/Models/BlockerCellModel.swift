@@ -33,7 +33,7 @@ class BlockerCellModel: BlockerCellDataProvider {
 
 extension BlockerCellModel: BlockerIdentifierable {
     
-    var blockerIdentifier: String {
+    var identifier: String {
         return title
     }
     

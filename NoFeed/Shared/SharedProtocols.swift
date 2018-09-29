@@ -17,7 +17,7 @@ protocol ContainerManagerProtocol: class {
 
 protocol BlockerIdentifierable: class {
     
-    var blockerIdentifier: String { get }
+    var identifier: String { get }
     
 }
 
