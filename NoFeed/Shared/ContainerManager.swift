@@ -29,11 +29,6 @@ class ContainerManager: ContainerManagerProtocol {
     
     //MARK: ContainerManagerProtocol
     
-    func modelExists(with identifier: BlockerIdentifier) -> Bool {
-        let modelIndex = feedsArray.index(where: { $0 == identifier.rawValue })
-        return modelIndex != nil
-    }
-    
     func blockerIndetifier(for value: String) -> BlockerIdentifier? {
         switch value {
         case BlockerIdentifier.facebook.rawValue:
@@ -47,6 +42,27 @@ class ContainerManager: ContainerManagerProtocol {
         default:
             return nil
         }
+    }
+    
+    var models: [BlockerIdentifier] {
+        var identifiers: [BlockerIdentifier] = []
+        
+        guard feedsArray.count != 0 else {
+            return identifiers
+        }
+        
+        for identifier in feedsArray {
+            if let blockerId = blockerIndetifier(for: identifier) {
+                identifiers.append(blockerId)
+            }
+        }
+        
+        return identifiers
+    }
+    
+    func modelExists(with identifier: BlockerIdentifier) -> Bool {
+        let modelIndex = feedsArray.index(where: { $0 == identifier.rawValue })
+        return modelIndex != nil
     }
     
     func addModel(with identifier: BlockerIdentifier) {
