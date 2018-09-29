@@ -71,6 +71,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E461B4A215FDDA70007C980 /* contentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contentBlocker.entitlements; sourceTree = "<group>"; };
 		6E675785215FB1F300A574F7 /* vk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vk.json; sourceTree = "<group>"; };
 		6E675786215FB1F300A574F7 /* instagram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instagram.json; sourceTree = "<group>"; };
 		6E675787215FB1F300A574F7 /* twitter.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = twitter.json; sourceTree = "<group>"; };
@@ -156,6 +157,7 @@
 		80224A05215374D10086D2B0 /* contentBlocker */ = {
 			isa = PBXGroup;
 			children = (
+				6E461B4A215FDDA70007C980 /* contentBlocker.entitlements */,
 				80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */,
 				6E675788215FB1F300A574F7 /* facebook.json */,
 				6E675786215FB1F300A574F7 /* instagram.json */,
@@ -340,6 +342,11 @@
 					80224A03215374D00086D2B0 = {
 						CreatedOnToolsVersion = 9.3;
 						LastSwiftMigration = 1000;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					80FE0966211624A7008D07D7 = {
 						CreatedOnToolsVersion = 9.3;
@@ -434,7 +441,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 		D271196D66AB73EC00FB2561 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -520,6 +527,7 @@
 		80224A10215374D10086D2B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7UALYYJUG6;
 				INFOPLIST_FILE = contentBlocker/Info.plist;
@@ -539,6 +547,7 @@
 		80224A11215374D10086D2B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7UALYYJUG6;
 				INFOPLIST_FILE = contentBlocker/Info.plist;
