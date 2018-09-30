@@ -1,12 +1,10 @@
-[    
-    {
-        "action": {
-            "type": "css-display-none",
-            "selector": "div[class*=rn-2llsf]"
-        },
-        "trigger": {
-            "url-filter": "twitter.com/home",
-            "if-domain": ["mobile.twitter.com"]
-        }
+{
+    "action": {
+        "type": "css-display-none",
+        "selector": "div[class*=rn-2llsf]"
+    },
+    "trigger": {
+        "url-filter": "twitter.com/home",
+        "if-domain": ["mobile.twitter.com"]
     }
-]
+}
