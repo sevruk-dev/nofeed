@@ -29,12 +29,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
+        reloadContentBlocker()
+        
         return true
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
+        reloadContentBlocker()
+    }
+    
+    private func reloadContentBlocker() {
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: extensionId) { error in
-            print(error)
+            print(error as Any)
         }
     }
 }
