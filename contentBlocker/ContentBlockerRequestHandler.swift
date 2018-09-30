@@ -12,28 +12,27 @@ import MobileCoreServices
 class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
     
     private let containerManager = ContainerManager()
+    private let rulesProvider = BlockerRulesProvider()
 
+    //TODO: make informative error description
+    
     func beginRequest(with context: NSExtensionContext) {
-        var attachments: [NSItemProvider] = []
+        let blockingIdentifiers = containerManager.models
         
-        containerManager.models.forEach { identifier in
-            if let item = attachment(with: identifier) {
-                attachments.append(item)
-            }
+        guard let blockingRulesUrl = rulesProvider.rulesUrl(for: blockingIdentifiers) else {
+            context.cancelRequest(withError: NSError(domain: "RulesProvider", code: 1))
+            return
+        }
+        
+        guard let itemProvider = NSItemProvider(contentsOf: blockingRulesUrl) else {
+                context.cancelRequest(withError: NSError(domain: "RulesProvider", code: 2))
+                return
         }
         
         let item = NSExtensionItem()
-        item.attachments = attachments
+        item.attachments = [itemProvider]
         
         context.completeRequest(returningItems: [item], completionHandler: nil)
-    }
-    
-    private func attachment(with identifier: BlockerIdentifier) -> NSItemProvider? {
-        guard let fileUrl = Bundle.main.url(forResource: identifier.rawValue, withExtension: "json") else {
-            return nil
-        }
-        
-        return NSItemProvider(contentsOf: fileUrl)
     }
     
 }
