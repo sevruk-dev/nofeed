@@ -36,6 +36,12 @@ class BlockerViewController: UIViewController {
         return collectionView
     }()
     
+    private lazy var overlayView: PopupView = {
+        let view = PopupView(with: .buyPremium)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     init(with dataSource: BlockerDataProvider) {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
@@ -49,15 +55,20 @@ class BlockerViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
+        overlayView.isVisible = false
         title = "No Feed"
         
         view.addSubview(collectionView)
+        navigationController?.view.addSubview(overlayView)
         
         setupLayout()
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
+        
+        guard let navigationView = navigationController?.view else { return }
+        NSLayoutConstraint.activate(overlayView.constraintsWithAnchorsEqual(to: navigationView))
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerCell) {
@@ -81,6 +92,12 @@ class BlockerViewController: UIViewController {
             containerManager.addModel(with: blockerIdenrifier)
         } else {
             containerManager.removeModel(with: blockerIdenrifier)
+        }
+    }
+    
+    fileprivate func selectAction(with cell: ActionCell) {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            self?.overlayView.isVisible = true
         }
     }
 }
@@ -144,11 +161,11 @@ extension BlockerViewController: UICollectionViewDelegateFlowLayout {
 extension BlockerViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let blockerCell = collectionView.cellForItem(at: indexPath) as? FeedBlockerCell else {
-            return
+        if let blockerCell = collectionView.cellForItem(at: indexPath) as? FeedBlockerCell {
+            selectBlocker(with: blockerCell)
+        } else if let actionCell = collectionView.cellForItem(at: indexPath) as? ActionCell {
+            selectAction(with: actionCell)
         }
-        
-        selectBlocker(with: blockerCell)
     }
     
 }
