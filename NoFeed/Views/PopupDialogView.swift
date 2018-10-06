@@ -19,7 +19,7 @@ class PopupDialogView: UIView {
     private lazy var titleLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
-        label.text = "Buy Premium"
+        label.text = headerText(for: self.type)
         label.font = UIFont.avenirNextDemiBold(of: 20.0)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -31,7 +31,7 @@ class PopupDialogView: UIView {
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.avenirNextRegular(of: 16.0)
-        label.text = "With Premium you can lock all your social feeds at a time and encourage our team to build even better products for you."
+        label.text = descriptionText(for: self.type)
         label.textColor = UIColor.AppColors.spaceGray
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
@@ -81,11 +81,13 @@ class PopupDialogView: UIView {
         stackView.addArrangedSubview(PopupSeparatorView())
         stackView.addArrangedSubview(mainActionButton)
         
-        if #available(iOS 11.0, *) {
-            stackView.setCustomSpacing(15.0, after: mainActionButton)
+        if type == .buyPremium {
+            if #available(iOS 11.0, *) {
+                stackView.setCustomSpacing(15.0, after: mainActionButton)
+            }
+            
+            stackView.addArrangedSubview(secondaryActionButton)
         }
-        
-        stackView.addArrangedSubview(secondaryActionButton)
         
         configureConstraints()
     }
@@ -98,6 +100,22 @@ class PopupDialogView: UIView {
             stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: stackViewToWidthRatio),
             mainActionButton.heightAnchor.constraint(equalToConstant: buttonHeight)
             ])
+    }
+    
+    //MARK: content data
+    
+    private func headerText(for type: PopupType) -> String {
+        if type == .buyPremium {
+            return "Buy Premium"
+        }
+        return "Basic version limitations"
+    }
+    
+    private func descriptionText(for type: PopupType) -> String {
+        if type == .buyPremium {
+            return "With Premium you can lock all your social feeds at a time and encourage our team to build even better products for you."
+        }
+        return "With basic version you are only able to block 1 feed at a time. Blocking multiple feeds is available for Premium users."
     }
     
     private func buttonTitle(for type: PopupType) -> String {
