@@ -16,6 +16,7 @@ class PopupView: UIView {
     
     private let type: PopupType
     private let dialogViewWidth: CGFloat = 320.0
+    private let hintLabelPadding: CGFloat = 70.0
     
     var isVisible: Bool {
         didSet {
@@ -23,6 +24,16 @@ class PopupView: UIView {
             fadeView.alpha = isVisible ? 0.9 : 0.0
         }
     }
+    
+    private lazy var hintLabel: UILabel = {
+        let label = UILabel().viewForAutoLayout()
+        label.numberOfLines = 0
+        label.textColor = .white
+        label.textAlignment = .center
+        label.font = UIFont.avenirNextRegular(of: 17.5)
+        label.text = "To close this message\n press anywhere outside\n of this message."
+        return label
+    }()
     
     private lazy var fadeView: UIView = {
         let view = UIView().viewForAutoLayout()
@@ -43,6 +54,7 @@ class PopupView: UIView {
         
         addSubview(fadeView)
         addSubview(dialogView)
+        addSubview(hintLabel)
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hide))
         fadeView.addGestureRecognizer(gestureRecognizer)
@@ -65,7 +77,9 @@ class PopupView: UIView {
         let dialogViewConstraints = [
             dialogView.centerXAnchor.constraint(equalTo: centerXAnchor),
             dialogView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            dialogView.widthAnchor.constraint(equalToConstant: dialogViewWidth)
+            dialogView.widthAnchor.constraint(equalToConstant: dialogViewWidth),
+            hintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            hintLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -hintLabelPadding)
         ]
         
         NSLayoutConstraint.activate(fadeViewConstraints + dialogViewConstraints)

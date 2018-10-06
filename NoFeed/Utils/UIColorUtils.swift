@@ -14,7 +14,7 @@ extension UIColor {
         static let lightPink = UIColor(netHex: 0xFF3482)
         static let lightGray = UIColor(netHex: 0xE6E6E6)
         static let spaceGray = UIColor(netHex: 0x525050)
-        static let lightGreen = UIColor(netHex: 0x2FA66C)
+        static let lightGreen = UIColor(netHex: 0x2FA66C, alpha: 0.82)
         static let blue = UIColor(netHex: 0x008BFF)
         
         static let facebook = UIColor(netHex: 0x3B5998)
