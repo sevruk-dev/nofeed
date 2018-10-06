@@ -25,15 +25,13 @@ class PopupView: UIView {
     }
     
     private lazy var fadeView: UIView = {
-        let view = UIView()
+        let view = UIView().viewForAutoLayout()
         view.backgroundColor = UIColor(netHex: 0x393837)
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var dialogView: PopupDialogView = {
-        let view = PopupDialogView(with: self.type)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = PopupDialogView(with: self.type).viewForAutoLayout()
         return view
     }()
     

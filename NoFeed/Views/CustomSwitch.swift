@@ -27,8 +27,7 @@ class CustomSwitch: UIControl {
     private var offPoint = CGPoint.zero
     
     private lazy var backgroundView: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
+        let view = UIView(frame: .zero).viewForAutoLayout()
         view.isUserInteractionEnabled = false
         return view
     }()

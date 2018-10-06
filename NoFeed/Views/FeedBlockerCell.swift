@@ -33,31 +33,24 @@ class FeedBlockerCell: UICollectionViewCell, BlockerCell {
     private let textSize: CGFloat = 16.5
     
     private lazy var blockerView: UIView = {
-        let view = UIView()
+        let view = UIView().viewForAutoLayout()
         view.layer.cornerRadius = self.cornerRadius
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.font = UIFont.avenirNextMedium(of: self.textSize)
         label.textColor = .white
         return label
     }()
     
-    private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        return imageView
-    }()
+    private let imageView = UIImageView().viewForAutoLayout()
     
     private lazy var switchView: CustomSwitch = {
-        let switchView = CustomSwitch(frame: .zero)
+        let switchView = CustomSwitch(frame: .zero).viewForAutoLayout()
         switchView.thumbSize = CGSize(width: 10, height: 10)
-        switchView.translatesAutoresizingMaskIntoConstraints = false
         return switchView
     }()
     

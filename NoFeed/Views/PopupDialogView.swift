@@ -17,50 +17,45 @@ class PopupDialogView: UIView {
     private let defaultSpacing: CGFloat = 10.0
     
     private lazy var titleLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.text = "Buy Premium"
         label.font = UIFont.avenirNextDemiBold(of: 20.0)
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
     private lazy var textLabel: UILabel = {
-        let label = UILabel()
+        let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.avenirNextRegular(of: 16.0)
         label.text = "With Premium you can lock all your social feeds at a time and encourage our team to build even better products for you."
         label.textColor = UIColor.AppColors.spaceGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
     lazy var mainActionButton: PopupButtonWithBackground = {
-        let button = PopupButtonWithBackground()
+        let button = PopupButtonWithBackground().viewForAutoLayout()
         button.title.text = buttonTitle(for: self.type)
         button.backgroundColor = buttonBackgroundColor(for: self.type)
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var secondaryActionButton: PopupButtonWithoutBackground = {
-        let button = PopupButtonWithoutBackground()
+        let button = PopupButtonWithoutBackground().viewForAutoLayout()
         button.title.text = "Restore Purchase"
-        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
     
     private lazy var stackView: UIStackView = {
-        let stackView = UIStackView()
+        let stackView = UIStackView().viewForAutoLayout()
         stackView.axis = .vertical
         stackView.distribution = .fillProportionally
         stackView.spacing = defaultSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
     
@@ -136,9 +131,8 @@ class PopupSeparatorView: UIView {
 class PopupButton: UIButton {
     
     fileprivate lazy var title: UILabel = {
-        let title = UILabel()
+        let title = UILabel().viewForAutoLayout()
         title.font = UIFont.avenirNextRegular(of: 18.0)
-        title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
     

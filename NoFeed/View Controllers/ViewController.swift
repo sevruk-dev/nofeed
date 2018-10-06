@@ -13,8 +13,7 @@ import Crashlytics
 class ViewController: UIViewController {
     
     let label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel().viewForAutoLayout()
         label.text = "Default text"
         label.textAlignment = .center
         return label

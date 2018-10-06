@@ -18,10 +18,9 @@ class BlockerReusableView: UICollectionReusableView {
     private let height: CGFloat = 25.0
     
     private lazy var label: UILabel = {
-        let label = UILabel()
+        let label = UILabel().viewForAutoLayout()
         label.font = UIFont.avenirNextMedium(of: 15.0)
         label.textColor = UIColor.AppColors.spaceGray
-        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

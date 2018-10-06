@@ -21,23 +21,20 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     private let textSize: CGFloat = 13.5
     
     private lazy var backdropView: UIView = {
-        let view = UIView()
+        let view = UIView().viewForAutoLayout()
         view.backgroundColor = .white
         view.layer.cornerRadius = self.cornerRadius
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var shadowView: UIView = {
-        let view = ShadowView(frame: .zero)
+        let view = ShadowView(frame: .zero).viewForAutoLayout()
         view.cornerRadius = cornerRadius
-        view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     
     private lazy var label: UILabel = {
-        let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
+        let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.avenirNextMedium(of: self.textSize)
@@ -46,9 +43,8 @@ class ActionCell: UICollectionViewCell, BlockerCell {
     }()
     
     private lazy var imageView: UIImageView = {
-        let imageView = UIImageView()
+        let imageView = UIImageView().viewForAutoLayout()
         imageView.contentMode = .center
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     

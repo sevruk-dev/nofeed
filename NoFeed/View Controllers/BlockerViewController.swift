@@ -24,7 +24,7 @@ class BlockerViewController: UIViewController {
     }
     
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).viewForAutoLayout()
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .white
@@ -32,15 +32,10 @@ class BlockerViewController: UIViewController {
         collectionView.register(FeedBlockerCell.self, forCellWithReuseIdentifier: blockerCellReuseIdentifier)
         collectionView.register(ActionCell.self, forCellWithReuseIdentifier: actionCellReuseIdentifier)
         collectionView.register(BlockerReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
         return collectionView
     }()
     
-    private lazy var overlayView: PopupView = {
-        let view = PopupView(with: .buyPremium)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
+    private let overlayView = PopupView(with: .buyPremium).viewForAutoLayout()
     
     init(with dataSource: BlockerDataProvider) {
         self.dataSource = dataSource

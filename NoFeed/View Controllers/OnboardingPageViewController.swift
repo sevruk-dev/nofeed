@@ -19,8 +19,7 @@ class OnboardingPageViewController: UIViewController {
     }
     
     private lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl()
-        pageControl.translatesAutoresizingMaskIntoConstraints = false
+        let pageControl = UIPageControl().viewForAutoLayout()
         pageControl.numberOfPages = onBoardingViewControllers.count
         pageControl.pageIndicatorTintColor = UIColor.AppColors.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
@@ -28,11 +27,10 @@ class OnboardingPageViewController: UIViewController {
     }()
     
     private var scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
+        let scrollView = UIScrollView().viewForAutoLayout()
         scrollView.isPagingEnabled = true
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         }
@@ -129,7 +127,7 @@ class OnboardingPageViewController: UIViewController {
     }
     
     private func addToHierarchy(_ viewController: UIViewController) {
-        viewController.view.translatesAutoresizingMaskIntoConstraints = false
+        _ = viewController.view.viewForAutoLayout()
         
         scrollView.addSubview(viewController.view)
         addChild(viewController)
