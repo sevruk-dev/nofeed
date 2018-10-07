@@ -12,9 +12,10 @@ enum PopupType {
     case buyPremium, versionLimits
 }
 
+typealias optionalBlock = (() -> ())?
+
 class PopupView: UIView {
     
-    private let type: PopupType
     private let dialogViewWidth: CGFloat = 320.0
     private let hintLabelPadding: CGFloat = 70.0
     
@@ -41,14 +42,19 @@ class PopupView: UIView {
         return view
     }()
     
-    private lazy var dialogView: PopupDialogView = {
-        let view = PopupDialogView(with: self.type).viewForAutoLayout()
-        return view
-    }()
+    private let dialogView: PopupDialogView
     
-    init(with type: PopupType) {
-        self.type = type
+    convenience init(becomePremiumCompletion: optionalBlock) {
+        self.init(with: .versionLimits, purchaseBlock: becomePremiumCompletion)
+    }
+    
+    convenience init(purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
+        self.init(with: .buyPremium, purchaseBlock: purchaseBlock, restoreBlock: restoreBlock)
+    }
+    
+    init(with type: PopupType, purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
         isVisible = false
+        dialogView = PopupDialogView(with: type, purchaseBlock: purchaseBlock, restoreBlock: restoreBlock).viewForAutoLayout()
         super.init(frame: .zero)
         backgroundColor = .clear
         

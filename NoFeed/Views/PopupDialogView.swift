@@ -11,6 +11,9 @@ import UIKit
 class PopupDialogView: UIView {
     
     private let type: PopupType
+    private let purchaseBlock: (() -> ())?
+    private let restoreBlock: (() -> ())?
+    
     private let stackViewToWidthRatio: CGFloat = 0.796875
     private let topPadding: CGFloat = 20.0
     private let buttonHeight: CGFloat = 40.0
@@ -41,12 +44,14 @@ class PopupDialogView: UIView {
     lazy var mainActionButton: PopupButtonWithBackground = {
         let button = PopupButtonWithBackground().viewForAutoLayout()
         button.title.text = buttonTitle(for: self.type)
+        button.addTarget(self, action: #selector(onMainButton), for: .touchUpInside)
         button.backgroundColor = buttonBackgroundColor(for: self.type)
         return button
     }()
     
     private lazy var secondaryActionButton: PopupButtonWithoutBackground = {
         let button = PopupButtonWithoutBackground().viewForAutoLayout()
+        button.addTarget(self, action: #selector(onSecondaryButton), for: .touchUpInside)
         button.title.text = "Restore Purchase"
         return button
     }()
@@ -59,8 +64,10 @@ class PopupDialogView: UIView {
         return stackView
     }()
     
-    init(with type: PopupType) {
+    init(with type: PopupType, purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
         self.type = type
+        self.purchaseBlock = purchaseBlock
+        self.restoreBlock = restoreBlock
         super.init(frame: .zero)
         
         layer.cornerRadius = 10.0
@@ -100,6 +107,16 @@ class PopupDialogView: UIView {
             stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: stackViewToWidthRatio),
             mainActionButton.heightAnchor.constraint(equalToConstant: buttonHeight)
             ])
+    }
+    
+    //MARK: button targets
+    
+    @objc private func onMainButton() {
+        purchaseBlock?()
+    }
+    
+    @objc private func onSecondaryButton() {
+        restoreBlock?()
     }
     
     //MARK: content data
