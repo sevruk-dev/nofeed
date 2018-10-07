@@ -35,8 +35,6 @@ class BlockerViewController: UIViewController {
         return collectionView
     }()
     
-    private let overlayView = PopupView(with: .buyPremium).viewForAutoLayout()
-    
     init(with dataSource: BlockerDataProvider) {
         self.dataSource = dataSource
         super.init(nibName: nil, bundle: nil)
@@ -50,20 +48,15 @@ class BlockerViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        overlayView.isVisible = false
         title = "No Feed"
         
         view.addSubview(collectionView)
-        navigationController?.view.addSubview(overlayView)
         
         setupLayout()
     }
     
     private func setupLayout() {
         NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
-        
-        guard let navigationView = navigationController?.view else { return }
-        NSLayoutConstraint.activate(overlayView.constraintsWithAnchorsEqual(to: navigationView))
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerCell) {
@@ -90,9 +83,33 @@ class BlockerViewController: UIViewController {
         }
     }
     
-    fileprivate func selectAction(with cell: ActionCell) {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.overlayView.isVisible = true
+    fileprivate func presentBuyPremiumView() {
+        guard let navigationView = navigationController?.view else { return }
+        
+        let dialogView = PopupView(with: .buyPremium, purchaseBlock: {
+            // purchase logic
+        }, restoreBlock: {
+            // restore purchase logic
+            }).viewForAutoLayout()
+        
+        navigationController?.view.addSubview(dialogView)
+        NSLayoutConstraint.activate(dialogView.constraintsWithAnchorsEqual(to: navigationView))
+        
+        UIView.animate(withDuration: 0.3) {
+            dialogView.isVisible = true
+        }
+    }
+    
+    private func presentLimitationsView() {
+        guard let navigationView = navigationController?.view else { return }
+        
+        let dialogView = PopupView(becomePremiumCompletion: nil).viewForAutoLayout()
+        
+        navigationController?.view.addSubview(dialogView)
+        NSLayoutConstraint.activate(dialogView.constraintsWithAnchorsEqual(to: navigationView))
+        
+        UIView.animate(withDuration: 0.3) {
+            dialogView.isVisible = true
         }
     }
 }
@@ -158,9 +175,13 @@ extension BlockerViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let blockerCell = collectionView.cellForItem(at: indexPath) as? FeedBlockerCell {
             selectBlocker(with: blockerCell)
-        } else if let actionCell = collectionView.cellForItem(at: indexPath) as? ActionCell {
-            selectAction(with: actionCell)
+        } else if isBuyPremiumCell(at: indexPath) {
+            presentBuyPremiumView()
         }
+    }
+    
+    private func isBuyPremiumCell(at indexPath: IndexPath) -> Bool {
+        return indexPath.row == 1 ? true : false
     }
     
 }
