@@ -16,6 +16,7 @@ class BlockerViewController: UIViewController {
     
     fileprivate let dataSource: BlockerDataProvider
     private let containerManager: ContainerManagerProtocol = ContainerManager()
+    private var currentPopupView: PopupView?
     
     fileprivate struct Constants {
         static let sideInset: CGFloat = 20.0
@@ -71,6 +72,8 @@ class BlockerViewController: UIViewController {
         blockerCell.setBlockerIsOn(modelExists)
     }
 
+    // MARK: cell selected actions
+    
     fileprivate func selectBlocker(with cell: FeedBlockerCell) {
         cell.selected()
         
@@ -86,31 +89,39 @@ class BlockerViewController: UIViewController {
     fileprivate func presentBuyPremiumView() {
         guard let navigationView = navigationController?.view else { return }
         
-        let dialogView = PopupView(with: .buyPremium, purchaseBlock: {
+        let popupView = PopupView(with: .buyPremium, purchaseBlock: {
             // purchase logic
         }, restoreBlock: {
             // restore purchase logic
             }).viewForAutoLayout()
+        currentPopupView = popupView
         
-        navigationController?.view.addSubview(dialogView)
-        NSLayoutConstraint.activate(dialogView.constraintsWithAnchorsEqual(to: navigationView))
+        navigationController?.view.addSubview(popupView)
+        NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
         
         UIView.animate(withDuration: 0.3) {
-            dialogView.isVisible = true
+            popupView.isVisible = true
         }
     }
     
     private func presentLimitationsView() {
         guard let navigationView = navigationController?.view else { return }
         
-        let dialogView = PopupView(becomePremiumCompletion: nil).viewForAutoLayout()
+        let popupView = PopupView(becomePremiumCompletion: nil).viewForAutoLayout()
+        currentPopupView = popupView
         
-        navigationController?.view.addSubview(dialogView)
-        NSLayoutConstraint.activate(dialogView.constraintsWithAnchorsEqual(to: navigationView))
+        navigationController?.view.addSubview(popupView)
+        NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
         
         UIView.animate(withDuration: 0.3) {
-            dialogView.isVisible = true
+            popupView.isVisible = true
         }
+    }
+    
+    private func hidePopup() {
+        currentPopupView?.isVisible = false
+        currentPopupView?.removeFromSuperview()
+        currentPopupView = nil
     }
 }
 
