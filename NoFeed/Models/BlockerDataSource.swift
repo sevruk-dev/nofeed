@@ -10,7 +10,7 @@ import UIKit
 
 protocol BlockerDataProvider {
     
-    func titleForSupplementaryView(at indexPath: IndexPath) -> String
+    func titleForSupplementaryView() -> String
     func model(at indexPath: IndexPath) -> BlockerCellDataProvider
     func numberOfItems(at section: Int) -> Int
     
@@ -22,9 +22,9 @@ class BlockerDataSource: BlockerDataProvider {
     
     private lazy var models: [[BlockerCellDataProvider]] = {
         let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook")
-        let instagramModel = BlockerCellModel(with: "instagram", imageName: "instagram")
+        let instagramModel = BlockerCellModel(with: "Instagram", imageName: "instagram")
         let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter")
-        let vkModel = BlockerCellModel(with: "vk", imageName: "vk")
+        let vkModel = BlockerCellModel(with: "vk.com", imageName: "vk")
         
         return [[facebookModel, instagramModel, twitterModel, vkModel] as [BlockerCellDataProvider]]
     }()
@@ -32,8 +32,8 @@ class BlockerDataSource: BlockerDataProvider {
     
     //MARK: BlockerDataProvider
     
-    func titleForSupplementaryView(at indexPath: IndexPath) -> String {
-        return indexPath.section == 0 ? "Feeds to block:" : ""
+    func titleForSupplementaryView() -> String {
+        return "Feeds to block:"
     }
     
     func model(at indexPath: IndexPath) -> BlockerCellDataProvider {

@@ -9,12 +9,14 @@
 import UIKit
 
 extension UIView {
-    func constraintsWithAnchorsEqual(to view: UIView) -> [NSLayoutConstraint] {
+    
+    func constraintsWithAnchorsEqual(to view: UIView, with insets: UIEdgeInsets = .zero) -> [NSLayoutConstraint] {
         return [
-            self.topAnchor.constraint(equalTo: view.topAnchor),
-            self.rightAnchor.constraint(equalTo: view.rightAnchor),
-            self.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            self.leftAnchor.constraint(equalTo: view.leftAnchor)
+            self.topAnchor.constraint(equalTo: view.topAnchor, constant: insets.top),
+            self.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -insets.right),
+            self.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -insets.bottom),
+            self.leftAnchor.constraint(equalTo: view.leftAnchor, constant: insets.left)
         ]
     }
+    
 }

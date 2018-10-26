@@ -8,18 +8,17 @@
 
 import UIKit
 
-class BlockerReusableView: UICollectionReusableView {
+class BlockerReusableView: UITableViewHeaderFooterView {
     
     var title: String? {
         didSet { label.text = title }
     }
     
-    private let sideOffset: CGFloat = 5.0
-    private let height: CGFloat = 25.0
+    private let sideOffset: CGFloat = 30.0
     
     private lazy var label: UILabel = {
         let label = UILabel().viewForAutoLayout()
-        label.font = UIFont.avenirNextMedium(of: 15.0)
+        label.font = UIFont.avenirNextMedium(of: 17.0)
         label.textColor = UIColor.AppColors.spaceGray
         return label
     }()
@@ -28,8 +27,8 @@ class BlockerReusableView: UICollectionReusableView {
         super.init(coder: aDecoder)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
         addSubview(label)
         setupConstraints()
@@ -38,7 +37,6 @@ class BlockerReusableView: UICollectionReusableView {
     private func setupConstraints() {
         NSLayoutConstraint.activate([
             label.leftAnchor.constraint(equalTo: self.leftAnchor, constant: sideOffset),
-            label.heightAnchor.constraint(equalToConstant: height),
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             label.rightAnchor.constraint(equalTo: self.rightAnchor, constant: sideOffset),
             ])

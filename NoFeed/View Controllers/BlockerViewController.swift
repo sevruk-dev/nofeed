@@ -25,6 +25,7 @@ class BlockerViewController: UIViewController {
         let tableView = UITableView(frame: .zero, style: .grouped).viewForAutoLayout()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(BlockerReusableView.self, forHeaderFooterViewReuseIdentifier: headerReuseIdentifier)
         tableView.register(BlockerTableViewCell.self, forCellReuseIdentifier: blockerCellReuseIdentifier)
         tableView.backgroundColor = .white
         tableView.rowHeight = Constants.rowHeight
@@ -46,7 +47,7 @@ class BlockerViewController: UIViewController {
         
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
-        title = "No Feed"
+        title = "NoFeed"
         
         view.addSubview(tableView)
         
@@ -54,7 +55,7 @@ class BlockerViewController: UIViewController {
     }
     
     private func setupLayout() {
-        NSLayoutConstraint.activate(tableView.constraintsWithAnchorsEqual(to: view))
+        NSLayoutConstraint.activate(tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0)))
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
@@ -139,6 +140,20 @@ extension BlockerViewController: UITableViewDataSource {
         setBlockerStateIfNeeded(for: blockerCell)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: headerReuseIdentifier)
+        
+        if let blockerHeader = headerView as? BlockerReusableView {
+            blockerHeader.title = dataSource.titleForSupplementaryView()
+        }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 33.0
     }
     
 }
