@@ -35,8 +35,8 @@ class OnboardingViewController: UIViewController {
         return label
     }()
     
-    private lazy var blockerCell: FeedBlockerCell = {
-        let cell = FeedBlockerCell().viewForAutoLayout()
+    private lazy var blockerCell: BlockerTableViewCell = {
+        let cell = BlockerTableViewCell().viewForAutoLayout()
         return cell
     }()
     
