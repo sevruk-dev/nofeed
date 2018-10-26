@@ -8,9 +8,9 @@
 
 import UIKit
 
-protocol BlockerCellDataProvider: BlockerCellDataDescriptor, BlockerIdentifierable { }
+protocol BlockerCellDataProvider: BlockerViewDataDescriptor, BlockerIdentifierable { }
 
-protocol BlockerCellDataDescriptor {
+protocol BlockerViewDataDescriptor {
     
     var title: String { get }
     var imageName: String { get }

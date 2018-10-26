@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BlockerTableViewCell: UITableViewCell, BlockerCell {
+class BlockerTableViewCell: UITableViewCell, BlockerView {
     
     var dataSource: BlockerCellDataProvider? {
         didSet {
