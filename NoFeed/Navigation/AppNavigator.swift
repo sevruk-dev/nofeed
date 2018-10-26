@@ -52,7 +52,6 @@ class AppNavigator: Navigator {
             }
         }()
         navigationController.isNavigationBarHidden = navigationBarHidden
-        navigationController.navigationBar.backgroundColor = UIColor.AppColors.lightGray
     }
     
     private func setup(_ viewController: UIViewController) {

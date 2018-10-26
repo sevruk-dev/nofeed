@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         reloadContentBlocker()
+        configureNavigationBar()
         
         return true
     }
@@ -42,6 +43,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SFContentBlockerManager.reloadContentBlocker(withIdentifier: extensionId) { error in
             print(error as Any)
         }
+    }
+    
+    private func configureNavigationBar() {
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().tintColor = UIColor.AppColors.lightGray
+        UINavigationBar.appearance().barTintColor = UIColor.AppColors.lightGray
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont.avenirNextMedium(of: 17.0)]
     }
 }
 
