@@ -48,6 +48,7 @@ class BlockerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         title = "No Feed"
         

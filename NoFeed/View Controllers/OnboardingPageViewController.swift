@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol OnboardingDelegate: class {
+    func onboardingCompleted()
+}
+
 class OnboardingPageViewController: UIViewController {
+    
+    weak var delegate: OnboardingDelegate?
     
     private struct Observers {
         static let contentOffset = "contentOffset"
@@ -18,12 +24,21 @@ class OnboardingPageViewController: UIViewController {
         didSet { pageControl.numberOfPages = onBoardingViewControllers.count }
     }
     
-    private lazy var pageControl: UIPageControl = {
+    fileprivate lazy var pageControl: UIPageControl = {
         let pageControl = UIPageControl().viewForAutoLayout()
         pageControl.numberOfPages = onBoardingViewControllers.count
         pageControl.pageIndicatorTintColor = UIColor.AppColors.lightGray
         pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
         return pageControl
+    }()
+    
+    fileprivate let skipButton: UIButton = {
+        let button = UIButton(type: .system).viewForAutoLayout()
+        button.backgroundColor = .clear
+        button.setTitle("Skip", for: .normal)
+        button.setTitleColor(UIColor.AppColors.onboardingTextColor, for: .normal)
+        button.titleLabel?.font = UIFont.avenirNextRegular(of: 18.0)
+        return button
     }()
     
     private var scrollView: UIScrollView = {
@@ -45,9 +60,15 @@ class OnboardingPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        
         view.addSubview(scrollView)
         view.addSubview(pageControl)
+        view.addSubview(skipButton)
+        view.bringSubviewToFront(skipButton)
         view.bringSubviewToFront(pageControl)
+        
+        scrollView.delegate = self
+        skipButton.addTarget(self, action: #selector(onSkip), for: .touchUpInside)
         
         setupConstraints()
     }
@@ -56,6 +77,10 @@ class OnboardingPageViewController: UIViewController {
         super.viewWillAppear(animated)
         
         setupObservers()
+    }
+    
+    @objc private func onSkip() {
+        delegate?.onboardingCompleted()
     }
     
     //MARK: KVO
@@ -91,6 +116,10 @@ class OnboardingPageViewController: UIViewController {
             let rightVC = onBoardingViewControllers[rightControllerIndex]
             leftVC.view.alpha = leftControllerShown
             rightVC.view.alpha = rightControllerShown
+            
+            if rightControllerIndex == 2 {
+                skipButton.alpha = leftControllerShown
+            }
         }
     }
     
@@ -106,15 +135,21 @@ class OnboardingPageViewController: UIViewController {
             pageControl.heightAnchor.constraint(equalToConstant: 10.0),
             pageControl.widthAnchor.constraint(equalToConstant: 60.0)
         ]
+        let skipButtonConstraints = [
+            skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0),
+            skipButton.heightAnchor.constraint(equalToConstant: 40.0),
+            skipButton.widthAnchor.constraint(equalToConstant: 70.0),
+            skipButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -30),
+        ]
         
-        NSLayoutConstraint.activate(scrollViewContraints + pageConstraints)
+        NSLayoutConstraint.activate(scrollViewContraints + pageConstraints + skipButtonConstraints)
     }
     
     private func setupControllersWithConstraints() {
         
-        let page1 = ViewController(with: "View Controller №1")
-        let page2 = ViewController(with: "View Controller №2")
-        let page3 = ViewController(with: "View Controller №3")
+        let page1 = OnboardingViewController(with: UIImage(named: "onboarding-1"), title: "Current limitations", description: "Unfortunately limiting App’s traffic is not available in iOS, at least yet.\n We’re only available to filter content in Safari and this is what our App is about.")
+        let page2 = OnboardingViewController(with: .cell, title: "How it works?", description: "To start blocking a feed choose one from the list, touch it and enjoy your NoFeed experience.")
+        let page3 = OnboardingViewController(with: UIImage(named: "onboarding-2"), title: "One more thing…", description: "We’re welcome to present you with a\n3-day Premium experience. Enjoy it!")
         onBoardingViewControllers = [page1, page2, page3]
         onBoardingViewControllers.forEach { addToHierarchy($0) }
         
@@ -132,6 +167,17 @@ class OnboardingPageViewController: UIViewController {
         scrollView.addSubview(viewController.view)
         addChild(viewController)
         viewController.didMove(toParent: self)
+    }
+    
+}
+
+extension OnboardingPageViewController: UIScrollViewDelegate {
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let controllersCount = onBoardingViewControllers.count
+        let controllerWidth = Int(scrollView.contentSize.width) / controllersCount
+        let controllerIndex = Int(scrollView.contentOffset.x) / controllerWidth
+        pageControl.currentPage = controllerIndex
     }
     
 }

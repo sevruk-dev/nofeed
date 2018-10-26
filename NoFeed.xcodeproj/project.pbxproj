@@ -13,6 +13,7 @@
 		6E67578C215FB1F300A574F7 /* facebook.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675788215FB1F300A574F7 /* facebook.json */; };
 		6E67578D215FB39900A574F7 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
+		80143BBB217126A600783FE2 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80143BBA217126A500783FE2 /* PageControl.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */; };
 		80224A0E215374D10086D2B0 /* contentBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 80224A04215374D00086D2B0 /* contentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -44,7 +45,7 @@
 		80B863612156E147000AC175 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
-		80FE096D211624A7008D07D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096C211624A7008D07D7 /* ViewController.swift */; };
+		80FE096D211624A7008D07D7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096C211624A7008D07D7 /* OnboardingViewController.swift */; };
 		80FE0972211624A8008D07D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FE0971211624A8008D07D7 /* Assets.xcassets */; };
 		80FE0975211624A8008D07D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80FE0973211624A8008D07D7 /* LaunchScreen.storyboard */; };
 		C69C3DF70AE43C20917DDB84 /* Pods_NoFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91662B9F9FB55D3F468AE320 /* Pods_NoFeed.framework */; };
@@ -82,6 +83,7 @@
 		6E675788215FB1F300A574F7 /* facebook.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = facebook.json; sourceTree = "<group>"; };
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
+		80143BBA217126A500783FE2 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
 		80224A04215374D00086D2B0 /* contentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = contentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
@@ -115,7 +117,7 @@
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE096A211624A7008D07D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80FE096C211624A7008D07D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80FE096C211624A7008D07D7 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		80FE0971211624A8008D07D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80FE0974211624A8008D07D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80FE0976211624A8008D07D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		802421F5213707060028F10F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				80143BBA217126A500783FE2 /* PageControl.swift */,
 				80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */,
 				8056A54C2134658400973940 /* FeedBlockerCell.swift */,
 				80A95A9A214F91B100D0D4D2 /* ActionCell.swift */,
@@ -247,7 +250,7 @@
 				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
 				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
 				8056A54A21345C1700973940 /* BlockerViewController.swift */,
-				80FE096C211624A7008D07D7 /* ViewController.swift */,
+				80FE096C211624A7008D07D7 /* OnboardingViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -491,7 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80FE096D211624A7008D07D7 /* ViewController.swift in Sources */,
+				80FE096D211624A7008D07D7 /* OnboardingViewController.swift in Sources */,
 				8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */,
 				804EAF1B2157AFAE00ECA055 /* SharedProtocols.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
@@ -511,6 +514,7 @@
 				80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */,
 				80B863612156E147000AC175 /* ContainerManager.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
+				80143BBB217126A600783FE2 /* PageControl.swift in Sources */,
 				80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */,
 				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
 				806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */,

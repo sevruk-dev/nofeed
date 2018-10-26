@@ -25,6 +25,7 @@ class AppNavigator: Navigator {
     func navigate(to destination: Destination) {
         let viewController = createViewController(for: destination)
         styleNavigationBar(for: destination)
+        setup(viewController)
         
         navigationController.pushViewController(viewController, animated: true)
     }
@@ -53,4 +54,18 @@ class AppNavigator: Navigator {
         navigationController.isNavigationBarHidden = navigationBarHidden
         navigationController.navigationBar.backgroundColor = .white
     }
+    
+    private func setup(_ viewController: UIViewController) {
+        if let onboardingController = viewController as? OnboardingPageViewController {
+            onboardingController.delegate = self
+        }
+    }
+}
+
+extension AppNavigator: OnboardingDelegate {
+    
+    func onboardingCompleted() {
+        navigate(to: .main)
+    }
+    
 }
