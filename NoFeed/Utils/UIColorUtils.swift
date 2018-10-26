@@ -17,11 +17,6 @@ extension UIColor {
         static let onboardingTextColor = UIColor(netHex: 0x343434)
         static let lightGreen = UIColor(netHex: 0x2FA66C, alpha: 0.82)
         static let blue = UIColor(netHex: 0x008BFF)
-        
-        static let facebook = UIColor(netHex: 0x3B5998)
-        static let instagram = UIColor(netHex: 0x262626)
-        static let twitter = UIColor(netHex: 0x1DA1F2)
-        static let vk = UIColor(netHex: 0x266A8D)
     }
     
     convenience init(red: Int, green: Int, blue: Int, alpha: CGFloat = 1.0) {

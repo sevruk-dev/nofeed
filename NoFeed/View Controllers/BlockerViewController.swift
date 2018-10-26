@@ -11,7 +11,6 @@ import UIKit
 class BlockerViewController: UIViewController {
     
     fileprivate let blockerCellReuseIdentifier = "blockerCell"
-    fileprivate let actionCellReuseIdentifier = "actionCell"
     fileprivate let headerReuseIdentifier = "blockerHeader"
     
     fileprivate let dataSource: BlockerDataProvider
@@ -19,21 +18,18 @@ class BlockerViewController: UIViewController {
     private var currentPopupView: PopupView?
     
     fileprivate struct Constants {
-        static let sideInset: CGFloat = 20.0
-        static let padding: CGFloat = 18.0
-        static let feedCellRatio: CGFloat = 1.125
+        static let rowHeight: CGFloat = 95.0
     }
     
-    private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).viewForAutoLayout()
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .white
-        collectionView.contentInset = UIEdgeInsets(top: 0.0, left: Constants.sideInset, bottom: 0.0, right: Constants.sideInset)
-        collectionView.register(FeedBlockerCell.self, forCellWithReuseIdentifier: blockerCellReuseIdentifier)
-        collectionView.register(ActionCell.self, forCellWithReuseIdentifier: actionCellReuseIdentifier)
-        collectionView.register(BlockerReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier)
-        return collectionView
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .grouped).viewForAutoLayout()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(BlockerTableViewCell.self, forCellReuseIdentifier: blockerCellReuseIdentifier)
+        tableView.backgroundColor = .white
+        tableView.rowHeight = Constants.rowHeight
+        tableView.separatorStyle = .none
+        return tableView
     }()
     
     init(with dataSource: BlockerDataProvider) {
@@ -52,30 +48,29 @@ class BlockerViewController: UIViewController {
         view.backgroundColor = .white
         title = "No Feed"
         
-        view.addSubview(collectionView)
+        view.addSubview(tableView)
         
         setupLayout()
     }
     
     private func setupLayout() {
-        NSLayoutConstraint.activate(collectionView.constraintsWithAnchorsEqual(to: view))
+        NSLayoutConstraint.activate(tableView.constraintsWithAnchorsEqual(to: view))
     }
     
-    fileprivate func setBlockerStateIfNeeded(for cell: BlockerCell) {
+    fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
         
-        guard let blockerCell = cell as? FeedBlockerCell,
-            let identifier = blockerCell.dataSource?.identifier,
+        guard let identifier = cell.dataSource?.identifier,
             let blockerIdenrifier = containerManager.blockerIndetifier(for: identifier) else {
                 return
         }
         let modelExists = containerManager.modelExists(with: blockerIdenrifier)
         
-        blockerCell.setBlockerIsOn(modelExists)
+        cell.setBlockerIsOn(modelExists)
     }
 
-    // MARK: cell selected actions
+    // MARK: cell selected action
     
-    fileprivate func selectBlocker(with cell: FeedBlockerCell) {
+    fileprivate func selectBlocker(with cell: BlockerTableViewCell) {
         cell.selected()
         
         guard let id = cell.dataSource?.identifier, let blockerIdenrifier = containerManager.blockerIndetifier(for: id) else { return }
@@ -86,6 +81,8 @@ class BlockerViewController: UIViewController {
             containerManager.removeModel(with: blockerIdenrifier)
         }
     }
+    
+    // MARK: popupPresentstion
     
     fileprivate func presentBuyPremiumView() {
         guard let navigationView = navigationController?.view else { return }
@@ -126,74 +123,33 @@ class BlockerViewController: UIViewController {
     }
 }
 
-extension BlockerViewController: UICollectionViewDataSource {
+extension BlockerViewController: UITableViewDataSource {
     
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.numberOfItems(at: section)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let reuseIdentifier = indexPath.section == 0 ? blockerCellReuseIdentifier : actionCellReuseIdentifier
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
-        guard let blockerCell = cell as? BlockerCell else { return cell }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: blockerCellReuseIdentifier, for: indexPath)
         
+        guard let blockerCell = cell as? BlockerTableViewCell else {
+            return cell
+        }
         blockerCell.dataSource = dataSource.model(at: indexPath)
         setBlockerStateIfNeeded(for: blockerCell)
+        
         return cell
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return dataSource.numberOfSections
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerReuseIdentifier, for: indexPath)
-        guard let blockerHeader = headerView as? BlockerReusableView else { return headerView }
-        
-        blockerHeader.title = dataSource.titleForSupplementaryView(at: indexPath)
-        return blockerHeader
-    }
 }
 
-extension BlockerViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let size: CGSize
-        
-        if indexPath.section == 0 {
-            let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
-            let height = width * Constants.feedCellRatio
-            size = CGSize(width: width, height: height)
-        } else {
-            let width = (collectionView.bounds.width - (2 * Constants.sideInset + Constants.padding)) / 2
-            let height = width / 1.5
-            size = CGSize(width: width, height: height)
-        }
-        
-        return size
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-        return Constants.padding
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width - (2 * Constants.sideInset), height: 50.0)
-    }
-}
+extension BlockerViewController: UITableViewDelegate {
 
-extension BlockerViewController: UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let blockerCell = collectionView.cellForItem(at: indexPath) as? FeedBlockerCell {
-            selectBlocker(with: blockerCell)
-        } else if isBuyPremiumCell(at: indexPath) {
-            presentBuyPremiumView()
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let blockerCell = tableView.cellForRow(at: indexPath) as? BlockerTableViewCell else {
+            return
         }
-    }
-    
-    private func isBuyPremiumCell(at indexPath: IndexPath) -> Bool {
-        return indexPath.row == 1 ? true : false
+        selectBlocker(with: blockerCell)
     }
     
 }
