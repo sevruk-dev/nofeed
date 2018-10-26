@@ -28,20 +28,9 @@ class BlockerTableViewCell: UITableViewCell, BlockerCell {
         switchView.setOn(!switchView.isOn, animated: true)
     }
     
-    private struct Constants {
-        static let cornerRadius: CGFloat = 10.0
-        static let baseViewVerticalOffset: CGFloat = 10.0
-        static let baseViewSideOffset: CGFloat = 18.0
-        static let iconViewSideOffset: CGFloat = 18.0
-        static let iconViewWidth: CGFloat = 40.0
-        static let labelLeftOffset: CGFloat = 30.0
-        static let switchRightOffset: CGFloat = 22.0
-    }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-//        contentView.backgroundColor = UIColor.AppColors.spaceGray
         selectionStyle = .none
         
         contentView.addSubview(shadowView)
@@ -56,6 +45,48 @@ class BlockerTableViewCell: UITableViewCell, BlockerCell {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    //MARK: private interface
+    
+    private struct Constants {
+        static let cornerRadius: CGFloat = 10.0
+        static let baseViewVerticalOffset: CGFloat = 10.0
+        static let baseViewSideOffset: CGFloat = 18.0
+        static let iconViewSideOffset: CGFloat = 18.0
+        static let iconViewWidth: CGFloat = 40.0
+        static let labelLeftOffset: CGFloat = 30.0
+        static let switchRightOffset: CGFloat = 22.0
+    }
+    
+    private let baseView: UIView = {
+        let view = UIView().viewForAutoLayout()
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    private let shadowView: UIView = {
+        let view = ShadowView(frame: .zero).viewForAutoLayout()
+        view.cornerRadius = Constants.cornerRadius
+        return view
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel().viewForAutoLayout()
+        label.font = UIFont.avenirNextMedium(of: 18.0)
+        label.textColor = UIColor.AppColors.spaceGray
+        return label
+    }()
+    
+    private let iconView: UIImageView = UIImageView().viewForAutoLayout()
+    private let switchView = UISwitch().viewForAutoLayout()
+    
+    private func updateContent() {
+        titleLabel.text = dataSource?.title
+        guard let imageName = dataSource?.imageName else {
+            return
+        }
+        iconView.image = UIImage(named: imageName)
     }
     
     private func setupConstraints() {
@@ -77,38 +108,5 @@ class BlockerTableViewCell: UITableViewCell, BlockerCell {
             switchView.centerYAnchor.constraint(equalTo: baseView.centerYAnchor)
             ] + shadowView.constraintsWithAnchorsEqual(to: baseView))
     }
-    
-    private func updateContent() {
-        titleLabel.text = dataSource?.title
-        guard let imageName = dataSource?.imageName else {
-            return
-        }
-        iconView.image = UIImage(named: imageName)
-    }
-    
-    private let baseView: UIView = {
-        let view = UIView().viewForAutoLayout()
-        view.backgroundColor = .white
-        
-        return view
-    }()
-    
-    private let iconView: UIImageView = UIImageView().viewForAutoLayout()
-    private let switchView = UISwitch().viewForAutoLayout()
-    
-    private lazy var shadowView: UIView = {
-        let view = ShadowView(frame: .zero).viewForAutoLayout()
-        view.cornerRadius = Constants.cornerRadius
-        return view
-    }()
-    
-    private let titleLabel: UILabel = {
-        let label = UILabel().viewForAutoLayout()
-        label.font = UIFont.avenirNextMedium(of: 18.0)
-        label.textColor = UIColor.AppColors.spaceGray
-        return label
-    }()
-    
-    
     
 }
