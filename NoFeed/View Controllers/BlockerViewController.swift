@@ -21,6 +21,8 @@ class BlockerViewController: UIViewController {
         static let rowHeight: CGFloat = 95.0
     }
     
+    private let buyPremiumView = BuyPremiumView().viewForAutoLayout()
+    
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped).viewForAutoLayout()
         tableView.dataSource = self
@@ -51,12 +53,20 @@ class BlockerViewController: UIViewController {
         title = "NoFeed"
         
         view.addSubview(tableView)
+        view.addSubview(buyPremiumView)
         
         setupLayout()
     }
     
     private func setupLayout() {
-        NSLayoutConstraint.activate(tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0)))
+        let tableViewConstraints = tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0))
+        
+        NSLayoutConstraint.activate([
+            buyPremiumView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            buyPremiumView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            buyPremiumView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            buyPremiumView.heightAnchor.constraint(equalToConstant: BuyPremiumView.minimalHeight)
+            ] + tableViewConstraints)
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
