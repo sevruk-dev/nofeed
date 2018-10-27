@@ -10,6 +10,8 @@ import UIKit
 
 protocol BlockerDataProvider {
     
+    func modelForBuyPremium() -> BlockerCellDataProvider
+    
     func titleForSupplementaryView() -> String
     func model(at indexPath: IndexPath) -> BlockerCellDataProvider
     func numberOfItems(at section: Int) -> Int
@@ -31,6 +33,10 @@ class BlockerDataSource: BlockerDataProvider {
     
     
     //MARK: BlockerDataProvider
+    
+    func modelForBuyPremium() -> BlockerCellDataProvider {
+        return BlockerCellModel(with: "Buy Premium", imageName: "purchase")
+    }
     
     func titleForSupplementaryView() -> String {
         return "Feeds to block:"

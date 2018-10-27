@@ -21,7 +21,11 @@ class BlockerViewController: UIViewController {
         static let rowHeight: CGFloat = 95.0
     }
     
-    private let buyPremiumView = BuyPremiumView().viewForAutoLayout()
+    private lazy var buyPremiumView: BuyPremiumView = {
+        let model = self.dataSource.modelForBuyPremium()
+        let view = BuyPremiumView(with: model).viewForAutoLayout()
+        return view
+    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped).viewForAutoLayout()

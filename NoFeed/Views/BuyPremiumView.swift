@@ -16,11 +16,16 @@ class BuyPremiumView: UIView {
         return BuyPremiumView.height + BuyPremiumView.bottomOffset
     }
     
-    let button: UIControl = BuyPremiumButton().viewForAutoLayout()
+    let button = BuyPremiumButton().viewForAutoLayout()
     
     private let sideOffset: CGFloat = 18.0
     static private let bottomOffset: CGFloat = 15.0
     static private let height: CGFloat = 75.0
+    
+    convenience init(with dataSource: BlockerCellDataProvider) {
+        self.init(frame: .zero)
+        button.dataSource = dataSource
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -45,9 +50,13 @@ class BuyPremiumView: UIView {
     
 }
 
-private class BuyPremiumButton: UIControl, BlockerView {
+class BuyPremiumButton: UIControl, BlockerView {
     
-    var dataSource: BlockerCellDataProvider?
+    var dataSource: BlockerCellDataProvider? {
+        didSet {
+            updateContent()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
