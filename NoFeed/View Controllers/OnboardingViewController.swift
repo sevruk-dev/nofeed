@@ -21,7 +21,7 @@ class OnboardingViewController: UIViewController {
     private let titleLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
         label.font = UIFont.avenirNextMedium(of: 21.5)
-        label.textColor = UIColor.AppColors.onboardingTextColor
+        label.textColor = UIColor.AppColors.darkGray
         label.textAlignment = .center
         return label
     }()
@@ -30,7 +30,7 @@ class OnboardingViewController: UIViewController {
         let label = UILabel().viewForAutoLayout()
         label.numberOfLines = 0
         label.font = UIFont.avenirNextRegular(of: 16.0)
-        label.textColor = UIColor.AppColors.onboardingTextColor
+        label.textColor = UIColor.AppColors.darkGray
         label.textAlignment = .center
         return label
     }()

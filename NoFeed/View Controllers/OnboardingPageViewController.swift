@@ -36,7 +36,7 @@ class OnboardingPageViewController: UIViewController {
         let button = UIButton(type: .system).viewForAutoLayout()
         button.backgroundColor = .clear
         button.setTitle("Skip", for: .normal)
-        button.setTitleColor(UIColor.AppColors.onboardingTextColor, for: .normal)
+        button.setTitleColor(UIColor.AppColors.darkGray, for: .normal)
         button.titleLabel?.font = UIFont.avenirNextRegular(of: 18.0)
         return button
     }()
