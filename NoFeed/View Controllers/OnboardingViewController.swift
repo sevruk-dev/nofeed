@@ -135,8 +135,15 @@ extension OnboardingViewController: UITableViewDataSource {
             return cell
         }
         blockerCell.dataSource = tableDataSource?.model(at: indexPath)
+        toggleToggleIfNeeded(for: blockerCell, at: indexPath)
         
         return cell
+    }
+    
+    private func toggleToggleIfNeeded(for cell: BlockerTableViewCell, at indexPath: IndexPath) {
+        if indexPath.row == 1 {
+            cell.selected()
+        }
     }
     
 }
