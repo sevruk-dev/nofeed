@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
+        let navigationController = NavigationController()
         let appNavigator = AppNavigator(with: navigationController)
         appCoordinator = AppCoordinator(with: appNavigator)
         appCoordinator?.coordinate()
@@ -43,5 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print(error as Any)
         }
     }
+    
 }
 

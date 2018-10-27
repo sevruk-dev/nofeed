@@ -8,33 +8,26 @@
 
 import UIKit
 
-protocol BlockerCellDataProvider: BlockerCellDataDescriptor, BlockerIdentifierable { }
+protocol BlockerCellDataProvider: BlockerViewDataDescriptor { }
 
-protocol BlockerCellDataDescriptor {
+protocol BlockerViewDataDescriptor {
     
     var title: String { get }
     var imageName: String { get }
-    var brandingColor: UIColor? { get }
-    
+    var type: BlockerIdentifier? { get }
+
 }
 
 class BlockerCellModel: BlockerCellDataProvider {
     
     let title: String
     let imageName: String
-    let brandingColor: UIColor?
+    let type: BlockerIdentifier?
     
-    init(with title: String, imageName: String, brandingColor: UIColor? = nil) {
+    init(with title: String, imageName: String, type: BlockerIdentifier? = nil) {
         self.title = title
         self.imageName = imageName
-        self.brandingColor = brandingColor
-    }
-}
-
-extension BlockerCellModel: BlockerIdentifierable {
-    
-    var identifier: String {
-        return title
+        self.type = type
     }
     
 }

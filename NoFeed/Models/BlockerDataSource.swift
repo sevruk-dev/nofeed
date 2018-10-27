@@ -10,7 +10,9 @@ import UIKit
 
 protocol BlockerDataProvider {
     
-    func titleForSupplementaryView(at indexPath: IndexPath) -> String
+    func modelForBuyPremium() -> BlockerCellDataProvider
+    
+    func titleForSupplementaryView() -> String
     func model(at indexPath: IndexPath) -> BlockerCellDataProvider
     func numberOfItems(at section: Int) -> Int
     
@@ -21,28 +23,23 @@ protocol BlockerDataProvider {
 class BlockerDataSource: BlockerDataProvider {
     
     private lazy var models: [[BlockerCellDataProvider]] = {
-        var models: [[BlockerCellDataProvider]] = []
-        let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook", brandingColor: UIColor.AppColors.facebook)
-        let instagramModel = BlockerCellModel(with: "instagram", imageName: "instagram", brandingColor: UIColor.AppColors.instagram)
-        let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter", brandingColor: UIColor.AppColors.twitter)
-        let vkModel = BlockerCellModel(with: "vk", imageName: "vk", brandingColor: UIColor.AppColors.vk)
-        let feeds = [facebookModel, instagramModel, twitterModel, vkModel]
+        let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook", type: .facebook)
+        let instagramModel = BlockerCellModel(with: "Instagram", imageName: "instagram", type: .instagram)
+        let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter", type: .twitter)
+        let vkModel = BlockerCellModel(with: "vk.com", imageName: "vk", type: .vk)
         
-        let reviewModel = BlockerCellModel(with: "Leave us a\n review", imageName: "review")
-        let purchaseModel = BlockerCellModel(with: "Buy Premium or\n Restore Purchase", imageName: "purchase")
-        let actions = [reviewModel, purchaseModel]
-        
-        models.append(feeds)
-        models.append(actions)
-        
-        return models
+        return [[facebookModel, instagramModel, twitterModel, vkModel] as [BlockerCellDataProvider]]
     }()
     
     
     //MARK: BlockerDataProvider
     
-    func titleForSupplementaryView(at indexPath: IndexPath) -> String {
-        return indexPath.section == 0 ? "Feeds to block:" : "And not about blocking:"
+    func modelForBuyPremium() -> BlockerCellDataProvider {
+        return BlockerCellModel(with: "Buy Premium", imageName: "purchase")
+    }
+    
+    func titleForSupplementaryView() -> String {
+        return "Feeds to block:"
     }
     
     func model(at indexPath: IndexPath) -> BlockerCellDataProvider {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0517D82183649200CFA66B /* BuyPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0517D72183649200CFA66B /* BuyPremiumView.swift */; };
+		6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0517D9218365B700CFA66B /* BlockerView.swift */; };
+		6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4295FA21849A3000FA59B2 /* NavigationController.swift */; };
 		6E675789215FB1F300A574F7 /* vk.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675785215FB1F300A574F7 /* vk.json */; };
 		6E67578A215FB1F300A574F7 /* instagram.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675786215FB1F300A574F7 /* instagram.json */; };
 		6E67578B215FB1F300A574F7 /* twitter.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675787215FB1F300A574F7 /* twitter.json */; };
@@ -25,7 +28,6 @@
 		804EAF1C2157B0E300ECA055 /* SharedProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */; };
 		805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805338FB2150EEE700C30E31 /* ShadowView.swift */; };
 		8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54A21345C1700973940 /* BlockerViewController.swift */; };
-		8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54C2134658400973940 /* FeedBlockerCell.swift */; };
 		8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A54E213468C000973940 /* BlockerDataSource.swift */; };
 		8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55021346E1F00973940 /* BlockerCellModel.swift */; };
 		8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8056A55321348BEB00973940 /* BlockerReusableView.swift */; };
@@ -37,11 +39,10 @@
 		806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806066CB21692F9F00C10A48 /* UIViewUtils.swift */; };
 		806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */; };
 		806ECCF32161098200B12C77 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ECCF22161098200B12C77 /* PopupView.swift */; };
+		80719E572182B45B00AA18E7 /* BlockerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */; };
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80993E64216008D500E2D5D1 /* BlockerRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */; };
-		80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9A214F91B100D0D4D2 /* ActionCell.swift */; };
-		80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */; };
 		80B863612156E147000AC175 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
@@ -76,6 +77,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E0517D72183649200CFA66B /* BuyPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPremiumView.swift; sourceTree = "<group>"; };
+		6E0517D9218365B700CFA66B /* BlockerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockerView.swift; sourceTree = "<group>"; };
+		6E4295FA21849A3000FA59B2 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6E461B4A215FDDA70007C980 /* contentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contentBlocker.entitlements; sourceTree = "<group>"; };
 		6E675785215FB1F300A574F7 /* vk.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = vk.json; sourceTree = "<group>"; };
 		6E675786215FB1F300A574F7 /* instagram.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = instagram.json; sourceTree = "<group>"; };
@@ -95,7 +99,6 @@
 		804EAF1A2157AFAE00ECA055 /* SharedProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedProtocols.swift; sourceTree = "<group>"; };
 		805338FB2150EEE700C30E31 /* ShadowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowView.swift; sourceTree = "<group>"; };
 		8056A54A21345C1700973940 /* BlockerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerViewController.swift; sourceTree = "<group>"; };
-		8056A54C2134658400973940 /* FeedBlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBlockerCell.swift; sourceTree = "<group>"; };
 		8056A54E213468C000973940 /* BlockerDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerDataSource.swift; sourceTree = "<group>"; };
 		8056A55021346E1F00973940 /* BlockerCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCellModel.swift; sourceTree = "<group>"; };
 		8056A55321348BEB00973940 /* BlockerReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerReusableView.swift; sourceTree = "<group>"; };
@@ -107,12 +110,11 @@
 		806066CB21692F9F00C10A48 /* UIViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtils.swift; sourceTree = "<group>"; };
 		806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		806ECCF22161098200B12C77 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
+		80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerTableViewCell.swift; sourceTree = "<group>"; };
 		807FA6E1212C72640040AAFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80969614211629B5001FA40A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
 		80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerRulesProvider.swift; sourceTree = "<group>"; };
-		80A95A9A214F91B100D0D4D2 /* ActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCell.swift; sourceTree = "<group>"; };
-		80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerCell.swift; sourceTree = "<group>"; };
 		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/Shared/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,14 +186,14 @@
 			isa = PBXGroup;
 			children = (
 				80143BBA217126A500783FE2 /* PageControl.swift */,
-				80A95A9C214F957A00D0D4D2 /* BlockerCell.swift */,
-				8056A54C2134658400973940 /* FeedBlockerCell.swift */,
-				80A95A9A214F91B100D0D4D2 /* ActionCell.swift */,
 				805338FB2150EEE700C30E31 /* ShadowView.swift */,
 				80D235FE2149A64300789ED0 /* CustomSwitch.swift */,
-				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
 				806ECCF22161098200B12C77 /* PopupView.swift */,
 				806066C921692C5400C10A48 /* PopupDialogView.swift */,
+				6E0517D9218365B700CFA66B /* BlockerView.swift */,
+				80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */,
+				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
+				6E0517D72183649200CFA66B /* BuyPremiumView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,9 +250,10 @@
 			isa = PBXGroup;
 			children = (
 				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
+				6E4295FA21849A3000FA59B2 /* NavigationController.swift */,
 				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
-				8056A54A21345C1700973940 /* BlockerViewController.swift */,
 				80FE096C211624A7008D07D7 /* OnboardingViewController.swift */,
+				8056A54A21345C1700973940 /* BlockerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -496,13 +499,13 @@
 			files = (
 				80FE096D211624A7008D07D7 /* OnboardingViewController.swift in Sources */,
 				8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */,
+				80719E572182B45B00AA18E7 /* BlockerTableViewCell.swift in Sources */,
 				804EAF1B2157AFAE00ECA055 /* SharedProtocols.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
 				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,
 				80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */,
 				8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */,
-				8056A54D2134658400973940 /* FeedBlockerCell.swift in Sources */,
 				802421FE21370B190028F10F /* UIFontUtils.swift in Sources */,
 				8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */,
 				806ECCF32161098200B12C77 /* PopupView.swift in Sources */,
@@ -511,11 +514,12 @@
 				80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */,
 				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
 				806066CA21692C5400C10A48 /* PopupDialogView.swift in Sources */,
-				80A95A9B214F91B100D0D4D2 /* ActionCell.swift in Sources */,
 				80B863612156E147000AC175 /* ContainerManager.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
 				80143BBB217126A600783FE2 /* PageControl.swift in Sources */,
-				80A95A9D214F957A00D0D4D2 /* BlockerCell.swift in Sources */,
+				6E0517D82183649200CFA66B /* BuyPremiumView.swift in Sources */,
+				6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */,
+				6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */,
 				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
 				806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */,
 				8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */,
