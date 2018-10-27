@@ -21,10 +21,10 @@ protocol BlockerDataProvider {
 class BlockerDataSource: BlockerDataProvider {
     
     private lazy var models: [[BlockerCellDataProvider]] = {
-        let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook")
-        let instagramModel = BlockerCellModel(with: "Instagram", imageName: "instagram")
-        let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter")
-        let vkModel = BlockerCellModel(with: "vk.com", imageName: "vk")
+        let facebookModel = BlockerCellModel(with: "facebook", imageName: "facebook", type: .facebook)
+        let instagramModel = BlockerCellModel(with: "Instagram", imageName: "instagram", type: .instagram)
+        let twitterModel = BlockerCellModel(with: "twitter", imageName: "twitter", type: .twitter)
+        let vkModel = BlockerCellModel(with: "vk.com", imageName: "vk", type: .vk)
         
         return [[facebookModel, instagramModel, twitterModel, vkModel] as [BlockerCellDataProvider]]
     }()

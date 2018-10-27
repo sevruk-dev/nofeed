@@ -27,6 +27,7 @@ class BlockerViewController: UIViewController {
         tableView.delegate = self
         tableView.register(BlockerReusableView.self, forHeaderFooterViewReuseIdentifier: headerReuseIdentifier)
         tableView.register(BlockerTableViewCell.self, forCellReuseIdentifier: blockerCellReuseIdentifier)
+        tableView.bounces = false
         tableView.backgroundColor = .white
         tableView.rowHeight = Constants.rowHeight
         tableView.separatorStyle = .none
@@ -59,12 +60,9 @@ class BlockerViewController: UIViewController {
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
+        guard let blockerIdentifier = cell.dataSource?.type else { return }
         
-        guard let identifier = cell.dataSource?.identifier,
-            let blockerIdenrifier = containerManager.blockerIndetifier(for: identifier) else {
-                return
-        }
-        let modelExists = containerManager.modelExists(with: blockerIdenrifier)
+        let modelExists = containerManager.modelExists(with: blockerIdentifier)
         
         cell.setBlockerIsOn(modelExists)
     }
@@ -74,12 +72,12 @@ class BlockerViewController: UIViewController {
     fileprivate func selectBlocker(with cell: BlockerTableViewCell) {
         cell.selected()
         
-        guard let id = cell.dataSource?.identifier, let blockerIdenrifier = containerManager.blockerIndetifier(for: id) else { return }
+        guard let blockerIdentifier = cell.dataSource?.type else { return }
         
         if cell.isBlockerOn {
-            containerManager.addModel(with: blockerIdenrifier)
+            containerManager.addModel(with: blockerIdentifier)
         } else {
-            containerManager.removeModel(with: blockerIdenrifier)
+            containerManager.removeModel(with: blockerIdentifier)
         }
     }
     

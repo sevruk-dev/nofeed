@@ -252,8 +252,8 @@
 				8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */,
 				6E4295FA21849A3000FA59B2 /* NavigationController.swift */,
 				806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */,
-				8056A54A21345C1700973940 /* BlockerViewController.swift */,
 				80FE096C211624A7008D07D7 /* OnboardingViewController.swift */,
+				8056A54A21345C1700973940 /* BlockerViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
