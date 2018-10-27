@@ -148,7 +148,7 @@ class OnboardingPageViewController: UIViewController {
     private func setupControllersWithConstraints() {
         
         let page1 = OnboardingViewController(with: UIImage(named: "onboarding-1"), title: "Current limitations", description: "Unfortunately limiting App’s traffic is not available in iOS, at least yet.\n We’re only available to filter content in Safari and this is what our App is about.")
-        let page2 = OnboardingViewController(with: .cell, title: "How it works?", description: "To start blocking a feed choose one from the list, touch it and enjoy your NoFeed experience.")
+        let page2 = OnboardingViewController(with: .table, dataSource: BlockerDataSource(), title: "How it works?", description: "To start blocking a feed choose one from the list, touch it and enjoy your NoFeed experience.")
         let page3 = OnboardingViewController(with: UIImage(named: "onboarding-2"), title: "One more thing…", description: "We’re welcome to present you with a\n3-day Premium experience. Enjoy it!")
         onBoardingViewControllers = [page1, page2, page3]
         onBoardingViewControllers.forEach { addToHierarchy($0) }

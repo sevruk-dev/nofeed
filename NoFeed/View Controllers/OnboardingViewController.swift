@@ -12,11 +12,15 @@ import Crashlytics
 class OnboardingViewController: UIViewController {
     
     enum ControllerType {
-        case image, cell
+        case image, table
     }
     
     private let type: ControllerType
+    fileprivate let tableDataSource: OnboardingTableDataProvider?
+    
     private let descriptionLabelRatio: CGFloat = 0.8404
+    private let rowHeight: CGFloat = 95.0
+    fileprivate let blockerCellReuseIdentifier = "blockerCell"
     
     private let titleLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
@@ -35,9 +39,16 @@ class OnboardingViewController: UIViewController {
         return label
     }()
     
-    private lazy var blockerCell: BlockerTableViewCell = {
-        let cell = BlockerTableViewCell().viewForAutoLayout()
-        return cell
+    private lazy var tableView: UITableView = {
+        let tableView = UITableView(frame: .zero, style: .plain).viewForAutoLayout()
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(BlockerTableViewCell.self, forCellReuseIdentifier: blockerCellReuseIdentifier)
+        tableView.bounces = false
+        tableView.backgroundColor = .white
+        tableView.rowHeight = rowHeight
+        tableView.separatorStyle = .none
+        return tableView
     }()
     
     private lazy var imageView: UIImageView = {
@@ -53,13 +64,9 @@ class OnboardingViewController: UIViewController {
         imageView.image = image
     }
     
-    convenience init(with dataSource: BlockerCellDataProvider, title: String, description: String) {
-        self.init(with: .cell, title: title, description: description)
-        blockerCell.dataSource = dataSource
-    }
-    
-    init(with type: ControllerType, title: String, description: String) {
+    init(with type: ControllerType, dataSource: OnboardingTableDataProvider? = nil, title: String, description: String) {
         self.type = type
+        self.tableDataSource = dataSource
         super.init(nibName: nil, bundle: nil)
         titleLabel.text = title
         descriptionLabel.text = description
@@ -76,10 +83,14 @@ class OnboardingViewController: UIViewController {
         view.addSubview(titleLabel)
         view.addSubview(descriptionLabel)
         
-        let viewToAdd = type == .image ? imageView : blockerCell
+        let viewToAdd = isImageType ? imageView : tableView
         view.addSubview(viewToAdd)
         
         setupConstraints()
+    }
+    
+    private var isImageType: Bool {
+        return type == .image
     }
     
     private func setupConstraints() {
@@ -92,18 +103,51 @@ class OnboardingViewController: UIViewController {
             descriptionLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: descriptionLabelRatio)
             ])
         
-        if type == .image {
+        if isImageType {
             NSLayoutConstraint.activate([
                 imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
                 imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
                 imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.0)
                 ])
         } else {
+            guard let rowsCount = tableDataSource?.numberOfItems() else { return }
             NSLayoutConstraint.activate([
-                
+                tableView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
+                tableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 155.0),
+                tableView.heightAnchor.constraint(equalToConstant: rowHeight * CGFloat(rowsCount))
                 ])
         }
     }
 
 }
 
+extension OnboardingViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tableDataSource?.numberOfItems() ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: blockerCellReuseIdentifier, for: indexPath)
+        
+        guard let blockerCell = cell as? BlockerTableViewCell else {
+            return cell
+        }
+        blockerCell.dataSource = tableDataSource?.model(at: indexPath)
+        
+        return cell
+    }
+    
+}
+
+extension OnboardingViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let blockerCell = tableView.cellForRow(at: indexPath) as? BlockerTableViewCell else {
+            return
+        }
+        blockerCell.selected()
+    }
+    
+}
