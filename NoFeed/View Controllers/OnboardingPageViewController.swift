@@ -20,15 +20,15 @@ class OnboardingPageViewController: UIViewController {
         static let contentOffset = "contentOffset"
     }
     
-    private var onBoardingViewControllers: [UIViewController] = [] {
-        didSet { pageControl.numberOfPages = onBoardingViewControllers.count }
-    }
+    private var onBoardingViewControllers: [UIViewController] = [] //{
+//        didSet { pageControl.numberOfPages = onBoardingViewControllers.count }
+    //}
     
-    fileprivate lazy var pageControl: UIPageControl = {
-        let pageControl = UIPageControl().viewForAutoLayout()
-        pageControl.numberOfPages = onBoardingViewControllers.count
-        pageControl.pageIndicatorTintColor = UIColor.AppColors.lightGray
-        pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
+    fileprivate lazy var pageControl: PageControl = {
+        let pageControl = PageControl().viewForAutoLayout()
+//        pageControl.numberOfPages = onBoardingViewControllers.count
+//        pageControl.pageIndicatorTintColor = UIColor.AppColors.lightGray
+//        pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
         return pageControl
     }()
     
@@ -130,10 +130,10 @@ class OnboardingPageViewController: UIViewController {
         
         let scrollViewContraints = scrollView.constraintsWithAnchorsEqual(to: view)
         let pageConstraints = [
-            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20.0),
+            pageControl.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -57.0),
             pageControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             pageControl.heightAnchor.constraint(equalToConstant: 10.0),
-            pageControl.widthAnchor.constraint(equalToConstant: 60.0)
+            pageControl.widthAnchor.constraint(equalToConstant: 58.0)
         ]
         let skipButtonConstraints = [
             skipButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 50.0),

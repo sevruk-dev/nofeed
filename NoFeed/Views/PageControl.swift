@@ -10,6 +10,15 @@ import UIKit
 
 class PageControl: UIControl {
     
+    var currentPage: Int = 0 {
+        didSet {
+            UIView.animate(withDuration: 0.1) {
+                let newCenter = self.unselectedDots[self.currentPage].center
+                self.selectedDot.center = newCenter
+            }
+        }
+    }
+    
     private let spacing: CGFloat = 22.0
     private let unselectedDotDiameter: CGFloat = 6.0
     private let selectedDotDiameter: CGFloat = 10.0
@@ -26,11 +35,6 @@ class PageControl: UIControl {
         return dotView(with: selectedDotDiameter, backgroundColor: selectedDotColor)
     }()
     
-    var currentPage: Int = 0 {
-        didSet {
-//            selectedDot.frame = CGRect(origin: <#T##CGPoint#>, size: <#T##CGSize#>)
-        }
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -38,12 +42,20 @@ class PageControl: UIControl {
         setupViews()
     }
     
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private func setupViews() {
-        selectedDot.isHidden = true
+        (unselectedDots + [selectedDot]).forEach { addSubview($0) }
         
-        addSubview(selectedDot)
-        unselectedDots.forEach { addSubview($0) }
         setupLayout()
+        setInitialLocation()
+    }
+    
+    private func setInitialLocation() {
+        let firstDot = unselectedDots[0]
+        selectedDot.center = firstDot.center
     }
     
     private func setupLayout() {
@@ -51,22 +63,27 @@ class PageControl: UIControl {
         let middleDot = unselectedDots[1]
         let rightDot = unselectedDots[2]
         
+        var unselectedDotsConstraints: [NSLayoutConstraint] = []
+        unselectedDots.forEach { view in
+            unselectedDotsConstraints.append(view.heightAnchor.constraint(equalToConstant: unselectedDotDiameter))
+            unselectedDotsConstraints.append(view.widthAnchor.constraint(equalToConstant: unselectedDotDiameter))
+        }
+        
         NSLayoutConstraint.activate([
             middleDot.centerXAnchor.constraint(equalTo: centerXAnchor),
             middleDot.centerYAnchor.constraint(equalTo: centerYAnchor),
             leftDot.centerXAnchor.constraint(equalTo: middleDot.centerXAnchor, constant: -spacing),
             leftDot.centerYAnchor.constraint(equalTo: middleDot.centerYAnchor),
             rightDot.centerXAnchor.constraint(equalTo: middleDot.centerXAnchor, constant: spacing),
-            rightDot.centerYAnchor.constraint(equalTo: rightDot.centerYAnchor),
-            ])
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+            rightDot.centerYAnchor.constraint(equalTo: middleDot.centerYAnchor),
+            selectedDot.centerYAnchor.constraint(equalTo: rightDot.centerYAnchor),
+            selectedDot.heightAnchor.constraint(equalToConstant: selectedDotDiameter),
+            selectedDot.widthAnchor.constraint(equalToConstant: selectedDotDiameter)
+            ] + unselectedDotsConstraints)
     }
     
     private func dotView(with diameter: CGFloat, backgroundColor: UIColor) -> UIView {
-        let view = UIView(frame: CGRect(x: 0.0, y: 0.0, width: diameter, height: diameter)).viewForAutoLayout()
+        let view = UIView(frame: .zero).viewForAutoLayout()
         view.backgroundColor = backgroundColor
         view.layer.cornerRadius = diameter / 2
         return view
