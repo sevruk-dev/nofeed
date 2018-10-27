@@ -19,7 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = UINavigationController()
+        let navigationController = NavigationController()
         let appNavigator = AppNavigator(with: navigationController)
         appCoordinator = AppCoordinator(with: appNavigator)
         appCoordinator?.coordinate()
@@ -30,7 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         reloadContentBlocker()
-        configureNavigationBar()
         
         return true
     }
@@ -45,13 +44,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    private func configureNavigationBar() {
-        UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
-        UINavigationBar.appearance().shadowImage = UIImage()
-        UINavigationBar.appearance().tintColor = UIColor.AppColors.lightGray
-        UINavigationBar.appearance().barTintColor = UIColor.AppColors.lightGray
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.font: UIFont.avenirNextMedium(of: 17.0)]
-    }
 }
 
