@@ -10,51 +10,67 @@ import UIKit
 
 class PageControl: UIControl {
     
-    var numberOfPages: Int = 0
+    var numberOfPages: Int = 0 {
+        didSet {
+            removeViews()
+            setupViews()
+        }
+    }
     
-    var spacing: CGFloat = 22.0
-    var indicatorDiameter: CGFloat = 6.0
-    var currentIndicatorDiameter: CGFloat = 10.0
+    var spacing: CGFloat = 22.0 {
+        didSet {
+            //TODO: refactor to make it more efficient
+            removeViews()
+            setupViews()
+        }
+    }
     
-    var pageIndicatorTintColor: UIColor = UIColor(netHex: 0xD8D8D8)
-    var currentPageIndicatorTintColor: UIColor = UIColor.AppColors.lightPink
+    var indicatorDiameter: CGFloat = 6.0 {
+        didSet {
+            NSLayoutConstraint.deactivate(sizeConstraints)
+            setupSizeConstraints()
+        }
+    }
     
+    var currentIndicatorDiameter: CGFloat = 10.0 {
+        didSet {
+            NSLayoutConstraint.deactivate(sizeConstraints)
+            setupSizeConstraints()
+        }
+    }
+    
+    var pageIndicatorTintColor: UIColor = UIColor(netHex: 0xD8D8D8) {
+        didSet {
+            pageIndicators.forEach { $0.backgroundColor = pageIndicatorTintColor }
+        }
+    }
+    
+    var currentPageIndicatorTintColor: UIColor = UIColor(netHex: 0xFF3482) {
+        didSet {
+            currentPageIndicator.backgroundColor = currentPageIndicatorTintColor
+        }
+    }
     
     var currentPage: Int = 0 {
         didSet {
             UIView.animate(withDuration: 0.1) { [weak self] in
-                guard let self = self else { return }
+                guard let self = self, self.pageIndicators.count > self.currentPage else {
+                    return
+                }
                 let newCenter = self.pageIndicators[self.currentPage].center
                 self.currentPageIndicator.center = newCenter
             }
         }
     }
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        setupViews()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
     
     //MARK: private methods
     
-    private lazy var pageIndicators: [UIView] = {
-        return [
-            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor),
-            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor),
-            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor)
-        ]
-        //        return [0..<numberOfPages].map { _ in
-        //            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor)
-        //        }
-    }()
     private lazy var currentPageIndicator: UIView = {
         return pageIndicator(with: currentIndicatorDiameter, backgroundColor: currentPageIndicatorTintColor)
     }()
+    private var pageIndicators: [UIView] = []
+    
+    private var sizeConstraints: [NSLayoutConstraint] = []
     
     private func pageIndicator(with diameter: CGFloat, backgroundColor: UIColor?) -> UIView {
         let view = UIView(frame: .zero).viewForAutoLayout()
@@ -63,25 +79,53 @@ class PageControl: UIControl {
         return view
     }
     
+    private func removeViews() {
+        for view in subviews {
+            pageIndicators = []
+            sizeConstraints = []
+            NSLayoutConstraint.deactivate(view.constraints)
+            view.removeFromSuperview()
+        }
+    }
+    
     private func setupViews() {
-        (pageIndicators + [currentPageIndicator]).forEach { addSubview($0) }
-        
-        setupLayout()
-        setInitialLocation()
+        if numberOfPages != 0 {
+            for _ in 0..<numberOfPages {
+                pageIndicators.append(pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor))
+            }
+            
+            (pageIndicators + [currentPageIndicator]).forEach { addSubview($0) }
+            
+            setupLayout()
+            
+            setCurrrentIndicatorLocation()
+        }
     }
     
-    private func setInitialLocation() {
-        let firstDot = pageIndicators[0]
-        currentPageIndicator.center = firstDot.center
+    private func setCurrrentIndicatorLocation() {
+        if numberOfPages != 0 {
+            let firstDot = pageIndicators[0]
+            currentPageIndicator.center = firstDot.center
+        }
     }
-    
     
     // MARK: layout
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        guard pageIndicators.count > currentPage else { return }
+        let updatedCenter = pageIndicators[currentPage].center
+        
+        if self.currentPageIndicator.center != updatedCenter {
+            self.currentPageIndicator.center = updatedCenter
+        }
+    }
     
     private func setupLayout() {
         var constraints = [NSLayoutConstraint]()
         
-        constraints.append(contentsOf: sizeConstraints())
+        setupSizeConstraints()
         
         let isEvenNumber = Double(pageIndicators.count).truncatingRemainder(dividingBy: 2.0) == 0.0
         let initialElementIndex = isEvenNumber ? (pageIndicators.count / 2) - 1 : (pageIndicators.count / 2)
@@ -107,7 +151,13 @@ class PageControl: UIControl {
         NSLayoutConstraint.activate(constraints)
     }
     
-    private func sizeConstraints() -> [NSLayoutConstraint] {
+    private func setupSizeConstraints () {
+        pageIndicators.forEach { $0.layer.cornerRadius = indicatorDiameter / 2.0 }
+        sizeConstraints = sizeConstraintsForIndicators()
+        NSLayoutConstraint.activate(sizeConstraints)
+    }
+    
+    private func sizeConstraintsForIndicators() -> [NSLayoutConstraint] {
         var constraints = [NSLayoutConstraint]()
         
         constraints.append(contentsOf: constraintsWithHeightAndWidth(equalTo: currentIndicatorDiameter, for: currentPageIndicator))
