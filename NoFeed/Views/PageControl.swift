@@ -10,33 +10,26 @@ import UIKit
 
 class PageControl: UIControl {
     
+    var numberOfPages: Int = 0
+    
+    var spacing: CGFloat = 22.0
+    var indicatorDiameter: CGFloat = 6.0
+    var currentIndicatorDiameter: CGFloat = 10.0
+    
+    var pageIndicatorTintColor: UIColor = UIColor(netHex: 0xD8D8D8)
+    var currentPageIndicatorTintColor: UIColor = UIColor.AppColors.lightPink
+    
+    
     var currentPage: Int = 0 {
         didSet {
             UIView.animate(withDuration: 0.1) { [weak self] in
                 guard let self = self else { return }
-                let newCenter = self.unselectedDots[self.currentPage].center
-                self.selectedDot.center = newCenter
+                let newCenter = self.pageIndicators[self.currentPage].center
+                self.currentPageIndicator.center = newCenter
             }
         }
     }
-    
-    private let spacing: CGFloat = 22.0
-    private let unselectedDotDiameter: CGFloat = 6.0
-    private let selectedDotDiameter: CGFloat = 10.0
-    
-    private let unselectedDotColor: UIColor = UIColor(netHex: 0xD8D8D8)
-    private let selectedDotColor: UIColor = UIColor.AppColors.lightPink
-    
-    private lazy var unselectedDots: [UIView] = {
-        return [dotView(with: unselectedDotDiameter, backgroundColor: unselectedDotColor),
-                dotView(with: unselectedDotDiameter, backgroundColor: unselectedDotColor),
-                dotView(with: unselectedDotDiameter, backgroundColor: unselectedDotColor)]
-    }()
-    private lazy var selectedDot: UIView = {
-        return dotView(with: selectedDotDiameter, backgroundColor: selectedDotColor)
-    }()
-    
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -47,46 +40,88 @@ class PageControl: UIControl {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: private methods
+    
+    private lazy var pageIndicators: [UIView] = {
+        return [
+            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor),
+            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor),
+            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor)
+        ]
+        //        return [0..<numberOfPages].map { _ in
+        //            pageIndicator(with: indicatorDiameter, backgroundColor: pageIndicatorTintColor)
+        //        }
+    }()
+    private lazy var currentPageIndicator: UIView = {
+        return pageIndicator(with: currentIndicatorDiameter, backgroundColor: currentPageIndicatorTintColor)
+    }()
+    
+    private func pageIndicator(with diameter: CGFloat, backgroundColor: UIColor?) -> UIView {
+        let view = UIView(frame: .zero).viewForAutoLayout()
+        view.backgroundColor = backgroundColor
+        view.layer.cornerRadius = diameter / 2
+        return view
+    }
+    
     private func setupViews() {
-        (unselectedDots + [selectedDot]).forEach { addSubview($0) }
+        (pageIndicators + [currentPageIndicator]).forEach { addSubview($0) }
         
         setupLayout()
         setInitialLocation()
     }
     
     private func setInitialLocation() {
-        let firstDot = unselectedDots[0]
-        selectedDot.center = firstDot.center
+        let firstDot = pageIndicators[0]
+        currentPageIndicator.center = firstDot.center
     }
+    
+    
+    // MARK: layout
     
     private func setupLayout() {
-        let leftDot = unselectedDots[0]
-        let middleDot = unselectedDots[1]
-        let rightDot = unselectedDots[2]
+        var constraints = [NSLayoutConstraint]()
         
-        var unselectedDotsConstraints: [NSLayoutConstraint] = []
-        unselectedDots.forEach { view in
-            unselectedDotsConstraints.append(view.heightAnchor.constraint(equalToConstant: unselectedDotDiameter))
-            unselectedDotsConstraints.append(view.widthAnchor.constraint(equalToConstant: unselectedDotDiameter))
+        constraints.append(contentsOf: sizeConstraints())
+        
+        let isEvenNumber = Double(pageIndicators.count).truncatingRemainder(dividingBy: 2.0) == 0.0
+        let initialElementIndex = isEvenNumber ? (pageIndicators.count / 2) - 1 : (pageIndicators.count / 2)
+        let initialElement = pageIndicators[initialElementIndex]
+        
+        for index in 0...pageIndicators.count - 1 {
+            let view = pageIndicators[index]
+            let constraint: NSLayoutConstraint
+            
+            if (index != initialElementIndex) {
+                constraint = view.centerXAnchor.constraint(equalTo: initialElement.centerXAnchor, constant: (CGFloat(index - initialElementIndex) * spacing))
+            } else {
+                constraint = view.centerXAnchor.constraint(equalTo: centerXAnchor, constant: isEvenNumber ? -(spacing / 2) : 0.0)
+            }
+            
+            constraints.append(constraint)
         }
         
-        NSLayoutConstraint.activate([
-            middleDot.centerXAnchor.constraint(equalTo: centerXAnchor),
-            middleDot.centerYAnchor.constraint(equalTo: centerYAnchor),
-            leftDot.centerXAnchor.constraint(equalTo: middleDot.centerXAnchor, constant: -spacing),
-            leftDot.centerYAnchor.constraint(equalTo: middleDot.centerYAnchor),
-            rightDot.centerXAnchor.constraint(equalTo: middleDot.centerXAnchor, constant: spacing),
-            rightDot.centerYAnchor.constraint(equalTo: middleDot.centerYAnchor),
-            selectedDot.centerYAnchor.constraint(equalTo: rightDot.centerYAnchor),
-            selectedDot.heightAnchor.constraint(equalToConstant: selectedDotDiameter),
-            selectedDot.widthAnchor.constraint(equalToConstant: selectedDotDiameter)
-            ] + unselectedDotsConstraints)
+        (pageIndicators + [currentPageIndicator]).forEach {
+            constraints.append($0.centerYAnchor.constraint(equalTo: centerYAnchor))
+        }
+        
+        NSLayoutConstraint.activate(constraints)
     }
     
-    private func dotView(with diameter: CGFloat, backgroundColor: UIColor) -> UIView {
-        let view = UIView(frame: .zero).viewForAutoLayout()
-        view.backgroundColor = backgroundColor
-        view.layer.cornerRadius = diameter / 2
-        return view
+    private func sizeConstraints() -> [NSLayoutConstraint] {
+        var constraints = [NSLayoutConstraint]()
+        
+        constraints.append(contentsOf: constraintsWithHeightAndWidth(equalTo: currentIndicatorDiameter, for: currentPageIndicator))
+        pageIndicators.forEach { view in
+            constraints.append(contentsOf: constraintsWithHeightAndWidth(equalTo: indicatorDiameter, for: view))
+        }
+        
+        return constraints
+    }
+    
+    private func constraintsWithHeightAndWidth(equalTo constant: CGFloat, for view: UIView) -> [NSLayoutConstraint] {
+        return [
+            view.heightAnchor.constraint(equalToConstant: constant),
+            view.widthAnchor.constraint(equalTo: view.heightAnchor)
+        ]
     }
 }
