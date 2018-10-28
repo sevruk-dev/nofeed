@@ -12,7 +12,8 @@ class PageControl: UIControl {
     
     var currentPage: Int = 0 {
         didSet {
-            UIView.animate(withDuration: 0.1) {
+            UIView.animate(withDuration: 0.1) { [weak self] in
+                guard let self = self else { return }
                 let newCenter = self.unselectedDots[self.currentPage].center
                 self.selectedDot.center = newCenter
             }
