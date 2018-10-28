@@ -20,15 +20,16 @@ class OnboardingPageViewController: UIViewController {
         static let contentOffset = "contentOffset"
     }
     
-    private var onBoardingViewControllers: [UIViewController] = [] //{
-//        didSet { pageControl.numberOfPages = onBoardingViewControllers.count }
-    //}
-    
+    private var onBoardingViewControllers: [UIViewController] = [] {
+        didSet {
+            pageControl.numberOfPages = onBoardingViewControllers.count
+        }
+    }
+
     fileprivate lazy var pageControl: PageControl = {
         let pageControl = PageControl().viewForAutoLayout()
-//        pageControl.numberOfPages = onBoardingViewControllers.count
-//        pageControl.pageIndicatorTintColor = UIColor.AppColors.lightGray
-//        pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
+        pageControl.pageIndicatorTintColor = UIColor.AppColors.pageControlGray
+        pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
         return pageControl
     }()
     
