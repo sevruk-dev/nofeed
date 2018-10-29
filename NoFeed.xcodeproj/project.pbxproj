@@ -16,7 +16,6 @@
 		6E67578C215FB1F300A574F7 /* facebook.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675788215FB1F300A574F7 /* facebook.json */; };
 		6E67578D215FB39900A574F7 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
-		80143BBB217126A600783FE2 /* PageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80143BBA217126A500783FE2 /* PageControl.swift */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */; };
 		80224A0E215374D10086D2B0 /* contentBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 80224A04215374D00086D2B0 /* contentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -87,7 +86,6 @@
 		6E675788215FB1F300A574F7 /* facebook.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = facebook.json; sourceTree = "<group>"; };
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
-		80143BBA217126A500783FE2 /* PageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageControl.swift; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
 		80224A04215374D00086D2B0 /* contentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = contentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
@@ -185,7 +183,6 @@
 		802421F5213707060028F10F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				80143BBA217126A500783FE2 /* PageControl.swift */,
 				805338FB2150EEE700C30E31 /* ShadowView.swift */,
 				80D235FE2149A64300789ED0 /* CustomSwitch.swift */,
 				806ECCF22161098200B12C77 /* PopupView.swift */,
@@ -435,11 +432,13 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/InsiderPageControl/InsiderPageControl.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/InsiderPageControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,7 +515,6 @@
 				806066CA21692C5400C10A48 /* PopupDialogView.swift in Sources */,
 				80B863612156E147000AC175 /* ContainerManager.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
-				80143BBB217126A600783FE2 /* PageControl.swift in Sources */,
 				6E0517D82183649200CFA66B /* BuyPremiumView.swift in Sources */,
 				6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */,
 				6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */,
@@ -551,6 +549,7 @@
 		80224A10215374D10086D2B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7UALYYJUG6;
@@ -571,6 +570,7 @@
 		80224A11215374D10086D2B0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7UALYYJUG6;
@@ -591,6 +591,7 @@
 		80FE0977211624A8008D07D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -651,6 +652,7 @@
 		80FE0978211624A8008D07D7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -706,7 +708,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -728,7 +730,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E1E31232F26E3B7233913104 /* Pods-NoFeed.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
