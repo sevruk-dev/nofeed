@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import InsiderPageControl
 
 protocol OnboardingDelegate: class {
     func onboardingCompleted()
@@ -28,8 +29,8 @@ class OnboardingPageViewController: UIViewController {
 
     fileprivate lazy var pageControl: PageControl = {
         let pageControl = PageControl().viewForAutoLayout()
-        pageControl.pageIndicatorTintColor = UIColor.AppColors.pageControlGray
-        pageControl.currentPageIndicatorTintColor = UIColor.AppColors.lightPink
+        pageControl.indicatorTintColor = UIColor.AppColors.pageControlGray
+        pageControl.currentIndicatorTintColor = UIColor.AppColors.lightPink
         return pageControl
     }()
     
