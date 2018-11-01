@@ -39,6 +39,7 @@
 		806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */; };
 		806ECCF32161098200B12C77 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ECCF22161098200B12C77 /* PopupView.swift */; };
 		80719E572182B45B00AA18E7 /* BlockerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */; };
+		807D5CA52187903300034E6C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D5CA42187903300034E6C /* RoundButton.swift */; };
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80993E64216008D500E2D5D1 /* BlockerRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */; };
@@ -109,6 +110,7 @@
 		806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
 		806ECCF22161098200B12C77 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerTableViewCell.swift; sourceTree = "<group>"; };
+		807D5CA42187903300034E6C /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		807FA6E1212C72640040AAFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		80969614211629B5001FA40A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */,
 				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
 				6E0517D72183649200CFA66B /* BuyPremiumView.swift */,
+				807D5CA42187903300034E6C /* RoundButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -502,6 +505,7 @@
 				804EAF1B2157AFAE00ECA055 /* SharedProtocols.swift in Sources */,
 				8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */,
 				8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */,
+				807D5CA52187903300034E6C /* RoundButton.swift in Sources */,
 				8056A55121346E1F00973940 /* BlockerCellModel.swift in Sources */,
 				80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */,
 				8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */,

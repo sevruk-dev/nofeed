@@ -43,6 +43,8 @@ class OnboardingPageViewController: UIViewController {
         return button
     }()
     
+    fileprivate let doneButton: UIControl = RoundButton(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 60.0)).viewForAutoLayout()
+    
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView().viewForAutoLayout()
         scrollView.isPagingEnabled = true
@@ -70,7 +72,10 @@ class OnboardingPageViewController: UIViewController {
         view.bringSubviewToFront(pageControl)
         
         scrollView.delegate = self
-        skipButton.addTarget(self, action: #selector(onSkip), for: .touchUpInside)
+        
+        skipButton.addTarget(self, action: #selector(completeOnboarding), for: .touchUpInside)
+        doneButton.addTarget(self, action: #selector(completeOnboarding), for: .touchUpInside)
+        doneButton.alpha = 0.0
         
         setupConstraints()
     }
@@ -81,7 +86,7 @@ class OnboardingPageViewController: UIViewController {
         setupObservers()
     }
     
-    @objc private func onSkip() {
+    @objc private func completeOnboarding() {
         delegate?.onboardingCompleted()
     }
     
@@ -120,7 +125,9 @@ class OnboardingPageViewController: UIViewController {
             rightVC.view.alpha = rightControllerShown
             
             if rightControllerIndex == 2 {
+                doneButton.alpha = rightControllerShown
                 skipButton.alpha = leftControllerShown
+                pageControl.alpha = leftControllerShown
             }
         }
     }
@@ -152,6 +159,7 @@ class OnboardingPageViewController: UIViewController {
         let page1 = OnboardingViewController(with: UIImage(named: "onboarding-1"), title: "Current limitations", description: "Unfortunately limiting App’s traffic is not available in iOS, at least yet.\n We’re only available to filter content in Safari and this is what our App is about.")
         let page2 = OnboardingViewController(with: .table, dataSource: BlockerDataSource(), title: "How it works?", description: "To start blocking a feed choose one from the list, touch it and enjoy your NoFeed experience.")
         let page3 = OnboardingViewController(with: UIImage(named: "onboarding-2"), title: "One more thing…", description: "We’re welcome to present you with a\n3-day Premium experience. Enjoy it!")
+        page3.view.addSubview(doneButton)
         onBoardingViewControllers = [page1, page2, page3]
         onBoardingViewControllers.forEach { addToHierarchy($0) }
         
@@ -160,7 +168,14 @@ class OnboardingPageViewController: UIViewController {
         let verticalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "V:|[page1(==view)]|", options: [], metrics: nil, views: views)
         let horizontalConstraints = NSLayoutConstraint.constraints(withVisualFormat: "H:|[page1(==view)][page2(==view)][page3(==view)]|", options: [.alignAllTop, .alignAllBottom], metrics: nil, views: views)
         
-        NSLayoutConstraint.activate(verticalConstraints + horizontalConstraints)
+        let doneButtonConstraints = [
+            doneButton.bottomAnchor.constraint(equalTo: page3.view.bottomAnchor, constant: -32.0),
+            doneButton.centerXAnchor.constraint(equalTo: page3.view.centerXAnchor),
+            doneButton.heightAnchor.constraint(equalToConstant: 60.0),
+            doneButton.widthAnchor.constraint(equalTo: doneButton.heightAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(verticalConstraints + horizontalConstraints + doneButtonConstraints)
     }
     
     private func addToHierarchy(_ viewController: UIViewController) {
