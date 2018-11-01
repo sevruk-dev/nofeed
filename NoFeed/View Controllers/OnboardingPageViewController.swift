@@ -101,7 +101,6 @@ class OnboardingPageViewController: UIViewController {
             guard let scrollView = object as? UIScrollView else { return }
             let controllersCount = onBoardingViewControllers.count
             let controllerWidth = scrollView.contentSize.width / CGFloat(controllersCount)
-            print("[vova]: currentOffset x:\(scrollView.contentOffset.x)")
             
             guard scrollView.contentOffset.x > 0.0 && scrollView.contentOffset.x < CGFloat(controllersCount - 1) * controllerWidth else {
                 return
@@ -112,12 +111,6 @@ class OnboardingPageViewController: UIViewController {
             let rightControllerShown = 1 - leftControllerShown
             let leftControllerIndex = Int(scrollView.contentOffset.x / controllerWidth)
             let rightControllerIndex = leftControllerIndex + 1
-            
-            print("[vova]: relativeOffset :\(relativeOffset)")
-            print("[vova]: leftControllerIndex: \(leftControllerIndex)")
-            print("[vova]: rightControllerIndex: \(rightControllerIndex)")
-            print("[vova]: leftControllerShown: \(leftControllerShown)")
-            print("[vova]: rightOne: \(rightControllerShown)\n\n")
             
             let leftVC = onBoardingViewControllers[leftControllerIndex]
             let rightVC = onBoardingViewControllers[rightControllerIndex]
