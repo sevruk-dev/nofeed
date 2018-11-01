@@ -10,7 +10,7 @@ import UIKit
 
 class RoundButton: UIControl {
     
-    private let height: CGFloat = 25.0
+    private let imageHeight: CGFloat = 25.0
     
     private let imageView: UIImageView = {
         let imageView = UIImageView().viewForAutoLayout()
@@ -22,6 +22,7 @@ class RoundButton: UIControl {
         super.init(frame: frame)
         layer.cornerRadius = frame.width / 2
         backgroundColor = UIColor.AppColors.lightPink
+        
         addSubview(imageView)
         
         setupConstraints()
@@ -35,7 +36,7 @@ class RoundButton: UIControl {
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-            imageView.heightAnchor.constraint(equalToConstant: height),
+            imageView.heightAnchor.constraint(equalToConstant: imageHeight),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
     }
