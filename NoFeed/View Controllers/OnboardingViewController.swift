@@ -107,7 +107,7 @@ class OnboardingViewController: UIViewController {
             NSLayoutConstraint.activate([
                 imageView.leftAnchor.constraint(equalTo: view.leftAnchor),
                 imageView.rightAnchor.constraint(equalTo: view.rightAnchor),
-                imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100.0)
+                imageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 95.0)
                 ])
         } else {
             guard let rowsCount = tableDataSource?.numberOfItems() else { return }
