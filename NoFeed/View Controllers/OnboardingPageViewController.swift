@@ -43,7 +43,7 @@ class OnboardingPageViewController: UIViewController {
         return button
     }()
     
-    fileprivate let doneButton: UIControl = RoundButton(frame: CGRect(x: 0.0, y: 0.0, width: 60.0, height: 60.0)).viewForAutoLayout()
+    fileprivate let doneButton: UIControl = RoundButton().viewForAutoLayout()
     
     private var scrollView: UIScrollView = {
         let scrollView = UIScrollView().viewForAutoLayout()

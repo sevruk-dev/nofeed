@@ -20,7 +20,6 @@ class RoundButton: UIControl {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        layer.cornerRadius = frame.width / 2
         backgroundColor = UIColor.AppColors.lightPink
         
         addSubview(imageView)
@@ -39,6 +38,15 @@ class RoundButton: UIControl {
             imageView.heightAnchor.constraint(equalToConstant: imageHeight),
             imageView.widthAnchor.constraint(equalTo: imageView.heightAnchor)
             ])
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        let cornerRadius = frame.width / 2
+        if layer.cornerRadius != cornerRadius {
+            layer.cornerRadius = cornerRadius
+        }
     }
     
 }
