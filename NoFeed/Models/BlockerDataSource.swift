@@ -20,6 +20,13 @@ protocol BlockerDataProvider {
     
 }
 
+protocol OnboardingTableDataProvider {
+    
+    func model(at indexPath: IndexPath) -> BlockerCellDataProvider
+    func numberOfItems() -> Int
+    
+}
+
 class BlockerDataSource: BlockerDataProvider {
     
     private lazy var models: [[BlockerCellDataProvider]] = {
@@ -52,6 +59,14 @@ class BlockerDataSource: BlockerDataProvider {
     
     var numberOfSections: Int {
         return models.count
+    }
+    
+}
+
+extension BlockerDataSource: OnboardingTableDataProvider {
+    
+    func numberOfItems() -> Int {
+        return 2
     }
     
 }

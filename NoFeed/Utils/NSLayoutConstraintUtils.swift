@@ -19,4 +19,11 @@ extension UIView {
         ]
     }
     
+    private func constraintsWithHeightAndWidth(equalTo constant: CGFloat) -> [NSLayoutConstraint] {
+        return [
+            self.heightAnchor.constraint(equalToConstant: constant),
+            self.widthAnchor.constraint(equalTo: self.heightAnchor)
+        ]
+    }
+    
 }

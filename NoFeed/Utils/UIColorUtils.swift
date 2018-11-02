@@ -12,6 +12,7 @@ extension UIColor {
     
     struct AppColors {
         static let lightPink = UIColor(netHex: 0xFF3482)
+        static let pageControlGray = UIColor(netHex: 0xD8D8D8)
         static let lightGray = UIColor(netHex: 0xE6E6E6)
         static let spaceGray = UIColor(netHex: 0x525050)
         static let darkGray = UIColor(netHex: 0x343434)
