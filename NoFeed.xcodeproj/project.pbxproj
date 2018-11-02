@@ -34,6 +34,7 @@
 		8059EC85212D440B004B40D1 /* AppNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC84212D440B004B40D1 /* AppNavigator.swift */; };
 		8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC86212D467E004B40D1 /* AppCoordinator.swift */; };
 		8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */; };
+		805DB03E218B756100B1A772 /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805DB03D218B756100B1A772 /* OnboardingDataSource.swift */; };
 		806066CA21692C5400C10A48 /* PopupDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806066C921692C5400C10A48 /* PopupDialogView.swift */; };
 		806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806066CB21692F9F00C10A48 /* UIViewUtils.swift */; };
 		806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */; };
@@ -105,6 +106,7 @@
 		8059EC84212D440B004B40D1 /* AppNavigator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppNavigator.swift; sourceTree = "<group>"; };
 		8059EC86212D467E004B40D1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariSetupViewController.swift; sourceTree = "<group>"; };
+		805DB03D218B756100B1A772 /* OnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
 		806066C921692C5400C10A48 /* PopupDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDialogView.swift; sourceTree = "<group>"; };
 		806066CB21692F9F00C10A48 /* UIViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtils.swift; sourceTree = "<group>"; };
 		806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		8056A55221346E3D00973940 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				805DB03D218B756100B1A772 /* OnboardingDataSource.swift */,
 				8056A54E213468C000973940 /* BlockerDataSource.swift */,
 				8056A55021346E1F00973940 /* BlockerCellModel.swift */,
 			);
@@ -523,6 +526,7 @@
 				6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */,
 				6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */,
 				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
+				805DB03E218B756100B1A772 /* OnboardingDataSource.swift in Sources */,
 				806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */,
 				8056A54B21345C1700973940 /* BlockerViewController.swift in Sources */,
 			);

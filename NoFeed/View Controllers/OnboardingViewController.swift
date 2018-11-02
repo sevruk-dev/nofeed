@@ -68,6 +68,7 @@ class OnboardingViewController: UIViewController {
         self.type = type
         self.tableDataSource = dataSource
         super.init(nibName: nil, bundle: nil)
+        
         titleLabel.text = title
         descriptionLabel.text = description
     }
@@ -135,12 +136,12 @@ extension OnboardingViewController: UITableViewDataSource {
             return cell
         }
         blockerCell.dataSource = tableDataSource?.model(at: indexPath)
-        toggleToggleIfNeeded(for: blockerCell, at: indexPath)
+        toggleSwitchIfNeeded(for: blockerCell, at: indexPath)
         
         return cell
     }
     
-    private func toggleToggleIfNeeded(for cell: BlockerTableViewCell, at indexPath: IndexPath) {
+    private func toggleSwitchIfNeeded(for cell: BlockerTableViewCell, at indexPath: IndexPath) {
         if indexPath.row == 1 {
             cell.selected()
         }

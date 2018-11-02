@@ -36,7 +36,7 @@ class AppNavigator: Navigator {
             case .safariSetup:
                 return SafariSetupViewController()
             case .onBoarding:
-                return OnboardingPageViewController()
+                return OnboardingPageViewController(with: OnboardingDataSource())
             case .main:
                 return BlockerViewController(with: BlockerDataSource())
         }
