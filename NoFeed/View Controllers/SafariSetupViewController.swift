@@ -14,10 +14,17 @@ class SafariSetupViewController: UIViewController {
     private struct Constansts {
         static let descriptionTopOffset: CGFloat = 155.0
         static let descriptionWidth: CGFloat = 230.0
-        static let playerHeight: CGFloat = 248.0
-        static let playerWidth: CGFloat = 240.0
         static let playerTopOffset: CGFloat = 265.0
     }
+    
+    private lazy var playerViewController: AVPlayerViewController = {
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = self.player
+        if #available(iOS 11.0, *) {
+            playerViewController.exitsFullScreenWhenPlaybackEnds = true
+        }
+        return playerViewController
+    }()
     
     private let playerItem: AVPlayerItem? = {
         guard let path = Bundle.main.path(forResource: "instructions", ofType: "mp4") else { return nil }
@@ -30,15 +37,18 @@ class SafariSetupViewController: UIViewController {
         return player
     }()
     
-    private lazy var playerLayer: AVPlayerLayer = {
-        let playerLayer = AVPlayerLayer(player: self.player)
-        playerLayer.videoGravity = .resizeAspectFill
-        return playerLayer
+    private let playImageView: UIImageView = UIImageView().viewForAutoLayout()
+    
+    private let placeholderImageView: UIImageView = {
+        let imageView = UIImageView().viewForAutoLayout()
+        imageView.isUserInteractionEnabled = true
+        return imageView
     }()
     
-    private lazy var playerView: UIView = {
+    private let blurView: UIView = {
         let view = UIView().viewForAutoLayout()
-        view.layer.insertSublayer(self.playerLayer, at: 0)
+        view.backgroundColor = UIColor(netHex: 0xDCDCDC)
+        view.alpha = 0.4
         return view
     }()
     
@@ -53,21 +63,31 @@ class SafariSetupViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
-        playerView.backgroundColor = .white
+        playImageView.image = UIImage(named: "play")
+        placeholderImageView.image = UIImage(named: "safari-placeholder")
         descriptionLabel.text = "To start please follow our instruction:"
         
-        playerLayer.frame = CGRect(x: 0, y: 0, width: Constansts.playerWidth, height: Constansts.playerHeight)
-        
-        view.addSubview(playerView)
+        placeholderImageView.addSubview(blurView)
+        placeholderImageView.addSubview(playImageView)
+        view.addSubview(placeholderImageView)
         view.addSubview(descriptionLabel)
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onPlay))
+        blurView.addGestureRecognizer(gestureRecognizer)
         
         setupConstraints()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        player.play()
+    @objc func onPlay() {
+        if player.currentTime() != CMTime.zero {
+            player.seek(to: CMTime.zero)
+        }
+        
+        present(playerViewController, animated: true) { [weak self] in
+            self?.player.play()
+        }
     }
     
     private func setupConstraints() {
@@ -75,11 +95,12 @@ class SafariSetupViewController: UIViewController {
             descriptionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Constansts.descriptionTopOffset),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionLabel.widthAnchor.constraint(equalToConstant: Constansts.descriptionWidth),
-            playerView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playerView.heightAnchor.constraint(equalToConstant: Constansts.playerHeight),
-            playerView.widthAnchor.constraint(equalToConstant: Constansts.playerWidth),
-            playerView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constansts.playerTopOffset)
-            ])
+            placeholderImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            placeholderImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constansts.playerTopOffset),
+            playImageView.centerXAnchor.constraint(equalTo: placeholderImageView.centerXAnchor),
+            playImageView.centerYAnchor.constraint(equalTo: placeholderImageView.centerYAnchor)
+            ] + blurView.constraintsWithAnchorsEqual(to: placeholderImageView)
+        )
     }
 
 }
