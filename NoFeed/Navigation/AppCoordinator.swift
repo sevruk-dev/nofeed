@@ -6,6 +6,8 @@
 //  Copyright © 2018 Vova Seuruk. All rights reserved.
 //
 
+import SafariServices
+
 class AppCoordinator {
     
     private let appNavigator: AppNavigator
@@ -15,7 +17,12 @@ class AppCoordinator {
     }
     
     func coordinate() {
-        appNavigator.navigate(to: .safariSetup)
+        SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: "com.svg.NoFeed.contentBlocker") { [weak self] (state, error) in
+            DispatchQueue.main.async {
+                let destination: AppNavigator.Destination = state?.isEnabled == true ? .onBoarding : .safariSetup
+                self?.appNavigator.navigate(to: destination)
+            }
+        }
     }
     
 }

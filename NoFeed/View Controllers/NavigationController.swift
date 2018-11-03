@@ -12,6 +12,7 @@ class NavigationController: UINavigationController {
     
     init() {
         super.init(nibName: nil, bundle: nil)
+        view.backgroundColor = .white
         
         updateBackgroundColor()
         addShadow()
