@@ -44,6 +44,7 @@
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
 		80969615211629B5001FA40A /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80969614211629B5001FA40A /* NetworkExtension.framework */; };
 		80993E64216008D500E2D5D1 /* BlockerRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */; };
+		80B3ABF6218D95BF007EB821 /* instructions.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 80B3ABF5218D95BF007EB821 /* instructions.mp4 */; };
 		80B863612156E147000AC175 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
@@ -117,6 +118,7 @@
 		80969614211629B5001FA40A /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		80969616211629B5001FA40A /* NoFeed.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NoFeed.entitlements; sourceTree = "<group>"; };
 		80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerRulesProvider.swift; sourceTree = "<group>"; };
+		80B3ABF5218D95BF007EB821 /* instructions.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = instructions.mp4; sourceTree = "<group>"; };
 		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/Shared/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
 		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -203,6 +205,7 @@
 		802421F621370A600028F10F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				80B3ABF5218D95BF007EB821 /* instructions.mp4 */,
 				802421F721370A720028F10F /* AvenirNext-DemiBold.ttf */,
 				802421F821370A720028F10F /* AvenirNext-Medium.ttf */,
 				802421F921370A720028F10F /* AvenirNext-Regular.ttf */,
@@ -422,6 +425,7 @@
 				802421FA21370A720028F10F /* AvenirNext-DemiBold.ttf in Resources */,
 				80FE0975211624A8008D07D7 /* LaunchScreen.storyboard in Resources */,
 				807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */,
+				80B3ABF6218D95BF007EB821 /* instructions.mp4 in Resources */,
 				80FE0972211624A8008D07D7 /* Assets.xcassets in Resources */,
 				802421FC21370A720028F10F /* AvenirNext-Regular.ttf in Resources */,
 			);
@@ -720,6 +724,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 7UALYYJUG6;
 				INFOPLIST_FILE = "$(SRCROOT)/NoFeed/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
