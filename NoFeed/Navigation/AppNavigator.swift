@@ -23,20 +23,25 @@ class AppNavigator: Navigator {
     }
     
     func navigate(to destination: Destination) {
+        defer {
+            styleNavigationBar(for: destination)
+        }
+        
+        //TODO: create enum view types of controllers
         let viewController = createViewController(for: destination)
         
-        if navigationController.topViewController?.isKind(of: viewController.classForCoder) == true {
+        if let controller = navigationController.viewControllers.first(where: { $0.isKind(of: viewController.classForCoder) }) {
+            navigationController.popToViewController(controller, animated: true)
             return
         }
         
-        styleNavigationBar(for: destination)
         setup(viewController)
         
         navigationController.pushViewController(viewController, animated: true)
     }
     
     private func createViewController(for desination: Destination) -> UIViewController {
-        // TODO: insert factory here
+        //TODO: insert factory here
         switch desination {
             case .safariSetup:
                 return SafariSetupViewController()
