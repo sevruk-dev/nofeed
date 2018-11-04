@@ -34,6 +34,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        appCoordinator?.coordinate()()
+    }
+    
     func applicationDidEnterBackground(_ application: UIApplication) {
         reloadContentBlocker()
     }

@@ -18,12 +18,17 @@ class AppNavigator: Navigator {
     
     enum Destination {
         case safariSetup
-        case onBoarding
+        case onboarding
         case main
     }
     
     func navigate(to destination: Destination) {
         let viewController = createViewController(for: destination)
+        
+        if navigationController.topViewController?.isKind(of: viewController.classForCoder) == true {
+            return
+        }
+        
         styleNavigationBar(for: destination)
         setup(viewController)
         
@@ -35,7 +40,7 @@ class AppNavigator: Navigator {
         switch desination {
             case .safariSetup:
                 return SafariSetupViewController()
-            case .onBoarding:
+            case .onboarding:
                 return OnboardingPageViewController(with: OnboardingDataSource())
             case .main:
                 return BlockerViewController(with: BlockerDataSource())
@@ -45,7 +50,7 @@ class AppNavigator: Navigator {
     private func styleNavigationBar(for destination: Destination) {
         let navigationBarHidden = { () -> Bool in
             switch destination {
-                case .safariSetup, .onBoarding:
+                case .safariSetup, .onboarding:
                     return true
                 default:
                     return false
@@ -64,6 +69,7 @@ class AppNavigator: Navigator {
 extension AppNavigator: OnboardingDelegate {
     
     func onboardingCompleted() {
+        Configuration.shared.setOnboardingCompleted(true)
         navigate(to: .main)
     }
     

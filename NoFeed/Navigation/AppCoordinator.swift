@@ -11,6 +11,7 @@ import SafariServices
 class AppCoordinator {
     
     private let appNavigator: AppNavigator
+    private let configuration = Configuration.shared
     
     init(with appNavigator: AppNavigator) {
         self.appNavigator = appNavigator
@@ -19,8 +20,18 @@ class AppCoordinator {
     func coordinate() {
         SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: "com.svg.NoFeed.contentBlocker") { [weak self] (state, error) in
             DispatchQueue.main.async {
-                let destination: AppNavigator.Destination = state?.isEnabled == true ? .onBoarding : .safariSetup
-                self?.appNavigator.navigate(to: destination)
+                guard let self = self else { return }
+                
+                let onboardingCompleted = self.configuration.onboardingCompleted
+                let destination: AppNavigator.Destination
+                
+                if let state = state, state.isEnabled {
+                    destination = onboardingCompleted ? .main : .onboarding
+                } else {
+                    destination = .safariSetup
+                }
+                
+                self.appNavigator.navigate(to: destination)
             }
         }
     }
