@@ -14,8 +14,8 @@ class PopupDialogView: UIView {
     private let purchaseBlock: (() -> ())?
     private let restoreBlock: (() -> ())?
     
-    private let stackViewToWidthRatio: CGFloat = 0.796875
-    private let topPadding: CGFloat = 20.0
+    private let stackViewWidth: CGFloat = 226.0
+    private let topPadding: CGFloat = 25.0
     private let buttonHeight: CGFloat = 40.0
     private let defaultSpacing: CGFloat = 10.0
     
@@ -104,7 +104,7 @@ class PopupDialogView: UIView {
             stackView.topAnchor.constraint(equalTo: topAnchor, constant: topPadding),
             stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topPadding),
             stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: stackViewToWidthRatio),
+            stackView.widthAnchor.constraint(equalToConstant: stackViewWidth),
             mainActionButton.heightAnchor.constraint(equalToConstant: buttonHeight)
             ])
     }
@@ -125,14 +125,14 @@ class PopupDialogView: UIView {
         if type == .buyPremium {
             return "Buy Premium"
         }
-        return "Basic version limitations"
+        return "Version limitations"
     }
     
     private func descriptionText(for type: PopupType) -> String {
         if type == .buyPremium {
-            return "With Premium you can lock all your social feeds at a time and encourage our team to build even better products for you."
+            return "With Premium you can lock all your social feeds at a time."
         }
-        return "With basic version you are only able to block 1 feed at a time.\n Blocking multiple feeds is available for Premium users."
+        return "With basic version you are only able to block 1 feed at a time."
     }
     
     private func buttonTitle(for type: PopupType) -> String {

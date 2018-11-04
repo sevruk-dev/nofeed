@@ -16,13 +16,13 @@ typealias optionalBlock = (() -> ())?
 
 class PopupView: UIView {
     
-    private let dialogViewWidth: CGFloat = 320.0
+    private let dialogViewWidth: CGFloat = 270.0
     private let hintLabelPadding: CGFloat = 70.0
     
     var isVisible: Bool {
         didSet {
             alpha = isVisible ? 1.0 : 0.0
-            fadeView.alpha = isVisible ? 0.9 : 0.0
+            fadeView.alpha = isVisible ? 0.92 : 0.0
         }
     }
     
@@ -38,7 +38,7 @@ class PopupView: UIView {
     
     private lazy var fadeView: UIView = {
         let view = UIView().viewForAutoLayout()
-        view.backgroundColor = UIColor(netHex: 0x393837)
+        view.backgroundColor = UIColor(netHex: 0x1E1D1D)
         return view
     }()
     
