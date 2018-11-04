@@ -18,24 +18,34 @@ class AppNavigator: Navigator {
     
     enum Destination {
         case safariSetup
-        case onBoarding
+        case onboarding
         case main
     }
     
     func navigate(to destination: Destination) {
+        defer {
+            styleNavigationBar(for: destination)
+        }
+        
+        //TODO: create enum view types of controllers
         let viewController = createViewController(for: destination)
-        styleNavigationBar(for: destination)
+        
+        if let controller = navigationController.viewControllers.first(where: { $0.isKind(of: viewController.classForCoder) }) {
+            navigationController.popToViewController(controller, animated: true)
+            return
+        }
+        
         setup(viewController)
         
         navigationController.pushViewController(viewController, animated: true)
     }
     
     private func createViewController(for desination: Destination) -> UIViewController {
-        // TODO: insert factory here
+        //TODO: insert factory here
         switch desination {
             case .safariSetup:
                 return SafariSetupViewController()
-            case .onBoarding:
+            case .onboarding:
                 return OnboardingPageViewController(with: OnboardingDataSource())
             case .main:
                 return BlockerViewController(with: BlockerDataSource())
@@ -45,7 +55,7 @@ class AppNavigator: Navigator {
     private func styleNavigationBar(for destination: Destination) {
         let navigationBarHidden = { () -> Bool in
             switch destination {
-                case .safariSetup, .onBoarding:
+                case .safariSetup, .onboarding:
                     return true
                 default:
                     return false
@@ -64,6 +74,7 @@ class AppNavigator: Navigator {
 extension AppNavigator: OnboardingDelegate {
     
     func onboardingCompleted() {
+        Configuration.shared.setOnboardingCompleted(true)
         navigate(to: .main)
     }
     
