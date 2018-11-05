@@ -8,69 +8,71 @@
 
 import UIKit
 
+protocol PopupDialogDelegate: class {
+    func dialogViewDidPressCancel()
+    func dialogViewDidPressBecomePremium()
+    func dialogViewDidPressPurchase()
+    func dialogViewDidPressRestorePurchase()
+}
+
 class PopupDialogView: UIView {
     
-    private let type: PopupType
-    private let purchaseBlock: (() -> ())?
-    private let restoreBlock: (() -> ())?
+    weak var delegate: PopupDialogDelegate?
     
-    private let stackViewToWidthRatio: CGFloat = 0.796875
-    private let topPadding: CGFloat = 20.0
-    private let buttonHeight: CGFloat = 40.0
-    private let defaultSpacing: CGFloat = 10.0
+    private let type: PopupType
+    
+    private struct Constants {
+        static let textWidth: CGFloat = 226.0
+        static let topPadding: CGFloat = 25.0
+        static let buttonHeight: CGFloat = 55.0
+        static let descriptionTopOffset: CGFloat = 3.0
+    }
     
     private lazy var titleLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.text = headerText(for: self.type)
+        label.textColor = UIColor.AppColors.darkGray
         label.font = UIFont.avenirNextDemiBold(of: 19.5)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
-    private lazy var textLabel: UILabel = {
+    private lazy var descriptionLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
         label.textAlignment = .center
         label.numberOfLines = 0
         label.font = UIFont.avenirNextRegular(of: 15.5)
         label.text = descriptionText(for: self.type)
-        label.textColor = UIColor.AppColors.spaceGray
+        label.textColor = UIColor(netHex: 0x8B8B8B)
         label.setContentHuggingPriority(.required, for: .vertical)
         label.setContentCompressionResistancePriority(.required, for: .vertical)
         return label
     }()
     
-    lazy var mainActionButton: PopupButtonWithBackground = {
-        let button = PopupButtonWithBackground().viewForAutoLayout()
-        button.title.text = buttonTitle(for: self.type)
+    lazy var mainActionButton: PopupButton = {
+        let button = PopupButton().viewForAutoLayout()
+        button.title.text = mainButtonTitle(with: self.type)
+        button.title.textColor = UIColor.AppColors.blue
         button.addTarget(self, action: #selector(onMainButton), for: .touchUpInside)
-        button.backgroundColor = buttonBackgroundColor(for: self.type)
+        setupStyle(for: button.title, with: self.type)
         return button
     }()
     
-    private lazy var secondaryActionButton: PopupButtonWithoutBackground = {
-        let button = PopupButtonWithoutBackground().viewForAutoLayout()
+    private lazy var secondaryActionButton: PopupButton = {
+        let button = PopupButton().viewForAutoLayout()
+        button.title.text = secondaryButtonTitle(with: self.type)
         button.addTarget(self, action: #selector(onSecondaryButton), for: .touchUpInside)
-        button.title.text = "Restore Purchase"
+        setupSecondaryStyle(for: button.title, with: self.type)
         return button
     }()
     
-    private lazy var stackView: UIStackView = {
-        let stackView = UIStackView().viewForAutoLayout()
-        stackView.axis = .vertical
-        stackView.distribution = .fillProportionally
-        stackView.spacing = defaultSpacing
-        return stackView
-    }()
-    
-    init(with type: PopupType, purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
+    init(with type: PopupType) {
         self.type = type
-        self.purchaseBlock = purchaseBlock
-        self.restoreBlock = restoreBlock
         super.init(frame: .zero)
         
-        layer.cornerRadius = 10.0
+        layer.cornerRadius = 20.0
         backgroundColor = .white
         
         setupView()
@@ -81,42 +83,48 @@ class PopupDialogView: UIView {
     }
     
     private func setupView() {
-        addSubview(stackView)
-        
-        stackView.addArrangedSubview(titleLabel)
-        stackView.addArrangedSubview(textLabel)
-        stackView.addArrangedSubview(PopupSeparatorView())
-        stackView.addArrangedSubview(mainActionButton)
-        
-        if type == .buyPremium {
-            if #available(iOS 11.0, *) {
-                stackView.setCustomSpacing(15.0, after: mainActionButton)
-            }
-            
-            stackView.addArrangedSubview(secondaryActionButton)
-        }
+        addSubview(titleLabel)
+        addSubview(descriptionLabel)
+        addSubview(mainActionButton)
+        addSubview(secondaryActionButton)
         
         configureConstraints()
     }
     
     private func configureConstraints() {
         NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: topPadding),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -topPadding),
-            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            stackView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: stackViewToWidthRatio),
-            mainActionButton.heightAnchor.constraint(equalToConstant: buttonHeight)
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: Constants.topPadding),
+            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.descriptionTopOffset),
+            descriptionLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            descriptionLabel.widthAnchor.constraint(equalToConstant: Constants.textWidth),
+            secondaryActionButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            secondaryActionButton.widthAnchor.constraint(equalTo: widthAnchor),
+            secondaryActionButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            secondaryActionButton.bottomAnchor.constraint(equalTo: bottomAnchor),
+            mainActionButton.heightAnchor.constraint(equalToConstant: Constants.buttonHeight),
+            mainActionButton.widthAnchor.constraint(equalTo: widthAnchor),
+            mainActionButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+            mainActionButton.bottomAnchor.constraint(equalTo: secondaryActionButton.topAnchor)
             ])
     }
     
     //MARK: button targets
     
     @objc private func onMainButton() {
-        purchaseBlock?()
+        if type == .versionLimits {
+            delegate?.dialogViewDidPressBecomePremium()
+        } else {
+            delegate?.dialogViewDidPressPurchase()
+        }
     }
     
     @objc private func onSecondaryButton() {
-        restoreBlock?()
+        if type == .versionLimits {
+            delegate?.dialogViewDidPressCancel()
+        } else {
+            delegate?.dialogViewDidPressRestorePurchase()
+        }
     }
     
     //MARK: content data
@@ -125,45 +133,49 @@ class PopupDialogView: UIView {
         if type == .buyPremium {
             return "Buy Premium"
         }
-        return "Basic version limitations"
+        return "Version limitations"
     }
     
     private func descriptionText(for type: PopupType) -> String {
         if type == .buyPremium {
-            return "With Premium you can lock all your social feeds at a time and encourage our team to build even better products for you."
+            return "With Premium you can lock all your social feeds at a time."
         }
-        return "With basic version you are only able to block 1 feed at a time.\n Blocking multiple feeds is available for Premium users."
+        return "With basic version you are only able to block 1 feed at a time."
     }
     
-    private func buttonTitle(for type: PopupType) -> String {
+    private func mainButtonTitle(with type: PopupType) -> String {
         if type == .buyPremium {
             return "Premium for 1.99$"
         }
         return "Become a Premium"
     }
     
-    private func buttonBackgroundColor(for type: PopupType) -> UIColor {
+    private func secondaryButtonTitle(with type: PopupType) -> String {
         if type == .buyPremium {
-            return UIColor.AppColors.blue
+            return "Restore Purchase"
         }
-        return UIColor.AppColors.lightGreen
+        return "Cancel"
     }
     
-}
-
-class PopupSeparatorView: UIView {
+    //MARK: UI-elements styling
     
-    init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 1))
+    private func setupStyle(for label: UILabel, with type: PopupType) {
+        label.font = self.type == .versionLimits ? UIFont.avenirNextDemiBold(of: 18.0) : UIFont.avenirNextMedium(of: 18.0)
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    private func setupSecondaryStyle(for label: UILabel, with type: PopupType) {
+        label.textColor = type == .versionLimits ? UIColor.init(netHex: 0xFF666C) : UIColor.AppColors.blue
+        label.font = type == .versionLimits ? UIFont.avenirNextDemiBold(of: 18.0) : UIFont.avenirNextRegular(of: 18.0)
     }
-    
 }
 
 class PopupButton: UIButton {
+    
+    fileprivate let separator: UIView = {
+        let view = UIView().viewForAutoLayout()
+        view.backgroundColor = UIColor(netHex: 0xCCCBCB)
+        return view
+    }()
     
     fileprivate lazy var title: UILabel = {
         let title = UILabel().viewForAutoLayout()
@@ -174,6 +186,7 @@ class PopupButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        addSubview(separator)
         addSubview(title)
         setupConstraints()
     }
@@ -184,35 +197,11 @@ class PopupButton: UIButton {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
+            separator.topAnchor.constraint(equalTo: topAnchor),
+            separator.heightAnchor.constraint(equalToConstant: 1.0),
+            separator.widthAnchor.constraint(equalTo: widthAnchor),
             title.centerXAnchor.constraint(equalTo: centerXAnchor),
             title.centerYAnchor.constraint(equalTo: centerYAnchor)
             ])
-    }
-}
-
-class PopupButtonWithoutBackground: PopupButton {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        title.textColor = UIColor.AppColors.blue
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-}
-
-class PopupButtonWithBackground: PopupButton {
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        title.textColor = .white
-        layer.cornerRadius = 5.0
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

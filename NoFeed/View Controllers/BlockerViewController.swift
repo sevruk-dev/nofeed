@@ -55,6 +55,7 @@ class BlockerViewController: UIViewController {
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         title = "NoFeed"
+        buyPremiumView.button.addTarget(self, action: #selector(presentBuyPremiumView), for: .touchUpInside)
         
         view.addSubview(tableView)
         view.addSubview(buyPremiumView)
@@ -97,13 +98,15 @@ class BlockerViewController: UIViewController {
     
     // MARK: popupPresentstion
     
-    fileprivate func presentBuyPremiumView() {
+    @objc fileprivate func presentBuyPremiumView() {
         guard let navigationView = navigationController?.view else { return }
         
-        let popupView = PopupView(with: .buyPremium, purchaseBlock: {
+        let popupView = PopupView(purchaseCompletion: {
             // purchase logic
-        }, restoreBlock: {
+        }, restoreCompletion: {
             // restore purchase logic
+        }, closeCompletion: { [weak self] in
+            self?.hidePopup()
             }).viewForAutoLayout()
         currentPopupView = popupView
         
@@ -115,10 +118,14 @@ class BlockerViewController: UIViewController {
         }
     }
     
-    private func presentLimitationsView() {
+    @objc private func presentLimitationsView() {
         guard let navigationView = navigationController?.view else { return }
         
-        let popupView = PopupView(becomePremiumCompletion: nil).viewForAutoLayout()
+        let popupView = PopupView(becomePremiumCompletion: {
+            //become premium
+        }, closeCompletion: { [weak self] in
+            self?.hidePopup()
+            }).viewForAutoLayout()
         currentPopupView = popupView
         
         navigationController?.view.addSubview(popupView)
@@ -130,9 +137,12 @@ class BlockerViewController: UIViewController {
     }
     
     private func hidePopup() {
-        currentPopupView?.isVisible = false
-        currentPopupView?.removeFromSuperview()
-        currentPopupView = nil
+        UIView.animate(withDuration: 0.3, animations: { [weak self] in
+            self?.currentPopupView?.isVisible = false
+        }) { [weak self] _ in
+            self?.currentPopupView?.removeFromSuperview()
+            self?.currentPopupView = nil
+        }
     }
 }
 
