@@ -12,12 +12,18 @@ enum PopupType {
     case buyPremium, versionLimits
 }
 
-typealias optionalBlock = (() -> ())?
+typealias OptionalBlock = (() -> ())?
 
 class PopupView: UIView {
     
     private let dialogViewWidth: CGFloat = 270.0
+    private let dialogViewHeight: CGFloat = 235.0
     private let hintLabelPadding: CGFloat = 70.0
+    
+    private let closeCompletion: OptionalBlock
+    private let restoreCompletion: OptionalBlock
+    private let becomePremiumCompletion: OptionalBlock
+    private let purchaseCompletion: OptionalBlock
     
     var isVisible: Bool {
         didSet {
@@ -25,6 +31,8 @@ class PopupView: UIView {
             fadeView.alpha = isVisible ? 0.92 : 0.0
         }
     }
+    
+    private let dialogView: PopupDialogView
     
     private lazy var hintLabel: UILabel = {
         let label = UILabel().viewForAutoLayout()
@@ -42,36 +50,39 @@ class PopupView: UIView {
         return view
     }()
     
-    private let dialogView: PopupDialogView
-    
-    convenience init(becomePremiumCompletion: optionalBlock) {
-        self.init(with: .versionLimits, purchaseBlock: becomePremiumCompletion)
+    convenience init(becomePremiumCompletion: OptionalBlock, closeCompletion: OptionalBlock) {
+        self.init(with: .versionLimits, purchaseBlock: becomePremiumCompletion, closeBlock: closeCompletion)
     }
     
-    convenience init(purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
-        self.init(with: .buyPremium, purchaseBlock: purchaseBlock, restoreBlock: restoreBlock)
+    convenience init(purchaseCompletion: OptionalBlock = nil, restoreCompletion: OptionalBlock = nil, closeCompletion: OptionalBlock = nil) {
+        self.init(with: .buyPremium, purchaseBlock: purchaseCompletion, restoreBlock: restoreCompletion, closeBlock: closeCompletion)
     }
     
-    init(with type: PopupType, purchaseBlock: optionalBlock = nil, restoreBlock: optionalBlock = nil) {
+    private init(with type: PopupType, purchaseBlock: OptionalBlock = nil, restoreBlock: OptionalBlock = nil,
+                 becomePremiumBlock: OptionalBlock = nil, closeBlock: OptionalBlock = nil) {
         isVisible = false
-        dialogView = PopupDialogView(with: type, purchaseBlock: purchaseBlock, restoreBlock: restoreBlock).viewForAutoLayout()
+        dialogView = PopupDialogView(with: type).viewForAutoLayout()
+        purchaseCompletion = purchaseBlock
+        restoreCompletion = restoreBlock
+        becomePremiumCompletion = becomePremiumBlock
+        closeCompletion = closeBlock
         super.init(frame: .zero)
+        
+        dialogView.delegate = self
         backgroundColor = .clear
         
         addSubview(fadeView)
         addSubview(dialogView)
         addSubview(hintLabel)
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(hide))
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(onClose))
         fadeView.addGestureRecognizer(gestureRecognizer)
         
         setupConstraints()
     }
     
-    @objc private func hide() {
-        UIView.animate(withDuration: 0.3) { [weak self] in
-            self?.isVisible = false
-        }
+    @objc private func onClose() {
+        closeCompletion?()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -84,10 +95,30 @@ class PopupView: UIView {
             dialogView.centerXAnchor.constraint(equalTo: centerXAnchor),
             dialogView.centerYAnchor.constraint(equalTo: centerYAnchor),
             dialogView.widthAnchor.constraint(equalToConstant: dialogViewWidth),
+            dialogView.heightAnchor.constraint(equalToConstant: dialogViewHeight),
             hintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
             hintLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -hintLabelPadding)
         ]
         
         NSLayoutConstraint.activate(fadeViewConstraints + dialogViewConstraints)
+    }
+}
+
+extension PopupView: PopupDialogDelegate {
+    
+    func dialogViewDidPressBecomePremium() {
+        becomePremiumCompletion?()
+    }
+    
+    func dialogViewDidPressCancel() {
+        onClose()
+    }
+    
+    func dialogViewDidPressPurchase() {
+        purchaseCompletion?()
+    }
+    
+    func dialogViewDidPressRestorePurchase() {
+        restoreCompletion?()
     }
 }

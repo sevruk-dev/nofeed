@@ -8,8 +8,6 @@
 
 import UIKit
 
-//TODO: update assets
-
 class BuyPremiumView: UIView {
     
     class var minimalHeight: CGFloat {
