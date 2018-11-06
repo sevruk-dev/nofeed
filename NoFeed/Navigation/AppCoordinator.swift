@@ -18,7 +18,7 @@ class AppCoordinator {
     }
     
     func coordinate() {
-        SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: "com.svg.NoFeed.contentBlocker") { [weak self] (state, error) in
+        SFContentBlockerManager.getStateOfContentBlocker(withIdentifier: "io.insider.apps.nofeed.contentBlocker") { [weak self] (state, error) in
             DispatchQueue.main.async {
                 guard let self = self else { return }
                 

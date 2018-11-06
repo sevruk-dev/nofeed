@@ -568,14 +568,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				DEVELOPMENT_TEAM = B89956DSTQ;
 				INFOPLIST_FILE = contentBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed.contentBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = io.insider.apps.nofeed.contentBlocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -589,14 +589,14 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
 				CODE_SIGN_ENTITLEMENTS = contentBlocker/contentBlocker.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				DEVELOPMENT_TEAM = B89956DSTQ;
 				INFOPLIST_FILE = contentBlocker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed.contentBlocker;
+				PRODUCT_BUNDLE_IDENTIFIER = io.insider.apps.nofeed.contentBlocker;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -729,14 +729,14 @@
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				DEVELOPMENT_TEAM = B89956DSTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/NoFeed/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed;
+				PRODUCT_BUNDLE_IDENTIFIER = io.insider.apps.nofeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -751,14 +751,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = NoFeed/Support/NoFeed.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 7UALYYJUG6;
+				DEVELOPMENT_TEAM = B89956DSTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/NoFeed/Support/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.svg.NoFeed;
+				PRODUCT_BUNDLE_IDENTIFIER = io.insider.apps.nofeed;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

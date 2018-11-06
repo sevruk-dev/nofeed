@@ -8,7 +8,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.nofeed</string>
+		<string>group.insider.nofeed</string>
 	</array>
 </dict>
 </plist>

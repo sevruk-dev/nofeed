@@ -13,7 +13,7 @@ class ContainerManager: ContainerManagerProtocol {
     private let feedsKey = "feeds"
     
     private let sharedUserDefaults: UserDefaults = {
-        guard let userDefaults = UserDefaults(suiteName: "group.nofeed") else {
+        guard let userDefaults = UserDefaults(suiteName: "group.insider.nofeed") else {
             fatalError("No shared container detected.")
         }
         return userDefaults
