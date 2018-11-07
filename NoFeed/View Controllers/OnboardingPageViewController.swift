@@ -130,7 +130,7 @@ class OnboardingPageViewController: UIViewController {
             leftVC.view.alpha = leftControllerShown
             rightVC.view.alpha = rightControllerShown
             
-            if rightControllerIndex == 2 {
+            if rightControllerIndex == controllersCount - 1 {
                 doneButton.alpha = rightControllerShown
                 skipButton.alpha = leftControllerShown
                 pageControl.alpha = leftControllerShown
