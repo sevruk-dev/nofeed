@@ -11,6 +11,7 @@ import UIKit
 class AppNavigator: Navigator {
     
     private let navigationController: UINavigationController
+    private var isFirstLaunch: Bool = true
     
     init(with navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -25,6 +26,7 @@ class AppNavigator: Navigator {
     func navigate(to destination: Destination) {
         defer {
             styleNavigationBar(for: destination)
+            isFirstLaunch = false
         }
         
         //TODO: create enum view types of controllers
@@ -61,7 +63,7 @@ class AppNavigator: Navigator {
                     return false
             }
         }()
-        navigationController.isNavigationBarHidden = navigationBarHidden
+        navigationController.setNavigationBarHidden(navigationBarHidden, animated: !isFirstLaunch)
     }
     
     private func setup(_ viewController: UIViewController) {
