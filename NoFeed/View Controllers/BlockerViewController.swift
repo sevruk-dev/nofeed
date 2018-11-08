@@ -113,16 +113,16 @@ class BlockerViewController: UIViewController {
         navigationController?.view.addSubview(popupView)
         NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
         
-        UIView.animate(withDuration: 0.3) {
-            popupView.isVisible = true
-        }
+        popupView.runShowAnimation()
     }
     
     @objc private func presentLimitationsView() {
         guard let navigationView = navigationController?.view else { return }
         
-        let popupView = PopupView(becomePremiumCompletion: {
-            //become premium
+        let popupView = PopupView(becomePremiumCompletion: { [weak self] in
+            self?.hidePopup() {
+                self?.presentBuyPremiumView()
+            }
         }, closeCompletion: { [weak self] in
             self?.hidePopup()
             }).viewForAutoLayout()
@@ -131,17 +131,14 @@ class BlockerViewController: UIViewController {
         navigationController?.view.addSubview(popupView)
         NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
         
-        UIView.animate(withDuration: 0.3) {
-            popupView.isVisible = true
-        }
+        popupView.runShowAnimation()
     }
     
-    private func hidePopup() {
-        UIView.animate(withDuration: 0.3, animations: { [weak self] in
-            self?.currentPopupView?.isVisible = false
-        }) { [weak self] _ in
+    private func hidePopup(with completion: OptionalBlock = nil) {
+        currentPopupView?.runHideAnimation() { [weak self] in
             self?.currentPopupView?.removeFromSuperview()
             self?.currentPopupView = nil
+            completion?()
         }
     }
 }
