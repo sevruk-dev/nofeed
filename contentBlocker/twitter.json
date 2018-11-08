@@ -1,10 +1,17 @@
 {
     "action": {
         "type": "css-display-none",
-        "selector": "div[class*=rn-2llsf]"
+        "selector": "a[data-testid='homeLink']"
     },
     "trigger": {
-        "url-filter": "twitter.com/home",
-        "if-domain": ["mobile.twitter.com"]
+        "url-filter": "twitter.com"
+    }
+},
+{
+    "action": {
+        "type": "block"
+    },
+    "trigger": {
+        "url-filter": "api.twitter.com/2/timeline/home.json"
     }
 }

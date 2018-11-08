@@ -1,7 +1,7 @@
 {
     "action": {
         "type": "css-display-none",
-        "selector": "#MFirstBatch, #m_newsfeed_stream"
+        "selector": "#MFirstBatch, #m_newsfeed_stream, div[id='feed_jewel']"
     },
     "trigger": {
         "url-filter": "m.facebook.*"

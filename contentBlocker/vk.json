@@ -1,7 +1,7 @@
 {
     "action": {
         "type": "css-display-none",
-        "selector": ".wall_item, .show_more_wrap"
+        "selector": ".wall_item, .show_more_wrap, li[class='mmi_feed']"
     },
     "trigger": {
         "url-filter": "vk.com/feed"
