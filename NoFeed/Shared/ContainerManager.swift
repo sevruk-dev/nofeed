@@ -10,6 +10,12 @@ import Foundation
 
 class ContainerManager: ContainerManagerProtocol {
     
+    init() {
+        if !modelExists(with: .empty) {
+            addModel(with: .empty)
+        }
+    }
+    
     private let feedsKey = "feeds"
     
     private let sharedUserDefaults: UserDefaults = {
@@ -39,6 +45,8 @@ class ContainerManager: ContainerManagerProtocol {
             return .twitter
         case BlockerIdentifier.vk.rawValue:
             return .vk
+        case BlockerIdentifier.empty.rawValue:
+            return .empty
         default:
             return nil
         }

@@ -23,5 +23,5 @@ protocol BlockerIdentifierable: class {
 }
 
 enum BlockerIdentifier: String {
-    case facebook, instagram, twitter, vk
+    case facebook, instagram, twitter, vk, empty
 }

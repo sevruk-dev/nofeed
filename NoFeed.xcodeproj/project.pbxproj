@@ -16,6 +16,7 @@
 		6E67578C215FB1F300A574F7 /* facebook.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675788215FB1F300A574F7 /* facebook.json */; };
 		6E67578D215FB39900A574F7 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
 		8003299F2132AE2A00E951ED /* NSLayoutConstraintUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */; };
+		800C79E621953E18008F4CCA /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = 800C79E521953E18008F4CCA /* empty.json */; };
 		80153FFE212FF3BA00694C83 /* UIColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80153FFD212FF3BA00694C83 /* UIColorUtils.swift */; };
 		80224A09215374D10086D2B0 /* ContentBlockerRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */; };
 		80224A0E215374D10086D2B0 /* contentBlocker.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 80224A04215374D00086D2B0 /* contentBlocker.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -90,6 +91,7 @@
 		6E675788215FB1F300A574F7 /* facebook.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = facebook.json; sourceTree = "<group>"; };
 		6F7609E869DC831EAC3D5F9C /* Pods-NoFeed.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NoFeed.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NoFeed/Pods-NoFeed.debug.xcconfig"; sourceTree = "<group>"; };
 		8003299E2132AE2A00E951ED /* NSLayoutConstraintUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintUtils.swift; sourceTree = "<group>"; };
+		800C79E521953E18008F4CCA /* empty.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
 		80153FFD212FF3BA00694C83 /* UIColorUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorUtils.swift; sourceTree = "<group>"; };
 		80224A04215374D00086D2B0 /* contentBlocker.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = contentBlocker.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		80224A08215374D10086D2B0 /* ContentBlockerRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentBlockerRequestHandler.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				6E675788215FB1F300A574F7 /* facebook.json */,
 				6E675786215FB1F300A574F7 /* instagram.json */,
 				6E675787215FB1F300A574F7 /* twitter.json */,
+				800C79E521953E18008F4CCA /* empty.json */,
 				6E675785215FB1F300A574F7 /* vk.json */,
 				80224A0A215374D10086D2B0 /* Info.plist */,
 			);
@@ -414,6 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E67578A215FB1F300A574F7 /* instagram.json in Resources */,
+				800C79E621953E18008F4CCA /* empty.json in Resources */,
 				6E675789215FB1F300A574F7 /* vk.json in Resources */,
 				6E67578B215FB1F300A574F7 /* twitter.json in Resources */,
 				6E67578C215FB1F300A574F7 /* facebook.json in Resources */,
