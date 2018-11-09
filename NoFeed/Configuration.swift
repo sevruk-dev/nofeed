@@ -14,7 +14,7 @@ class Configuration {
     
     static let shared: Configuration = Configuration()
     
-    private let isPremiumUserKey = "isPremium"
+    private let onboardingCompletedKey = "OnboardingCompleted"
     
     var onboardingCompleted: Bool {
         return UserDefaults.standard.bool(forKey: onboardingCompletedKey)
