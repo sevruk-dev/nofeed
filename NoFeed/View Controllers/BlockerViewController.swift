@@ -15,17 +15,10 @@ class BlockerViewController: UIViewController {
     
     fileprivate let dataSource: BlockerDataProvider
     private let containerManager: ContainerManagerProtocol = ContainerManager()
-    private var currentPopupView: PopupView?
     
     fileprivate struct Constants {
         static let rowHeight: CGFloat = 95.0
     }
-    
-    private lazy var buyPremiumView: BuyPremiumView = {
-        let model = self.dataSource.modelForBuyPremium()
-        let view = BuyPremiumView(with: model).viewForAutoLayout()
-        return view
-    }()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped).viewForAutoLayout()
@@ -55,30 +48,14 @@ class BlockerViewController: UIViewController {
         navigationItem.hidesBackButton = true
         view.backgroundColor = .white
         title = "NoFeed"
-        buyPremiumView.button.addTarget(self, action: #selector(presentBuyPremiumView), for: .touchUpInside)
         
         view.addSubview(tableView)
-        view.addSubview(buyPremiumView)
         
         setupLayout()
     }
     
     private func setupLayout() {
-        let tableViewConstraints = tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0))
-
-        let buyPremiumBottomConstraint: NSLayoutConstraint
-        if #available(iOS 11.0, *) {
-            buyPremiumBottomConstraint = buyPremiumView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
-        } else {
-            buyPremiumBottomConstraint = buyPremiumView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-        }
-        
-            NSLayoutConstraint.activate([
-                buyPremiumView.leftAnchor.constraint(equalTo: view.leftAnchor),
-                buyPremiumView.widthAnchor.constraint(equalTo: view.widthAnchor),
-                buyPremiumView.heightAnchor.constraint(equalToConstant: BuyPremiumView.minimalHeight),
-                buyPremiumBottomConstraint
-                ] + tableViewConstraints)
+        NSLayoutConstraint.activate(tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0)))
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
@@ -100,52 +77,6 @@ class BlockerViewController: UIViewController {
             containerManager.addModel(with: blockerIdentifier)
         } else {
             containerManager.removeModel(with: blockerIdentifier)
-        }
-    }
-    
-    // MARK: popupPresentstion
-    
-    @objc fileprivate func presentBuyPremiumView() {
-        guard let navigationView = navigationController?.view else { return }
-        
-        let popupView = PopupView(purchaseCompletion: {
-            // purchase logic
-        }, restoreCompletion: {
-            // restore purchase logic
-        }, closeCompletion: { [weak self] in
-            self?.hidePopup()
-            }).viewForAutoLayout()
-        currentPopupView = popupView
-        
-        navigationController?.view.addSubview(popupView)
-        NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
-        
-        popupView.runShowAnimation()
-    }
-    
-    @objc private func presentLimitationsView() {
-        guard let navigationView = navigationController?.view else { return }
-        
-        let popupView = PopupView(becomePremiumCompletion: { [weak self] in
-            self?.hidePopup() {
-                self?.presentBuyPremiumView()
-            }
-        }, closeCompletion: { [weak self] in
-            self?.hidePopup()
-            }).viewForAutoLayout()
-        currentPopupView = popupView
-        
-        navigationController?.view.addSubview(popupView)
-        NSLayoutConstraint.activate(popupView.constraintsWithAnchorsEqual(to: navigationView))
-        
-        popupView.runShowAnimation()
-    }
-    
-    private func hidePopup(with completion: OptionalBlock = nil) {
-        currentPopupView?.runHideAnimation() { [weak self] in
-            self?.currentPopupView?.removeFromSuperview()
-            self?.currentPopupView = nil
-            completion?()
         }
     }
 }

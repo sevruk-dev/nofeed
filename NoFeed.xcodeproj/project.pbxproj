@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6E0517D82183649200CFA66B /* BuyPremiumView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0517D72183649200CFA66B /* BuyPremiumView.swift */; };
 		6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0517D9218365B700CFA66B /* BlockerView.swift */; };
 		6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E4295FA21849A3000FA59B2 /* NavigationController.swift */; };
 		6E675789215FB1F300A574F7 /* vk.json in Resources */ = {isa = PBXBuildFile; fileRef = 6E675785215FB1F300A574F7 /* vk.json */; };
@@ -37,10 +36,8 @@
 		8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC86212D467E004B40D1 /* AppCoordinator.swift */; };
 		8059EC89212D4EFF004B40D1 /* SafariSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */; };
 		805DB03E218B756100B1A772 /* OnboardingDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805DB03D218B756100B1A772 /* OnboardingDataSource.swift */; };
-		806066CA21692C5400C10A48 /* PopupDialogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806066C921692C5400C10A48 /* PopupDialogView.swift */; };
 		806066CC21692F9F00C10A48 /* UIViewUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806066CB21692F9F00C10A48 /* UIViewUtils.swift */; };
 		806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */; };
-		806ECCF32161098200B12C77 /* PopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 806ECCF22161098200B12C77 /* PopupView.swift */; };
 		80719E572182B45B00AA18E7 /* BlockerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */; };
 		807D5CA52187903300034E6C /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 807D5CA42187903300034E6C /* RoundButton.swift */; };
 		807FA6E2212C72640040AAFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 807FA6E1212C72640040AAFF /* GoogleService-Info.plist */; };
@@ -48,7 +45,6 @@
 		80993E64216008D500E2D5D1 /* BlockerRulesProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */; };
 		80B3ABF6218D95BF007EB821 /* instructions.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 80B3ABF5218D95BF007EB821 /* instructions.mp4 */; };
 		80B863612156E147000AC175 /* ContainerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B863602156E147000AC175 /* ContainerManager.swift */; };
-		80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80D235FE2149A64300789ED0 /* CustomSwitch.swift */; };
 		80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096A211624A7008D07D7 /* AppDelegate.swift */; };
 		80FE096D211624A7008D07D7 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80FE096C211624A7008D07D7 /* OnboardingViewController.swift */; };
 		80FE0972211624A8008D07D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80FE0971211624A8008D07D7 /* Assets.xcassets */; };
@@ -81,7 +77,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		6E0517D72183649200CFA66B /* BuyPremiumView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyPremiumView.swift; sourceTree = "<group>"; };
 		6E0517D9218365B700CFA66B /* BlockerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockerView.swift; sourceTree = "<group>"; };
 		6E4295FA21849A3000FA59B2 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		6E461B4A215FDDA70007C980 /* contentBlocker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = contentBlocker.entitlements; sourceTree = "<group>"; };
@@ -112,10 +107,8 @@
 		8059EC86212D467E004B40D1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		8059EC88212D4EFF004B40D1 /* SafariSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariSetupViewController.swift; sourceTree = "<group>"; };
 		805DB03D218B756100B1A772 /* OnboardingDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingDataSource.swift; sourceTree = "<group>"; };
-		806066C921692C5400C10A48 /* PopupDialogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupDialogView.swift; sourceTree = "<group>"; };
 		806066CB21692F9F00C10A48 /* UIViewUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewUtils.swift; sourceTree = "<group>"; };
 		806749F5212FDCB00084B303 /* OnboardingPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPageViewController.swift; sourceTree = "<group>"; };
-		806ECCF22161098200B12C77 /* PopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupView.swift; sourceTree = "<group>"; };
 		80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerTableViewCell.swift; sourceTree = "<group>"; };
 		807D5CA42187903300034E6C /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		807FA6E1212C72640040AAFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -124,7 +117,6 @@
 		80993E63216008D500E2D5D1 /* BlockerRulesProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlockerRulesProvider.swift; sourceTree = "<group>"; };
 		80B3ABF5218D95BF007EB821 /* instructions.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = instructions.mp4; sourceTree = "<group>"; };
 		80B863602156E147000AC175 /* ContainerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ContainerManager.swift; path = NoFeed/Shared/ContainerManager.swift; sourceTree = SOURCE_ROOT; };
-		80D235FE2149A64300789ED0 /* CustomSwitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSwitch.swift; sourceTree = "<group>"; };
 		80FE0967211624A7008D07D7 /* NoFeed.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoFeed.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80FE096A211624A7008D07D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80FE096C211624A7008D07D7 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
@@ -195,13 +187,9 @@
 			isa = PBXGroup;
 			children = (
 				805338FB2150EEE700C30E31 /* ShadowView.swift */,
-				80D235FE2149A64300789ED0 /* CustomSwitch.swift */,
-				806ECCF22161098200B12C77 /* PopupView.swift */,
-				806066C921692C5400C10A48 /* PopupDialogView.swift */,
 				6E0517D9218365B700CFA66B /* BlockerView.swift */,
 				80719E562182B45B00AA18E7 /* BlockerTableViewCell.swift */,
 				8056A55321348BEB00973940 /* BlockerReusableView.swift */,
-				6E0517D72183649200CFA66B /* BuyPremiumView.swift */,
 				807D5CA42187903300034E6C /* RoundButton.swift */,
 			);
 			path = Views;
@@ -526,15 +514,11 @@
 				8056A55421348BEB00973940 /* BlockerReusableView.swift in Sources */,
 				802421FE21370B190028F10F /* UIFontUtils.swift in Sources */,
 				8059EC87212D467E004B40D1 /* AppCoordinator.swift in Sources */,
-				806ECCF32161098200B12C77 /* PopupView.swift in Sources */,
-				80D235FF2149A64300789ED0 /* CustomSwitch.swift in Sources */,
 				8056A54F213468C000973940 /* BlockerDataSource.swift in Sources */,
 				80FE096B211624A7008D07D7 /* AppDelegate.swift in Sources */,
 				806749F6212FDCB00084B303 /* OnboardingPageViewController.swift in Sources */,
-				806066CA21692C5400C10A48 /* PopupDialogView.swift in Sources */,
 				80B863612156E147000AC175 /* ContainerManager.swift in Sources */,
 				8059EC83212D43AB004B40D1 /* Navigator.swift in Sources */,
-				6E0517D82183649200CFA66B /* BuyPremiumView.swift in Sources */,
 				6E4295FB21849A3000FA59B2 /* NavigationController.swift in Sources */,
 				6E0517DA218365B700CFA66B /* BlockerView.swift in Sources */,
 				805338FC2150EEE700C30E31 /* ShadowView.swift in Sources */,
