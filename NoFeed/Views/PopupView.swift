@@ -132,9 +132,17 @@ class PopupView: UIView {
         NSLayoutConstraint.activate(fadeViewConstraints + dialogViewConstraints)
         
         if popupType == .buyPremium {
+            
+            let hintLabelBottomConstraint: NSLayoutConstraint
+            if #available(iOS 11.0, *) {
+                hintLabelBottomConstraint = hintLabel.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -hintLabelPadding)
+            } else {
+                hintLabelBottomConstraint = hintLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -hintLabelPadding)
+            }
+            
             NSLayoutConstraint.activate([
                 hintLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-                hintLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -hintLabelPadding)
+                hintLabelBottomConstraint
                 ])
         }
     }

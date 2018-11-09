@@ -12,9 +12,9 @@ import AVKit
 class SafariSetupViewController: UIViewController {
     
     private struct Constansts {
-        static let descriptionTopOffset: CGFloat = 155.0
+        static let descriptionTopOffset: CGFloat = 46.0
         static let descriptionWidth: CGFloat = 230.0
-        static let playerTopOffset: CGFloat = 265.0
+        static let playerTopOffset: CGFloat = 66.0
     }
     
     private lazy var playerViewController: AVPlayerViewController = {
@@ -92,11 +92,11 @@ class SafariSetupViewController: UIViewController {
     
     private func setupConstraints() {
         NSLayoutConstraint.activate([
-            descriptionLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: Constansts.descriptionTopOffset),
+            placeholderImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            placeholderImageView.topAnchor.constraint(equalTo: view.centerYAnchor, constant: -Constansts.playerTopOffset),
+            descriptionLabel.bottomAnchor.constraint(equalTo: placeholderImageView.topAnchor, constant: -Constansts.descriptionTopOffset),
             descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             descriptionLabel.widthAnchor.constraint(equalToConstant: Constansts.descriptionWidth),
-            placeholderImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            placeholderImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: Constansts.playerTopOffset),
             playImageView.centerXAnchor.constraint(equalTo: placeholderImageView.centerXAnchor),
             playImageView.centerYAnchor.constraint(equalTo: placeholderImageView.centerYAnchor)
             ] + blurView.constraintsWithAnchorsEqual(to: placeholderImageView)

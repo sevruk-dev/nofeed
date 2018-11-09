@@ -65,13 +65,20 @@ class BlockerViewController: UIViewController {
     
     private func setupLayout() {
         let tableViewConstraints = tableView.constraintsWithAnchorsEqual(to: view, with: UIEdgeInsets(top: 13.0, left: 0.0, bottom: 0.0, right: 0.0))
+
+        let buyPremiumBottomConstraint: NSLayoutConstraint
+        if #available(iOS 11.0, *) {
+            buyPremiumBottomConstraint = buyPremiumView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        } else {
+            buyPremiumBottomConstraint = buyPremiumView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        }
         
-        NSLayoutConstraint.activate([
-            buyPremiumView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            buyPremiumView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            buyPremiumView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            buyPremiumView.heightAnchor.constraint(equalToConstant: BuyPremiumView.minimalHeight)
-            ] + tableViewConstraints)
+            NSLayoutConstraint.activate([
+                buyPremiumView.leftAnchor.constraint(equalTo: view.leftAnchor),
+                buyPremiumView.widthAnchor.constraint(equalTo: view.widthAnchor),
+                buyPremiumView.heightAnchor.constraint(equalToConstant: BuyPremiumView.minimalHeight),
+                buyPremiumBottomConstraint
+                ] + tableViewConstraints)
     }
     
     fileprivate func setBlockerStateIfNeeded(for cell: BlockerTableViewCell) {
