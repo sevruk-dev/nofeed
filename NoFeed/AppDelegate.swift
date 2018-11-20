@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         FirebaseApp.configure()
         
-        reloadContentBlocker()
-        
         return true
     }
     
