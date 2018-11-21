@@ -10,11 +10,17 @@ import UIKit
 
 class NavigationController: UINavigationController {
     
-    init() {
+    init(with controller: SplashController) {
         super.init(nibName: nil, bundle: nil)
         view.backgroundColor = .white
         isNavigationBarHidden = true
         
+        setupNavigaionBar()
+        
+        pushViewController(controller, animated: false)
+    }
+    
+    private func setupNavigaionBar() {
         updateBackgroundColor()
         addShadow()
         

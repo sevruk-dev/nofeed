@@ -20,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let navigationController = NavigationController()
+        let navigationController = NavigationController(with: SplashController())
         let appNavigator = AppNavigator(with: navigationController)
         appCoordinator = AppCoordinator(with: appNavigator)
         appCoordinator?.coordinate()
