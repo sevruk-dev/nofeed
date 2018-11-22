@@ -85,9 +85,8 @@ class SafariSetupViewController: UIViewController {
             player.seek(to: CMTime.zero)
         }
         
-        present(playerViewController, animated: true) { [weak self] in
-            self?.player.play()
-        }
+        present(playerViewController, animated: true)
+        player.play()
     }
     
     private func setupConstraints() {
