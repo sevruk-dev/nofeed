@@ -7,21 +7,21 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>391604143378-2e80ra2t8bjt5l49lqbpolmtmj19558a.apps.googleusercontent.com</string>
+	<string>406137994702-asdef752190si3kn75flpp5824mmkcu8.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.391604143378-2e80ra2t8bjt5l49lqbpolmtmj19558a</string>
+	<string>com.googleusercontent.apps.406137994702-asdef752190si3kn75flpp5824mmkcu8</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAUP0lBAfaKf23_lkTqlHcFE19tF3CixTY</string>
+	<string>AIzaSyD2qNCbboLhnRWxOTqF5EPZ9yrys1Au_18</string>
 	<key>GCM_SENDER_ID</key>
-	<string>391604143378</string>
+	<string>406137994702</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>io.insider.apps.nofeed</string>
 	<key>PROJECT_ID</key>
-	<string>nofeed-228</string>
+	<string>nofeed-github</string>
 	<key>STORAGE_BUCKET</key>
-	<string>nofeed-228.appspot.com</string>
+	<string>nofeed-github.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<true/>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -33,8 +33,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true/>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:391604143378:ios:304e3117451a65fd</string>
+	<string>1:406137994702:ios:51886d6f7b7757e1</string>
 	<key>DATABASE_URL</key>
-	<string>https://nofeed-228.firebaseio.com</string>
+	<string>https://nofeed-github.firebaseio.com</string>
 </dict>
 </plist>
