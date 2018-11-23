@@ -13,19 +13,13 @@ class ContentBlockerRequestHandler: NSObject, NSExtensionRequestHandling {
     
     private let containerManager = ContainerManager()
     private let rulesProvider = BlockerRulesProvider()
-
-    //TODO: make informative error description
     
     func beginRequest(with context: NSExtensionContext) {
         let blockingIdentifiers = containerManager.models
         
-        guard let blockingRulesUrl = rulesProvider.rulesUrl(for: blockingIdentifiers) else {
-            context.cancelRequest(withError: NSError(domain: "RulesProvider", code: 1))
-            return
-        }
-        
-        guard let itemProvider = NSItemProvider(contentsOf: blockingRulesUrl) else {
-                context.cancelRequest(withError: NSError(domain: "RulesProvider", code: 2))
+        guard let blockingRulesUrl = rulesProvider.rulesUrl(for: blockingIdentifiers),
+            let itemProvider = NSItemProvider(contentsOf: blockingRulesUrl) else {
+                context.cancelRequest(withError: NSError(domain: "RulesProvider", code: 1))
                 return
         }
         
