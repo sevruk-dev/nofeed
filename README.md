@@ -1,0 +1,2 @@
+# nofeed
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a7c110e354264183a1fba02002cc395d)](https://app.codacy.com/app/vovaseuruk/nofeed?utm_source=github.com&utm_medium=referral&utm_content=insiderdev/nofeed&utm_campaign=Badge_Grade_Dashboard)
