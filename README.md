@@ -1,6 +1,9 @@
 # NoFeed
 
 NoFeed is an iOS App written in Swift that allows you to block social-networks feeds in your Safari browser.
+
+![Big Beautiful Picture](https://i.imgur.com/WjOiJxs.png)
+
 <a target="_blank" href='#'><img width="200" alt='Download on App Store' src='https://i.imgur.com/7IxtMV0.png'/></a>
 
 
@@ -17,7 +20,7 @@ NoFeed is an iOS App written in Swift that allows you to block social-networks f
 
 ## Try it yourself
 
-> __As of Oct 2018, this project requires Xcode 10.__
+> __As of Nov 2018, this project requires Xcode 10.__
 
 1. Install the latest [Xcode developer tools](https://developer.apple.com/xcode/downloads/) from Apple.
 2. Install [CocoaPods](https://cocoapods.org)
