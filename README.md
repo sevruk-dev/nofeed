@@ -4,7 +4,7 @@ NoFeed is an iOS App written in Swift that allows you to block social-networks f
 
 ![Big Beautiful Picture](https://i.imgur.com/WjOiJxs.png)
 
-<a target="_blank" href='#'><img width="200" alt='Download on App Store' src='https://i.imgur.com/7IxtMV0.png'/></a>
+<a target="_blank" href='https://itunes.apple.com/by/app/nofeed-distractions-blocking/id1441417699?mt=8'><img width="200" alt='Download on App Store' src='https://i.imgur.com/7IxtMV0.png'/></a>
 
 
 ## Some technical things used inside
