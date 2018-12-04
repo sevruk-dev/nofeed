@@ -43,7 +43,7 @@ NoFeed is an iOS App written in Swift that allows you to block social-networks f
 If you find any problems, feature requests, please open an issue or submit a fix as a pull request.
 
 ## Want to talk?
-If you have any questions or you want us to help you design and develop your application, send us an email at [hi@insider.io](mailto:hi@insider.io)
+If you have any questions or you want us to help you design and develop your application, send me an email at [vovaseuruk@gmail.com](mailto:vovaseuruk@gmail.com)
 
 ## License
 
