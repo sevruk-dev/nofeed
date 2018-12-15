@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import InsiderPageControl
+import Sevruk_PageControl
 
 protocol OnboardingDelegate: class {
     func onboardingCompleted()

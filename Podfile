@@ -5,6 +5,6 @@ target 'NoFeed' do
 
   pod 'Firebase/Core', '5.1.0'
   pod 'Crashlytics', '3.10.2'
-  pod 'InsiderPageControl', '0.0.1'
+  pod 'Sevruk-PageControl', '1.0.0'
 
 end

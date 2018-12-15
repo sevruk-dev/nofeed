@@ -19,17 +19,17 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.4)
   - "GoogleToolboxForMac/NSData+zlib (2.1.4)":
     - GoogleToolboxForMac/Defines (= 2.1.4)
-  - InsiderPageControl (0.0.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
+  - Sevruk-PageControl (1.0.0)
 
 DEPENDENCIES:
   - Crashlytics (= 3.10.2)
   - Firebase/Core (= 5.1.0)
-  - InsiderPageControl (= 0.0.1)
+  - Sevruk-PageControl (= 1.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -40,8 +40,8 @@ SPEC REPOS:
     - FirebaseCore
     - FirebaseInstanceID
     - GoogleToolboxForMac
-    - InsiderPageControl
     - nanopb
+    - Sevruk-PageControl
 
 SPEC CHECKSUMS:
   Crashlytics: 0360624eea1c978a743feddb2fb1ef8b37fb7a0d
@@ -51,9 +51,9 @@ SPEC CHECKSUMS:
   FirebaseCore: b81044df1044c0857a0737c6324678b72d4f7f00
   FirebaseInstanceID: 83e0040351565df711a5db3d8ebe5ea21aca998a
   GoogleToolboxForMac: 91c824d21e85b31c2aae9bb011c5027c9b4e738f
-  InsiderPageControl: 31ad92bc19a0f2bcd7b723f864416aaeec0453c3
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+  Sevruk-PageControl: d2a17eeef35fc18eebd119fc9a3871a9ff347508
 
-PODFILE CHECKSUM: 56f9610d89ec9d36f399d77aebe2dd048a528005
+PODFILE CHECKSUM: 4fbb680be76a70206d0310ce26301c91282ba0d8
 
 COCOAPODS: 1.5.3
