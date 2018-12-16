@@ -24,7 +24,7 @@ class SplashController: UIViewController {
         view.backgroundColor = UIColor(netHex: 0x643FC1)
         
         imageView.image = UIImage(named: "IconWithoutBackground")
-        label.text = "by Insider.io"
+        label.text = "by Sevruk Dev"
         
         view.addSubview(imageView)
         view.addSubview(label)
