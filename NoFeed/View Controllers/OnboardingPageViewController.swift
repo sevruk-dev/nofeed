@@ -21,6 +21,7 @@ class OnboardingPageViewController: UIViewController {
 
     private lazy var pageControl: PageControl = {
         let pageControl = PageControl().viewForAutoLayout()
+        pageControl.spacing = 18.0
         pageControl.indicatorTintColor = UIColor.AppColors.pageControlGray
         pageControl.currentIndicatorTintColor = UIColor.AppColors.lightPink
         return pageControl
